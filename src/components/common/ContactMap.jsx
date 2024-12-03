@@ -1,6 +1,7 @@
 'use client'; 
 import L from "leaflet";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
 
 const ContactMap = () => {
   const position = [44.868027578053166, -0.6080236082763149]; // Coordonnées de votre adresse
@@ -23,11 +24,15 @@ const ContactMap = () => {
       zoom={15}
       style={{ height: "200px", width: "100%" }}
       scrollWheelZoom={false}
+      zoomSnap={1}
       className="z-0"
     >
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        minZoom={1} // Niveau de zoom minimum
+        maxZoom={19} // Niveau de zoom maximum
+        noWrap={true} // Empêche la carte de se répéter sur elle-même
       />
       <Marker position={position} icon={customIcon}>
         <Popup>
