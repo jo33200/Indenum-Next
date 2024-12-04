@@ -2,7 +2,7 @@
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from "react-icons/hi";
-import CardAd from "./CardAd";
+import CardAd from "@/components/pages/CardAd";
 
 const CarouselAd = ({ ads }) => {
   const [currentIndex, setCurrentIndex] = useState(0);

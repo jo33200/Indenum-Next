@@ -1,5 +1,5 @@
-import Image from "next/image"; 
-import ContactInfo from "@/components/common/ContactInfo";
+import ContactInfo from "@/components/features/ContactInfo";
+import Image from "next/image";
 
 const Footer = () => {
   return (

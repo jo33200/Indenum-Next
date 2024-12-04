@@ -5,8 +5,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import CardHome from "@/components/pages/CardHome";
-import Carousel from "@/components/pages/CarouselHome";
-import CarouselAd from "@/components/pages/CarouselAd";
+import Carousel from "@/components/features/CarouselHome";
+import CarouselAd from "@/components/features/CarouselAd";
 import CityModal from "@/components/ui/ModalCity";
 import adData from "@/data/ad.json";
 

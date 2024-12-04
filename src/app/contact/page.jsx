@@ -1,5 +1,5 @@
-import ContactForm from "@/components/common/ContactForm";
-import ContactInfo from "@/components/common/ContactInfo";
+import ContactInfo from "@/components/features/ContactInfo";
+import ContactForm from "@/components/pages/ContactForm";
 
 const Contact = () => {
   return (

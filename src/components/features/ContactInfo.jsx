@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import ContactMap from "@/components/common/ContactMap";
+import ContactMap from "@/components/features/ContactMap";
 
 const ContactInfo = ({ isFooter = false }) => (
   <div

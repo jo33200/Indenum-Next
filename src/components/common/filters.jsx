@@ -1,4 +1,5 @@
 'use client';
+
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 
@@ -15,7 +16,6 @@ const Filters = ({
   useEffect(() => {
     if (openCategory) {
       console.log("Open category in useEffect:", openCategory);
-
       setOpenCategories((prev) => ({
         ...prev,
         [openCategory]: true, // Ouvre la catégorie passée en prop
@@ -265,22 +265,9 @@ const Filters = ({
 };
 
 Filters.propTypes = {
-  filterData: PropTypes.arrayOf(
-    PropTypes.shape({
-      category: PropTypes.string.isRequired,
-      subcategories: PropTypes.oneOfType([
-        PropTypes.arrayOf(PropTypes.string),
-        PropTypes.arrayOf(
-          PropTypes.shape({
-            subcategory: PropTypes.string.isRequired,
-            subSubcategories: PropTypes.arrayOf(PropTypes.string),
-          }),
-        ),
-      ]).isRequired,
-    }),
-  ),
-  selectedFilters: PropTypes.arrayOf(PropTypes.string).isRequired,
-  onFilterChange: PropTypes.func.isRequired,
+  filterData: PropTypes.arrayOf(PropTypes.object),
+  selectedFilters: PropTypes.arrayOf(PropTypes.string),
+  onFilterChange: PropTypes.func,
   openCategory: PropTypes.string,
   onCategoryChange: PropTypes.func,
 };

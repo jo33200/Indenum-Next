@@ -1,12 +1,11 @@
 'use client;'
 
-import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
-import ListRates from "@/components/pages/ListRates";
-import ScrollToTopButton from "@/components/ui/ScrollToTopButton";
 import Filters from "@/components/common/Filters";
+import ScrollToTopButton from "@/components/common/ScrollToTopButton";
+import ListRates from "@/components/pages/ListRates";
 import RatesData from "@/data/rate.json";
-import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 const Rate = () => {
   const router = useRouter();

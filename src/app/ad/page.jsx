@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { useSearchParams, useRouter } from "next/navigation";
 import Filters from "@/components/common/filters";
+import ScrollToTopButton from "@/components/common/ScrollToTopButton.jsx";
 import ListAd from "@/components/pages/ListAd.jsx";
-import ScrollToTopButton from "@/components/ui/ScrollToTopButton.jsx";
 import adsDataJson from "@/data/ad.json";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const Ad = () => {
   const router = useRouter();

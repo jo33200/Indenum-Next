@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { FaTimes } from "react-icons/fa"; // Importation de l'icône croix
 import { HiChevronDoubleLeft } from "react-icons/hi";
 import images from "../../assets/images";
-import FakeScrollBar from "../ui/FakeScrollBar";
+import FakeScrollBar from "../features/FakeScrollBar";
 
 import ApplePay from "../../assets/img/applePay.svg";
 import GooglePay from "../../assets/img/googlePay.svg";

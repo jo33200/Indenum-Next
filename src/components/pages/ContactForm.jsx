@@ -1,7 +1,7 @@
 'use client';  
+import ButtonValid from "@/components/common/ButtonValid";
 import emailjs from "@emailjs/browser";
 import { useState } from "react";
-import ButtonValid from "@/components/ui/ButtonValid";
 
 const ContactForm = () => {
   const [contactData, setContactData] = useState({

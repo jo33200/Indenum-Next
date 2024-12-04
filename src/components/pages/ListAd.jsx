@@ -1,37 +1,54 @@
 import PropTypes from "prop-types";
 import CardAd from "./CardAd";
 
-// Fonction pour extraire et convertir le prix depuis une chaîne comme "30€"
-const extractPrice = (priceStr) => parseFloat(priceStr.replace("€", ""));
-
 const ListAd = ({ adsData, selectedFilters }) => {
   const filterAds = (ads) => {
-    return ads.filter((ad) => {
+    console.log("Filtres sélectionnés :", selectedFilters); // Vérifie les filtres actifs
+    console.log("Annonces avant filtrage :", ads); // Vérifie les données d'entrée
+
+    const filtered = ads.filter((ad) => {
       let matchesPrice = true;
       let matchesCategory = true;
 
       // Filtrage sur le prix
       if (selectedFilters.includes("Moins de 10€")) {
-        matchesPrice = extractPrice(ad.price) < 10;
+        matchesPrice = ad.price < 10;
       } else if (selectedFilters.includes("10€ à 30€")) {
-        matchesPrice =
-          extractPrice(ad.price) >= 10 && extractPrice(ad.price) <= 30;
+        matchesPrice = ad.price >= 10 && ad.price <= 30;
       } else if (selectedFilters.includes("Plus de 30€")) {
-        matchesPrice = extractPrice(ad.price) > 30;
+        matchesPrice = ad.price > 30;
       }
 
-      // Vous pouvez ajouter d'autres conditions de filtrage, comme les catégories
-      if (selectedFilters.includes("Manette")) {
-        matchesCategory = ad.categories.some((category) =>
-          category.subcategories.includes("Manette"),
-        );
+      // Vérifie le filtrage par prix
+      console.log(`Prix de l'annonce "${ad.title}":`, ad.price, "Match prix:", matchesPrice);
+
+      // Filtrage sur la catégorie
+      if (selectedFilters.includes("Sony")) {
+        matchesCategory = ad.subcategories === "Sony";
+      } else if (selectedFilters.includes("Nintendo")) {
+        matchesCategory = ad.subcategories === "Nintendo";
+      } else if (selectedFilters.includes("Apple")) {
+        matchesCategory = ad.subcategories === "Apple";
       }
+
+      // Vérifie le filtrage par catégorie
+      console.log(
+        `Catégorie de l'annonce "${ad.title}":`,
+        ad.subcategories,
+        "Match catégorie:",
+        matchesCategory
+      );
 
       return matchesPrice && matchesCategory;
     });
+
+    console.log("Annonces après filtrage :", filtered); // Vérifie les annonces filtrées
+    return filtered;
   };
 
   const filteredAds = filterAds(adsData);
+
+  console.log("Annonces affichées :", filteredAds); // Vérifie ce qui est rendu
 
   return (
     <div className="grid w-full max-w-[1144px] grid-cols-2 justify-between gap-5 sm:grid-cols-3 sm:gap-3 lg:w-7/12 lg:gap-3 xl:w-auto xl:grid-cols-4 xl:gap-10">
@@ -58,10 +75,11 @@ ListAd.propTypes = {
     PropTypes.shape({
       title: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
-      price: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired, // Corrigé pour correspondre aux données JSON
       image: PropTypes.string.isRequired,
       url: PropTypes.string.isRequired,
-    }),
+      subcategories: PropTypes.string.isRequired, // Ajouté pour validation stricte
+    })
   ).isRequired,
   selectedFilters: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
