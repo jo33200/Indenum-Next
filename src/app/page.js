@@ -1,6 +1,5 @@
 'use client';  
 import dynamic from 'next/dynamic';
-import Footer from "@/components/layout/footer";
 
 import { useState } from "react";
 import Link from 'next/link';
@@ -12,14 +11,11 @@ import CarouselAd from "@/components/pages/CarouselAd";
 import CityModal from "@/components/ui/ModalCity";
 import adData from "@/data/ad.json";
 
-const Header = dynamic(() => import('@/components/layout/Header'), { ssr: false });
-
 const HomePage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <div className="flex h-auto w-full flex-col items-center">
-      <Header />
       {/* Carousel Section */}
       <section className="w-full h-auto flex items-center justify-center pt-36 md:pt-10">
         <Carousel />
@@ -131,7 +127,6 @@ const HomePage = () => {
           </p>
         </article>
       </section>
-      <Footer />
     </div>
   );
 };
