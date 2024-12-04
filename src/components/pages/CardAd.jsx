@@ -11,6 +11,7 @@ const CardAD = ({ title, description, price, image, url }) => {
           alt={title}
           width={300}
           height={200}
+          priority={true}
         />
       </div>
       <div className="flex flex-col items-start justify-start px-2 xl:gap-2">
