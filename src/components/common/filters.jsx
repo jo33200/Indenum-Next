@@ -26,12 +26,14 @@ const Filters = ({
   const toggleCategory = (category) => {
     setOpenCategories((prev) => {
       const newOpenState = !prev[category];
-
-      // Déclenche la mise à jour du parent après le rendu pour éviter le warning
-      setTimeout(() => {
-        onCategoryChange(newOpenState ? category : "");
-      }, 0);
-
+  
+      // Vérifie si onCategoryChange est défini avant de l'appeler
+      if (onCategoryChange) {
+        setTimeout(() => {
+          onCategoryChange(newOpenState ? category : "");
+        }, 0);
+      }
+  
       return {
         ...prev,
         [category]: newOpenState,

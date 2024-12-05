@@ -1,97 +1,59 @@
 "use client";
 
-import Filters from "@/components/common/filters";
-import ScrollToTopButton from "@/components/common/ScrollToTopButton.jsx";
-import ListAd from "@/components/pages/ListAd.jsx";
-import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
+import Filters from "@/components/common/filters";
+import ListAd from "@/components/pages/ListAd";
 
 const Ad = () => {
-  const router = useRouter();
   const searchParams = useSearchParams();
+  const [adsData, setAdsData] = useState([]);
   const [selectedFilters, setSelectedFilters] = useState([]);
-  const [openCategory, setOpenCategory] = useState("");
-  const [adsData, setAdsData] = useState([]); // État pour stocker les annonces
-  const [loading, setLoading] = useState(true); // Pour gérer l'état de chargement
-  const [error, setError] = useState(null); // Pour gérer les erreurs
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  // Récupérer les données des annonces depuis l'API
+  // Charger les données depuis l'API
   useEffect(() => {
     const fetchAds = async () => {
-      setLoading(true);
       try {
-        const response = await fetch("/api/ads"); // Appelle l'API des annonces
-        if (!response.ok)
-          throw new Error("Erreur lors de la récupération des annonces");
-        const data = await response.json();
+        const res = await fetch("/api/ads");
+        if (!res.ok) throw new Error("Erreur lors du chargement des annonces");
+        const data = await res.json();
         setAdsData(data);
       } catch (err) {
-        console.error("Erreur :", err);
-        setError("Impossible de charger les annonces.");
+        setError(err.message);
       } finally {
         setLoading(false);
       }
     };
 
     fetchAds();
-  }, []); // Ne se déclenche qu'au montage du composant
+  }, []);
 
-  // Gestion des filtres depuis les paramètres de l'URL
-  useEffect(() => {
-    const filter = searchParams.get("filter");
-    if (filter) {
-      setOpenCategory(filter);
-    } else {
-      setOpenCategory("");
-    }
-  }, [searchParams]);
-
-  // Gestion des filtres au clic
-  const handleFilterChange = (subcategory) => {
-    setSelectedFilters((prevFilters) =>
-      prevFilters.includes(subcategory)
-        ? prevFilters.filter((item) => item !== subcategory)
-        : [...prevFilters, subcategory],
+  // Gestion des filtres
+  const handleFilterChange = (filter) => {
+    setSelectedFilters((prev) =>
+      prev.includes(filter)
+        ? prev.filter((item) => item !== filter)
+        : [...prev, filter]
     );
-  };
-
-  const handleCategoryChange = (category) => {
-    setOpenCategory(category);
-    const currentParams = new URLSearchParams(searchParams.toString());
-    if (category) {
-      currentParams.set("filter", category);
-    } else {
-      currentParams.delete("filter");
-    }
-    router.push(`?${currentParams.toString()}`);
   };
 
   // Filtrage des annonces
   const filteredAds = adsData.filter((ad) => {
-    if (selectedFilters.length === 0) {
-      return true;
-    }
-    const matchesCategoryFilter = selectedFilters.includes(ad.category);
-    const matchesSubcategoryFilter =
-      Array.isArray(ad.subcategories) &&
-      ad.subcategories.some((subcategory) =>
-        selectedFilters.includes(subcategory),
-      );
+    if (selectedFilters.length === 0) return true;
 
-    return matchesCategoryFilter || matchesSubcategoryFilter;
+    const matchesCategory = selectedFilters.includes(ad.category);
+    const matchesSubcategory = selectedFilters.includes(ad.subcategories);
+
+    return matchesCategory || matchesSubcategory;
   });
 
-  // Affichage pendant le chargement
-  if (loading) {
-    return <div>Chargement des annonces...</div>;
-  }
+  // Affichage pendant le chargement ou en cas d'erreur
+  if (loading) return <div>Chargement des annonces...</div>;
+  if (error) return <div>Erreur : {error}</div>;
 
-  // Affichage en cas d'erreur
-  if (error) {
-    return <div>Erreur : {error}</div>;
-  }
-
-  // Données de filtrage
+  // Données des filtres spécifiques pour les annonces
   const filterData = [
     {
       category: "Téléphone",
@@ -114,14 +76,12 @@ const Ad = () => {
           filterData={filterData}
           selectedFilters={selectedFilters}
           onFilterChange={handleFilterChange}
-          openCategory={openCategory}
-          onCategoryChange={handleCategoryChange}
         />
       </div>
-      <ListAd adsData={filteredAds} selectedFilters={selectedFilters} />
-      <ScrollToTopButton />
+      <ListAd adsData={filteredAds} />
     </div>
   );
 };
 
 export default Ad;
+
