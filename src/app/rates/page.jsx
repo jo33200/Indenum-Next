@@ -1,10 +1,10 @@
-"use client;";
+"use client";
 
-import Filters from "@/components/common/Filters";
+import Filters from "@/components/common/filters";
 import ScrollToTopButton from "@/components/common/ScrollToTopButton";
 import ListRates from "@/components/pages/ListRates";
 import RatesData from "@/data/rate.json";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const Rate = () => {

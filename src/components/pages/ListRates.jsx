@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
-import CardRate from "./CardRate";
-import ModalRate from "./ModalRate";
+import CardRate from "@/components/pages/CardRate";
+import ModalRate from "@/components/ui/ModalRate";
 
 // Fonction pour extraire et convertir le prix depuis une chaîne comme "30€"
 const extractPrice = (priceStr) => {
