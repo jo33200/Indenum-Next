@@ -1,76 +1,76 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Filters from "@/components/common/filters";
-import ScrollToTopButton from "@/components/common/ScrollToTopButton";
 import ListRates from "@/components/pages/ListRates";
-import RatesData from "@/data/rate.json";
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
 
-const Rate = () => {
-  const router = useRouter();
-  const [selectedFilters, setSelectedFilters] = useState([]);
-  const [openCategory, setOpenCategory] = useState("");
+const Rates = () => {
   const [ratesData, setRatesData] = useState([]);
-  const [loading, setLoading] = useState(true); // Pour gérer l'état de chargement
-  const [error, setError] = useState(null); // Pour gérer les erreurs
+  const [selectedFilters, setSelectedFilters] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  // Gestion des filtres via URL
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const filter = params.get("filter");
-    window.scrollTo(0, 0); // Remonter en haut de la page
-    if (filter) {
-      setOpenCategory(filter); // Ouvre la catégorie correspondant au filtre récupéré
-    } else {
-      setOpenCategory(""); // Si aucun filtre, n'ouvre aucune catégorie par défaut
-    }
-  }, [router.query]);
+  // Définition des filtres
+  const filterData = [
+    {
+      category: "Telephone",
+      options: ["Apple", "Samsung","Autres marques"],
+    },
+    {
+      category: "Sous-catégorie",
+      options: ["Nintendo", "Sony", "Xbox", "Apple", "Autres marques"],
+    },
+    {
+      category: "Console",
+      options: ["Switch Lite", "Switch", "PS4", "PS5", "Xbox Series", "Xbox One"],
+    },
+    {
+      category: "Prix",
+      options: ["<20€", "20€-50€", ">50€"],
+    },
+  ];
 
-  // Charger les données depuis le fichier JSON
   useEffect(() => {
-    try {
-      setRatesData(RatesData); // Charger les données des cartes depuis le fichier JSON
-      setLoading(false); // Arrêter le chargement une fois les données chargées
-    } catch (err) {
-      setError(err); // Gérer les erreurs de chargement
-      setLoading(false); // Arrêter le chargement en cas d'erreur
-    }
+    const fetchRates = async () => {
+      try {
+        const res = await fetch("/api/rates");
+        if (!res.ok) throw new Error("Erreur lors du chargement des tarifs");
+        const data = await res.json();
+        setRatesData(data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchRates();
   }, []);
 
-  const handleFilterChange = (newSelectedFilters) => {
-    setSelectedFilters(newSelectedFilters);
+  const handleFilterChange = (filterCategory, filterValue) => {
+    setSelectedFilters((prev) => ({
+      ...prev,
+      [filterCategory]: filterValue,
+    }));
   };
 
-  const handleCategoryChange = (category) => {
-    setOpenCategory(category);
-  };
-
-  if (loading) {
-    return <div>Loading...</div>; // Afficher un message de chargement
-  }
-
-  if (error) {
-    return <div>Error loading data</div>; // Afficher un message d'erreur
-  }
+  if (loading) return <div>Chargement des tarifs...</div>;
+  if (error) return <div>Erreur : {error}</div>;
 
   return (
-    <div className="my-24 flex h-auto w-full flex-col items-start gap-5 px-2 sm:w-full md:my-5 md:flex-row md:items-start md:justify-around xl:my-32">
-      <div className="w-full md:w-80">
+    <div className="flex flex-col lg:flex-row">
+      <div className="w-full lg:w-1/4">
         <Filters
-          filterData={ratesData}
+          filterData={filterData}
           selectedFilters={selectedFilters}
           onFilterChange={handleFilterChange}
-          openCategory={openCategory}
-          onCategoryChange={handleCategoryChange}
         />
       </div>
-      <div className="w-full md:flex-1">
+      <div className="w-full lg:w-3/4">
         <ListRates ratesData={ratesData} selectedFilters={selectedFilters} />
       </div>
-      <ScrollToTopButton />
     </div>
   );
 };
 
-export default Rate;
+export default Rates;

@@ -1,16 +1,21 @@
 import PropTypes from "prop-types";
-import images from "../../assets/images";
+import Image from "next/images";
 
 const CardRate = ({ title, description, category, price, image, onClick }) => {
+
+  const imagePath = `/img/${image}.png`;
+  
   return (
     <div
       onClick={onClick}
       className="flex h-auto w-full cursor-pointer flex-col items-start justify-between rounded border border-gray-300 bg-white shadow-lg xl:max-w-64 xl:gap-5 xl:pb-3"
     >
       <div className="flex h-32 w-full items-center justify-center">
-        <img
-          src={images[image]}
+        <Image
+          src={imagePath} // Charge l'image depuis public/img/
           alt={title}
+          width={300}
+          height={200}
           className="h-2/3 w-2/3 object-fill"
         />
       </div>

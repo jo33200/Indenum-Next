@@ -1,103 +1,81 @@
 import PropTypes from "prop-types";
-import React, { useEffect, useState } from "react";
-import CardRate from "@/components/pages/CardRate";
-import ModalRate from "@/components/ui/ModalRate";
 
-// Fonction pour extraire et convertir le prix depuis une chaîne comme "30€"
-const extractPrice = (priceStr) => {
-  return parseFloat(priceStr.replace("€", ""));
+const formatPrice = (price) => {
+  if (!isNaN(price)) {
+    return `${price}€`;
+  }
+  return price; // retourne "devis" ou "gratuit"
 };
 
 const ListRates = ({ ratesData, selectedFilters }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedRate, setSelectedRate] = useState(null);
-
-  // Utilisation de useEffect pour contrôler le défilement du body
-  useEffect(() => {
-    const isDesktop = window.innerWidth >= 1024; // Vérifie si on est sur un écran plus grand qu'une tablette
-    const isTabletteOrMobile = window.innerWidth < 1024; // Vérifie si on est sur une tablette ou un mobile
-
-    if (isModalOpen) {
-      if (isDesktop) {
-        document.body.style.overflow = "hidden"; // Désactive le scroll
-        document.body.style.paddingRight = "17px"; // Ajoute le padding droit
-      } else if (isTabletteOrMobile) {
-        document.body.style.overflow = "hidden"; // Désactive le scroll
-      }
-    }
-
-    // Nettoyage lorsque le composant est démonté ou la modal est fermée
-    return () => {
-      document.body.style.overflow = "auto";
-      document.body.style.paddingRight = "0";
-    };
-  }, [isModalOpen]);
-
   const filterRates = (rates) => {
     return rates.filter((rate) => {
-      let matchesPrice = true;
       let matchesCategory = true;
+      let matchesSubcategory = true;
+      let matchesSubsubcategory = true;
+      let matchesPrice = true;
 
-      // Filtrage sur le prix
-      if (selectedFilters.includes("Moins de 10€")) {
-        matchesPrice = extractPrice(rate.price) < 10;
-      } else if (selectedFilters.includes("10€ à 30€")) {
-        matchesPrice =
-          extractPrice(rate.price) >= 10 && extractPrice(rate.price) <= 30;
-      } else if (selectedFilters.includes("Plus de 30€")) {
-        matchesPrice = extractPrice(rate.price) > 30;
+      // Filtre par catégorie
+      if (selectedFilters.category) {
+        matchesCategory = rate.category === selectedFilters.category;
       }
 
-      // Filtrage sur la catégorie
-      if (selectedFilters.includes("Manette")) {
-        matchesCategory = rate.categories.some((category) =>
-          category.subcategories.includes("Manette"),
-        );
+      // Filtre par sous-catégorie
+      if (selectedFilters.subcategory) {
+        matchesSubcategory = rate.subcategory === selectedFilters.subcategory;
       }
 
-      return matchesPrice && matchesCategory;
+      // Filtre par sous-sous-catégorie
+      if (selectedFilters.subsubcategory) {
+        matchesSubsubcategory =
+          rate.subsubcategory === selectedFilters.subsubcategory;
+      }
+
+      // Filtre par prix
+      if (selectedFilters.price) {
+        const ratePrice = !isNaN(rate.price)
+          ? parseFloat(rate.price)
+          : rate.price;
+        if (selectedFilters.price === "<20€") {
+          matchesPrice = !isNaN(ratePrice) && ratePrice < 20;
+        } else if (selectedFilters.price === "20€-50€") {
+          matchesPrice =
+            !isNaN(ratePrice) && ratePrice >= 20 && ratePrice <= 50;
+        } else if (selectedFilters.price === ">50€") {
+          matchesPrice = !isNaN(ratePrice) && ratePrice > 50;
+        } else {
+          matchesPrice = rate.price === selectedFilters.price;
+        }
+      }
+
+      return (
+        matchesCategory &&
+        matchesSubcategory &&
+        matchesSubsubcategory &&
+        matchesPrice
+      );
     });
   };
 
   const filteredRates = filterRates(ratesData);
 
-  const openModal = (rate) => {
-    setSelectedRate(rate);
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-    setSelectedRate(null);
-  };
-
   return (
-    <div className="flex justify-center">
-      <div className="item-center grid w-full grid-cols-2 justify-center gap-2 sm:grid-cols-3 sm:justify-between sm:gap-3 lg:grid-cols-4 lg:gap-3 xl:w-auto">
-        {filteredRates.length > 0 ? (
-          filteredRates.map((rate) => (
-            <CardRate
-              key={rate.title}
-              title={rate.title}
-              category={rate.category}
-              description={rate.description}
-              price={rate.price}
-              image={rate.image}
-              onClick={() => openModal(rate)} // Ouvre la modale au clic
+    <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+      {filteredRates.length > 0 ? (
+        filteredRates.map((rate, index) => (
+          <div key={rate.title + index} className="p-4 border rounded shadow">
+            <img
+              src={`/img/${rate.image}.jpg`}
+              alt={rate.title}
+              className="mb-2 w-full"
             />
-          ))
-        ) : (
-          <p className="w-[256px]">Aucun résultat dans la recherche.</p>
-        )}
-      </div>
-
-      {isModalOpen && selectedRate && (
-        <ModalRate
-          rate={selectedRate}
-          image={selectedRate.image}
-          title={selectedRate.title}
-          onClose={closeModal}
-        />
+            <h3 className="text-lg font-bold">{rate.title}</h3>
+            <p>{rate.description}</p>
+            <p className="font-semibold">{formatPrice(rate.price)}</p>
+          </div>
+        ))
+      ) : (
+        <p>Aucun résultat trouvé pour les filtres appliqués.</p>
       )}
     </div>
   );
@@ -107,13 +85,20 @@ ListRates.propTypes = {
   ratesData: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string.isRequired,
+      image: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
       price: PropTypes.string.isRequired,
-      image: PropTypes.string,
       category: PropTypes.string.isRequired,
-    }),
+      subcategory: PropTypes.string.isRequired,
+      subsubcategory: PropTypes.string.isRequired,
+    })
   ).isRequired,
-  selectedFilters: PropTypes.arrayOf(PropTypes.string).isRequired,
+  selectedFilters: PropTypes.shape({
+    category: PropTypes.string,
+    subcategory: PropTypes.string,
+    subsubcategory: PropTypes.string,
+    price: PropTypes.string,
+  }).isRequired,
 };
 
 export default ListRates;
