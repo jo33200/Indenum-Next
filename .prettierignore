@@ -1,0 +1,18 @@
+# Dossiers générés automatiquement
+node_modules/
+.next/
+build/
+dist/
+
+# Rapports de tests
+coverage/
+
+# Assets
+*.png
+*.jpg
+*.svg
+*.gif
+
+# Fichiers spécifiques
+package-lock.json
+yarn.lock
