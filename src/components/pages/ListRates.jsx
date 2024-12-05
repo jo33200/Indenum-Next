@@ -22,9 +22,9 @@ const ListRates = ({ ratesData, selectedFilters }) => {
         document.body.style.overflow = "hidden"; // Désactive le scroll
         document.body.style.paddingRight = "17px"; // Ajoute le padding droit
       } else if (isTabletteOrMobile) {
-      document.body.style.overflow = "hidden"; // Désactive le scroll
+        document.body.style.overflow = "hidden"; // Désactive le scroll
       }
-    } 
+    }
 
     // Nettoyage lorsque le composant est démonté ou la modal est fermée
     return () => {

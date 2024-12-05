@@ -20,7 +20,12 @@ const ListAd = ({ adsData, selectedFilters }) => {
       }
 
       // Vérifie le filtrage par prix
-      console.log(`Prix de l'annonce "${ad.title}":`, ad.price, "Match prix:", matchesPrice);
+      console.log(
+        `Prix de l'annonce "${ad.title}":`,
+        ad.price,
+        "Match prix:",
+        matchesPrice,
+      );
 
       // Filtrage sur la catégorie
       if (selectedFilters.includes("Sony")) {
@@ -36,7 +41,7 @@ const ListAd = ({ adsData, selectedFilters }) => {
         `Catégorie de l'annonce "${ad.title}":`,
         ad.subcategories,
         "Match catégorie:",
-        matchesCategory
+        matchesCategory,
       );
 
       return matchesPrice && matchesCategory;
@@ -79,7 +84,7 @@ ListAd.propTypes = {
       image: PropTypes.string.isRequired,
       url: PropTypes.string.isRequired,
       subcategories: PropTypes.string.isRequired, // Ajouté pour validation stricte
-    })
+    }),
   ).isRequired,
   selectedFilters: PropTypes.arrayOf(PropTypes.string).isRequired,
 };

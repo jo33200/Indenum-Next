@@ -7,7 +7,7 @@ const ButtonValid = ({ onClick }) => {
       <button
         type="button"
         onClick={onClick}
-        className="flex items-center justify-center rounded-md bg-name-orange px-6 py-2 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="bg-name-orange flex items-center justify-center rounded-md px-6 py-2 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
       >
         <FaPaperPlane className="mr-2" />
         Envoyer

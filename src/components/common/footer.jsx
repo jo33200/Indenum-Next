@@ -5,13 +5,13 @@ const Footer = () => {
   return (
     <footer className="flex h-auto w-full flex-col items-start justify-start gap-10 bg-gradient-to-r from-[#7A6F6F] to-[#583C3C] px-2 pb-16 pt-5 text-white sm:items-center">
       <div className="container w-36 text-left">
-        <Image 
-        src="/img/Indenum.png"
-        width={200}
-        height={50}
-        className="bg-contain"  
-        alt="Indenum"
-        style={{ objectFit: 'contain' }}
+        <Image
+          src="/img/Indenum.png"
+          width={200}
+          height={50}
+          className="bg-contain"
+          alt="Indenum"
+          style={{ objectFit: "contain" }}
         />
       </div>
       <section className="flex w-full flex-col gap-10 sm:w-[300px] lg:w-[1024px] lg:flex-row lg:justify-around lg:gap-0">

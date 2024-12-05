@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import { useState, useEffect, Suspense } from "react";
 
 // Liste des slogans
@@ -27,10 +27,10 @@ const Carousel = () => {
 
   return (
     <Suspense fallback={<div>Chargement...</div>}>
-      <div className="flex items-center justify-center w-full ">
+      <div className="flex w-full items-center justify-center">
         {/* Texte avec transition */}
         <div
-          className="text-center font-openSans text-gray-600"
+          className="font-openSans text-center text-gray-600"
           style={{ fontSize: "32px", width: "100%", padding: "0 20px" }}
           aria-live="polite"
           role="status"
@@ -53,4 +53,3 @@ const Carousel = () => {
 };
 
 export default Carousel;
-

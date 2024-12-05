@@ -8,38 +8,38 @@ const CardHome = () => {
       title: "Notre Atelier",
       image: "/img/atelier.jpg", // Chemin dans le dossier public
       subtitle: "Découvrir",
-      link: "/under-construction",
+      link: "#atelier", // Lien interne
     },
     {
       title: "Besoin d'un devis rapide",
       image: "/img/casse.jpg",
       subtitle: "En savoir plus",
-      link: "/under-construction",
+      link: "/quote",
     },
     {
       title: "Service de proximité",
       image: "/img/proximite.jpg",
       subtitle: "En savoir plus",
-      link: "/under-construction",
+      link: "#proximite", // Lien interne
     },
     {
       title: "Nos Annonces en ligne",
       image: "/img/manette.jpg",
       subtitle: "Voir catalogue",
-      link: "/under-construction",
+      link: "/ad",
     },
     {
       title: "Service pièces détachées",
       image: "/img/pièces.jpg",
       subtitle: "Voir catalogue",
-      link: "/under-construction",
+      link: "/ad",
       filter: "pièces détachées",
     },
     {
       title: "Nous contacter",
       image: "/img/contact.jpg",
       subtitle: "En savoir plus",
-      link: "/under-construction",
+      link: "/contact",
     },
   ];
 
@@ -61,14 +61,14 @@ const CardHome = () => {
           <h2 className="text-xl font-bold">{title}</h2>
           {link ? (
             <Link href={link} className="w-full">
-              <div className="relative w-full h-48">
+              <div className="relative h-48 w-full">
                 <Image
                   src={image}
                   alt={title}
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  priority={true}
                   className="rounded-lg object-cover"
+                  priority={true}
                 />
               </div>
             </Link>
@@ -122,7 +122,4 @@ const CardHome = () => {
   );
 };
 
-
-
 export default CardHome;
-

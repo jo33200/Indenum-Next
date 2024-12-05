@@ -3,7 +3,6 @@
 import Filters from "@/components/common/filters";
 import ScrollToTopButton from "@/components/common/ScrollToTopButton.jsx";
 import ListAd from "@/components/pages/ListAd.jsx";
-import adsDataJson from "@/data/ad.json";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -16,63 +15,67 @@ const Ad = () => {
   const [loading, setLoading] = useState(true); // Pour gérer l'état de chargement
   const [error, setError] = useState(null); // Pour gérer les erreurs
 
-  // Récupération des paramètres de l'URL et filtrage
+  // Récupérer les données des annonces depuis l'API
   useEffect(() => {
-    const filter = searchParams.get("filter"); // Récupère le paramètre `filter` de l'URL
+    const fetchAds = async () => {
+      setLoading(true);
+      try {
+        const response = await fetch("/api/ads"); // Appelle l'API des annonces
+        if (!response.ok)
+          throw new Error("Erreur lors de la récupération des annonces");
+        const data = await response.json();
+        setAdsData(data);
+      } catch (err) {
+        console.error("Erreur :", err);
+        setError("Impossible de charger les annonces.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchAds();
+  }, []); // Ne se déclenche qu'au montage du composant
+
+  // Gestion des filtres depuis les paramètres de l'URL
+  useEffect(() => {
+    const filter = searchParams.get("filter");
     if (filter) {
-      console.log("Current URL filter:", filter); // Vérification du filtre récupéré dans l'URL
-      window.scrollTo(0, 0); // Remonter en haut de la page
-      setOpenCategory(filter); // Ouvre la catégorie correspondant au filtre récupéré
+      setOpenCategory(filter);
     } else {
-      setOpenCategory(""); // Si aucun filtre, n'ouvre aucune catégorie par défaut
+      setOpenCategory("");
     }
   }, [searchParams]);
 
-  // Chargement des données des annonces
-  useEffect(() => {
-    try {
-      console.log(adsDataJson); // Vérification des données chargées
-      setAdsData(adsDataJson); // Charge les annonces depuis le fichier JSON
-      setLoading(false); // Arrête le chargement une fois les données récupérées
-    } catch (err) {
-      setError("Une erreur est survenue lors du chargement des annonces.");
-      setLoading(false);
-    }
-  }, []);
-
-  // Gestion des filtres
+  // Gestion des filtres au clic
   const handleFilterChange = (subcategory) => {
     setSelectedFilters((prevFilters) =>
       prevFilters.includes(subcategory)
         ? prevFilters.filter((item) => item !== subcategory)
-        : [...prevFilters, subcategory]
+        : [...prevFilters, subcategory],
     );
   };
 
   const handleCategoryChange = (category) => {
     setOpenCategory(category);
-
     const currentParams = new URLSearchParams(searchParams.toString());
     if (category) {
-      currentParams.set("filter", category); // Ajoute ou modifie le paramètre `filter`
+      currentParams.set("filter", category);
     } else {
-      currentParams.delete("filter"); // Supprime le paramètre `filter` si vide
+      currentParams.delete("filter");
     }
-    router.push(`?${currentParams.toString()}`); // Met à jour l'URL avec les nouveaux paramètres
+    router.push(`?${currentParams.toString()}`);
   };
 
   // Filtrage des annonces
   const filteredAds = adsData.filter((ad) => {
     if (selectedFilters.length === 0) {
-      return true; // Si aucun filtre sélectionné, afficher toutes les annonces
+      return true;
     }
-
-    // Vérifier si une des sous-catégories de l'annonce correspond à un filtre sélectionné
     const matchesCategoryFilter = selectedFilters.includes(ad.category);
     const matchesSubcategoryFilter =
       Array.isArray(ad.subcategories) &&
       ad.subcategories.some((subcategory) =>
-        selectedFilters.includes(subcategory)
+        selectedFilters.includes(subcategory),
       );
 
     return matchesCategoryFilter || matchesSubcategoryFilter;

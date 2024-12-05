@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from "react-icons/hi";
@@ -14,9 +14,9 @@ const CarouselAd = ({ ads }) => {
         setCardsToShow(3); // Desktop
       } else if (window.innerWidth >= 768) {
         setCardsToShow(3); // Tablet
-      }else if (window.innerWidth >= 450) {
+      } else if (window.innerWidth >= 450) {
         setCardsToShow(2); // Big mobile
-      }else {
+      } else {
         setCardsToShow(1); // Mobile
       }
     };

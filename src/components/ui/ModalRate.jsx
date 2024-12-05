@@ -52,7 +52,7 @@ const ModalRate = ({ rate, image, title, onClose }) => {
               className="h-auto w-3/4 border object-cover px-3 py-6 md:w-full md:px-6 md:py-20"
             />
           </section>
-          <section className="flex flex-col items-start justify-between gap-6 px-6 py-1 sm:w-3/4 md:w-1/2 md:px-2 md:gap-auto md:h-full">
+          <section className="md:gap-auto flex flex-col items-start justify-between gap-6 px-6 py-1 sm:w-3/4 md:h-full md:w-1/2 md:px-2">
             <h3 className="w-full text-center text-2xl font-bold md:text-left lg:text-center">
               {rate.title}
             </h3>

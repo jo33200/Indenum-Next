@@ -1,4 +1,5 @@
-'use client';  
+"use client";
+import Modal from "@/components/ui/ModalPhone";
 import {
   faBars,
   faEnvelope,
@@ -6,30 +7,14 @@ import {
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
-import Modal from "@/components/ui/ModalPhone";
 import Image from "next/image";
-
+import Link from "next/link";
+import { useState } from "react";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const phoneNumber = "07 66 44 13 37";
-  const router = useRouter();
-
-  useEffect(() => {
-    if (!router.isReady) return;
-    // Code utilisant router
-  }, [router]);
-
-
-  const getLinkClass = (path) => {
-    return `${
-      router.pathname === path ? "scale-125" : ""
-    } transition-transform duration-200 hover:scale-110 font-semibold text-gray-500`;
-  };
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -50,19 +35,19 @@ const Header = () => {
   };
 
   return (
-    
-    <header className="fixed md:relative top-0 z-50 h-auto w-full bg-white">
+    <header className="fixed top-0 z-50 h-auto w-full bg-white md:relative">
       <div className="header-border-gradient flex h-auto w-full flex-row items-center justify-between px-4 py-2 lg:px-10">
         <section className="flex h-full">
           <div className="flex items-center justify-center gap-2">
-            <Link href="/under-construction">
-              <Image src="/img/Indenum.png" 
-              alt="Indenum" 
-              className="h-auto w-52"
-              width={200}
-              height={50}
-              style={{ objectFit: 'contain' }}
-              priority={true}
+            <Link href="/">
+              <Image
+                src="/img/Indenum.png"
+                alt="Indenum"
+                className="h-auto w-52"
+                width={200}
+                height={50}
+                style={{ objectFit: "contain" }}
+                priority={true}
               />
             </Link>
           </div>
@@ -72,20 +57,45 @@ const Header = () => {
         <section className="hidden md:flex">
           <nav className="mt-2 w-full">
             <ul className="flex w-full items-center justify-center text-sm md:w-auto md:gap-5 md:text-base lg:gap-10">
-              <li className={getLinkClass("/")}>
-                <Link href="/under-construction">Accueil</Link>
+              <li>
+                <Link
+                  href="/"
+                  className="font-semibold text-gray-500 hover:scale-110"
+                >
+                  Accueil
+                </Link>
               </li>
-              <li className={getLinkClass("/rates")}>
-                <Link href="/under-construction">Tarifs</Link>
+              <li>
+                <Link
+                  href="/rates"
+                  className="font-semibold text-gray-500 hover:scale-110"
+                >
+                  Tarifs
+                </Link>
               </li>
-              <li className={getLinkClass("/ad")}>
-                <Link href="/under-construction">Annonces</Link>
+              <li>
+                <Link
+                  href="/ad"
+                  className="font-semibold text-gray-500 hover:scale-110"
+                >
+                  Annonces
+                </Link>
               </li>
-              <li className={getLinkClass("/quote")}>
-                <Link href="/under-construction">Devis</Link>
+              <li>
+                <Link
+                  href="/quote"
+                  className="font-semibold text-gray-500 hover:scale-110"
+                >
+                  Devis
+                </Link>
               </li>
-              <li className={getLinkClass("/contact")}>
-                <Link href="/under-construction">Contact</Link>
+              <li>
+                <Link
+                  href="/contact"
+                  className="font-semibold text-gray-500 hover:scale-110"
+                >
+                  Contact
+                </Link>
               </li>
               <li>
                 <a
@@ -123,46 +133,27 @@ const Header = () => {
         <nav className="flex flex-col items-center bg-white py-4 md:hidden">
           <ul className="w-full text-center">
             <li className="py-2">
-              <Link href="/under-construction" 
-              onClick={toggleMenu} 
-              className={getLinkClass("/")}
-              >
+              <Link href="/" onClick={toggleMenu}>
                 Accueil
               </Link>
             </li>
             <li className="py-2">
-              <Link
-                href="/under-construction"
-                onClick={toggleMenu}
-                className={getLinkClass("/rates")}
-              >
+              <Link href="/rates" onClick={toggleMenu}>
                 Tarifs
               </Link>
             </li>
             <li className="py-2">
-              <Link
-                href="/under-construction"
-                onClick={toggleMenu}
-                className={getLinkClass("/ad")}
-              >
+              <Link href="/ad" onClick={toggleMenu}>
                 Annonces
               </Link>
             </li>
             <li className="py-2">
-              <Link
-                href="/under-construction"
-                onClick={toggleMenu}
-                className={getLinkClass("/quote")}
-              >
+              <Link href="/quote" onClick={toggleMenu}>
                 Devis
               </Link>
             </li>
             <li className="py-2">
-              <Link
-                href="/under-construction"
-                onClick={toggleMenu}
-                className={getLinkClass("/contact")}
-              >
+              <Link href="/contact" onClick={toggleMenu}>
                 Contact
               </Link>
             </li>
@@ -186,14 +177,15 @@ const Header = () => {
           </ul>
         </nav>
       )}
+
       <Modal isOpen={isModalOpen} onClose={closeModal} title="Contactez-nous">
         <p className="my-5 text-gray-700">
-          Pour toutes demande d’information, N’hésitez pas à nous contacter au
+          Pour toutes demandes d’information, n’hésitez pas à nous contacter au
           numéro suivant :
         </p>
         <p className="text-gray-700">{phoneNumber}</p>
         <p className="mt-5 text-gray-700">
-          Nous sommes joignable du lundi au Samedi
+          Nous sommes joignables du lundi au samedi
         </p>
         <p className="mb-9 text-gray-700">de 9h à 19h.</p>
       </Modal>

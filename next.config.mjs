@@ -3,10 +3,10 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'img.leboncoin.fr',
-        port: '',
-        pathname: '/**',
+        protocol: "https",
+        hostname: "img.leboncoin.fr",
+        port: "",
+        pathname: "/**",
       },
     ],
   },

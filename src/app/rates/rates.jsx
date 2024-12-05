@@ -1,4 +1,4 @@
-'use client;'
+"use client;";
 
 import Filters from "@/components/common/Filters";
 import ScrollToTopButton from "@/components/common/ScrollToTopButton";
