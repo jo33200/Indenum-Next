@@ -67,7 +67,7 @@ const Header = () => {
               </li>
               <li>
                 <Link
-                  href="/rates"
+                  href="/rate"
                   className="font-semibold text-gray-500 hover:scale-110"
                 >
                   Tarifs
