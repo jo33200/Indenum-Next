@@ -1,15 +1,8 @@
 import PropTypes from "prop-types";
 import { FaTimes } from "react-icons/fa"; // Importation de l'icône croix
 import { HiChevronDoubleLeft } from "react-icons/hi";
-import images from "../../assets/images";
+import Image from "next/image";
 import FakeScrollBar from "../features/FakeScrollBar";
-
-import ApplePay from "../../assets/img/applePay.svg";
-import GooglePay from "../../assets/img/googlePay.svg";
-import Mastercard from "../../assets/img/mastercard.svg";
-import Paylib from "../../assets/img/paylib.svg";
-import Paypal from "../../assets/img/paypal.svg";
-import Visa from "../../assets/img/visa.svg";
 
 const ModalRate = ({ rate, image, title, onClose }) => {
   if (!rate) return null;
@@ -77,12 +70,37 @@ const ModalRate = ({ rate, image, title, onClose }) => {
                 Moyens de paiement sur place :
               </h4>
               <div className="flex w-full items-center justify-between">
-                <img src={Visa} alt="Visa" className="w-12" />
-                <img src={Mastercard} alt="Mastercard" className="w-12" />
-                <img src={Paylib} alt="Paylib" className="w-12" />
-                <img src={ApplePay} alt="ApplePay" className="w-12" />
-                <img src={Paypal} alt="Paypal" className="w-12" />
-                <img src={GooglePay} alt="GooglePay" className="w-12" />
+                <Image src="/img/visa.svg" alt="Visa" width={48} height={48} />
+                <Image
+                  src="/img/mastercard.svg"
+                  alt="Mastercard"
+                  width={48}
+                  height={48}
+                />
+                <Image
+                  src="/img/paylib.svg"
+                  alt="Paylib"
+                  width={48}
+                  height={48}
+                />
+                <Image
+                  src="/img/applePay.svg"
+                  alt="ApplePay"
+                  width={48}
+                  height={48}
+                />
+                <Image
+                  src="/img/paypal.svg"
+                  alt="Paypal"
+                  width={48}
+                  height={48}
+                />
+                <Image
+                  src="/img/googlePay.svg"
+                  alt="GooglePay"
+                  width={48}
+                  height={48}
+                />
               </div>
               <p className="text-sm font-semibold lg:text-base">
                 Espèces acceptées
