@@ -2,9 +2,8 @@ import PropTypes from "prop-types";
 import Image from "next/image";
 
 const CardRate = ({ title, description, category, price, image, onClick }) => {
-
   const imagePath = `/img/${image}.jpg`;
-  
+
   return (
     <div
       onClick={onClick}
@@ -16,7 +15,7 @@ const CardRate = ({ title, description, category, price, image, onClick }) => {
           alt={title}
           width={300}
           height={200}
-          className="h-3/4 w-2/4 max-w-28 lg:max-w-full lg:h-full lg:w-2/4 object-fill"
+          className="h-3/4 w-2/4 max-w-28 object-fill lg:h-full lg:w-2/4 lg:max-w-full"
         />
       </div>
       <div className="flex flex-col items-start justify-start px-2 xl:gap-2">

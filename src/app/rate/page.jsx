@@ -1,10 +1,8 @@
-'use client';
+"use client";
 
-import ListRates from '@/components/pages/ListRates';
+import ListRates from "@/components/pages/ListRates";
 
 const RatesPage = () => {
-  
-  
   return (
     <div className="">
       <ListRates />
