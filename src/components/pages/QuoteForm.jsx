@@ -1,6 +1,8 @@
+"use client";
+
 import emailjs from "emailjs-com";
 import { useState } from "react";
-import ButtonValid from "../common/ButtonValid";
+import ButtonValid from "@/components/common/ButtonValid";
 
 const RequestQuote = () => {
   const [contactData, setContactData] = useState({
