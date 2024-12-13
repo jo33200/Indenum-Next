@@ -1,7 +1,7 @@
+import Image from "next/image";
 import PropTypes from "prop-types";
 import { FaTimes } from "react-icons/fa"; // Importation de l'icône croix
 import { HiChevronDoubleLeft } from "react-icons/hi";
-import Image from "next/image";
 import FakeScrollBar from "../features/FakeScrollBar";
 
 const ModalRate = ({ rate, image, title, onClose }) => {
@@ -39,7 +39,7 @@ const ModalRate = ({ rate, image, title, onClose }) => {
           </div>
 
           <section className="flex justify-center md:flex-1">
-            <img
+            <Image
               src={images[image]}
               alt={title}
               className="h-auto w-3/4 border object-cover px-3 py-6 md:w-full md:px-6 md:py-20"
