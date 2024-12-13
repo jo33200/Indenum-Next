@@ -252,7 +252,7 @@ const ListAd = () => {
         </div>
         <div className="flex max-h-12 max-w-32 flex-row items-center p-1 md:mt-5 md:block md:max-h-full md:max-w-full md:flex-col md:items-center md:rounded-lg md:border-[0.5px] md:border-zinc-200 md:p-4">
           <p className="hidden text-center text-sm text-gray-700 md:mb-2 md:block md:text-base">
-            Nos annonces sont régulièrement mise à jour, n'hésitez pas à nous
+            Nos annonces sont régulièrement mise à jour, n&apos;hésitez pas à nous
             suivre sur nos réseaux sociaux pour être informé des dernières
             annonces.
           </p>
