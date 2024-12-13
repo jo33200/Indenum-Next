@@ -12,6 +12,7 @@ const Footer = () => {
           className="bg-contain"
           alt="Indenum"
           style={{ objectFit: "contain" }}
+          priority={false}
         />
       </div>
       <section className="flex w-full flex-col gap-10 sm:w-[300px] lg:w-[1024px] lg:flex-row lg:justify-around lg:gap-0">
