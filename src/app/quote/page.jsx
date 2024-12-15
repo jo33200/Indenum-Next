@@ -3,7 +3,7 @@ import FormQuote from "@/components/pages/QuoteForm";
 const Quote = () => {
   return (
     <div className="mx-5 max-w-[850px] pt-24">
-      <div>
+      <div className="w-full">
         <FormQuote />
       </div>
 
