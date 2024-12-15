@@ -1,38 +1,58 @@
 "use client";
+
+import { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
 import L from "leaflet";
-import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
-const ContactMap = () => {
-  const position = [44.868027578053166, -0.6080236082763149]; // Coordonnées de votre adresse
+// Charger les composants React-Leaflet dynamiquement
+const MapContainer = dynamic(() => import("react-leaflet").then((mod) => mod.MapContainer), {
+  ssr: false,
+});
+const Marker = dynamic(() => import("react-leaflet").then((mod) => mod.Marker), {
+  ssr: false,
+});
+const TileLayer = dynamic(() => import("react-leaflet").then((mod) => mod.TileLayer), {
+  ssr: false,
+});
+const Popup = dynamic(() => import("react-leaflet").then((mod) => mod.Popup), {
+  ssr: false,
+});
 
-  // Icône personnalisée pour le marqueur
-  const customIcon = L.divIcon({
-    className: "custom-icon", // Classe CSS pour personnaliser l'icône
-    html: `<span class="text-red-500 text-4xl" style="font-weight: bold;">
-             <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 24 24" fill="currentColor">
-               <path d="M12 2C8.134 2 5 5.134 5 9c0 3.833 7 11 7 11s7-7.167 7-11c0-3.866-3.134-7-7-7zm0 15c-3.314 0-6-2.686-6-6s2.686-6 6-6 6 2.686 6 6-2.686 6-6 6z" fill="white" stroke="red" stroke-width="4"/>
-             </svg>
-           </span>`,
-    iconSize: [40, 40], // Taille de l'icône
-    iconAnchor: [20, 40], // Ancrage de l'icône
-  });
+const ContactMap = () => {
+  const position = [44.868027578053166, -0.6080236082763149];
+  const [customIcon, setCustomIcon] = useState(null);
+
+  useEffect(() => {
+    // Définir une icône personnalisée avec Leaflet
+    const icon = L.divIcon({
+      className: "custom-icon",
+      html: `<span class="text-red-500 text-4xl" style="font-weight: bold;">
+               <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 24 24" fill="currentColor">
+                 <path d="M12 2C8.134 2 5 5.134 5 9c0 3.833 7 11 7 11s7-7.167 7-11c0-3.866-3.134-7-7-7zm0 15c-3.314 0-6-2.686-6-6s2.686-6 6-6 6 2.686 6 6-2.686 6-6 6z" fill="white" stroke="red" stroke-width="4"/>
+               </svg>
+             </span>`,
+      iconSize: [40, 40],
+      iconAnchor: [20, 40],
+    });
+    setCustomIcon(icon);
+  }, []);
+
+  if (!customIcon) {
+    return null; // Attendre que l'icône soit prête
+  }
 
   return (
     <MapContainer
+      key={JSON.stringify(position)} // Clé unique basée sur la position
       center={position}
       zoom={15}
-      style={{ height: "200px", width: "100%" }}
+      style={{ height: "300px", width: "100%" }}
       scrollWheelZoom={false}
-      zoomSnap={1}
-      className="z-0"
     >
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        minZoom={1} // Niveau de zoom minimum
-        maxZoom={19} // Niveau de zoom maximum
-        noWrap={true} // Empêche la carte de se répéter sur elle-même
       />
       <Marker position={position} icon={customIcon}>
         <Popup>
