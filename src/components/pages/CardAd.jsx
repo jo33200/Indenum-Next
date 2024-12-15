@@ -30,7 +30,7 @@ const CardAD = ({ title, description, price, image, url }) => {
           href={url}
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-name-orange rounded px-4 py-2 text-xs font-bold text-white hover:bg-blue-700"
+          className="rounded bg-name-orange px-4 py-2 text-xs font-bold text-white hover:bg-blue-700"
         >
           Voir annonce
         </a>

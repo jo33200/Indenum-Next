@@ -148,7 +148,7 @@ const HomePage = () => {
           <CarouselAd ads={adData} />
           <Link
             href="/under-construction"
-            className="bg-name-orange rounded-lg px-5 py-4 text-lg font-bold text-white hover:bg-blue-700"
+            className="rounded-lg bg-name-orange px-5 py-4 text-lg font-bold text-white hover:bg-blue-700"
           >
             Voir toutes nos annonces
           </Link>

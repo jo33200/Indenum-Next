@@ -30,7 +30,7 @@ const Carousel = () => {
       <div className="flex w-full items-center justify-center">
         {/* Texte avec transition */}
         <div
-          className="font-openSans text-center text-gray-600"
+          className="text-center font-openSans text-gray-600"
           style={{ fontSize: "32px", width: "100%", padding: "0 20px" }}
           aria-live="polite"
           role="status"

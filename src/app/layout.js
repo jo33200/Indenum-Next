@@ -14,7 +14,9 @@ export default function RootLayout({ children }) {
         <header>
           <Header />
         </header>
-        <main className="w-full flex items-center justify-center">{children}</main>
+        <main className="flex w-full items-center justify-center">
+          {children}
+        </main>
         <footer>
           <Footer />
         </footer>
