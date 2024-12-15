@@ -22,10 +22,12 @@ const ContactInfo = ({ isFooter = false }) => (
         <li>indenum@outlook.com</li>
       </ul>
     </nav>
-    {/* Intégration de la carte Google Maps via iframe */}
-    <div className={`${isFooter ? "" : "flex justify-center"}`}>
-      <ContactMap className="md:w-100% max-w-40" />
-    </div>
+    {/* Intégration de la carte uniquement si ce n'est pas dans le footer */}
+    {!isFooter && (
+      <div className={`${isFooter ? "" : "flex justify-center"}`}>
+        <ContactMap className="md:w-100% max-w-40" />
+      </div>
+    )}
   </div>
 );
 
