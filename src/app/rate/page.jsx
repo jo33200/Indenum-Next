@@ -4,7 +4,7 @@ import ListRates from "@/components/pages/ListRates";
 
 const RatesPage = () => {
   return (
-    <div className="">
+    <div className="w-full">
       <ListRates />
     </div>
   );

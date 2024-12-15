@@ -7,7 +7,13 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        openSans: ["Open Sans", "sans-serif"],
+      },
       colors: {
+        "name-orange": "#E37E21",
+        white: "#ffffff",
+        black: "#000000",
         background: "var(--background)",
         foreground: "var(--foreground)",
       },

@@ -3,7 +3,7 @@ import ListAd from "@/components/pages/ListAd";
 
 const AdPage = () => {
   return (
-    <div className="">
+    <div className="w-full">
       <ListAd />
     </div>
   );
