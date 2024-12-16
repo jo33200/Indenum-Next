@@ -1,5 +1,8 @@
 import ContactInfo from "@/components/features/ContactInfo";
 import ContactForm from "@/components/pages/ContactForm";
+import { pageMetadata } from "@/utils/metadata";
+
+export const metadata = pageMetadata.contact;
 
 const Contact = () => {
   return (

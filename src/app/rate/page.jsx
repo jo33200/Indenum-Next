@@ -1,6 +1,7 @@
-"use client";
-
 import ListRates from "@/components/pages/ListRates";
+import { pageMetadata } from "@/utils/metadata";
+
+export const metadata = pageMetadata.rate;
 
 const RatesPage = () => {
   return (

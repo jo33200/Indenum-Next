@@ -1,4 +1,7 @@
 import FormQuote from "@/components/pages/QuoteForm";
+import { pageMetadata } from "@/utils/metadata";
+
+export const metadata = pageMetadata.quote;
 
 const Quote = () => {
   return (
