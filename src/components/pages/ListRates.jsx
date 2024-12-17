@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import CardRate from "./CardRate";
 import Link from "next/link";
+import { supabase } from "@/utils/supabaseClient";
 
 const ListRate = () => {
   const [rates, setRates] = useState([]);
@@ -13,16 +14,15 @@ const ListRate = () => {
   const [openCategories, setOpenCategories] = useState({});
   const [showAllFilters, setShowAllFilters] = useState(false);
 
+  // Récupération des données depuis Supabase
   useEffect(() => {
     const fetchRates = async () => {
       try {
-        const response = await fetch("/api/rates");
-        if (!response.ok) {
-          throw new Error("Failed to fetch rates");
-        }
-        const data = await response.json();
-        setRates(data);
-        setFilteredRates(data); // Initialement, toutes les cartes sont affichées
+        const { data, error } = await supabase.from("rates").select("*");
+        if (error) throw new Error("Failed to fetch rates");
+        
+        setRates(data); // Met à jour les données de l'état
+        setFilteredRates(data); // Initialise les cartes filtrées
       } catch (error) {
         console.error("Error fetching rates:", error);
       }
