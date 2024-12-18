@@ -1,6 +1,7 @@
 'use client';
 import React, { useEffect, useState } from "react";
 import CardRate from "./CardRate";
+import ModalRate from "@/components/ui/ModalRate";
 import Link from "next/link";
 import { supabase } from "@/utils/supabaseClient";
 
@@ -13,6 +14,10 @@ const ListRate = () => {
   const [filteredRates, setFilteredRates] = useState([]);
   const [openCategories, setOpenCategories] = useState({});
   const [showAllFilters, setShowAllFilters] = useState(false);
+
+  // États pour le modal
+  const [selectedRate, setSelectedRate] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const fetchRates = async () => {
@@ -74,6 +79,19 @@ const ListRate = () => {
       [category]: !prev[category],
     }));
   };
+
+   // Ouvre le modal
+   const handleOpenModal = (rate) => {
+    setSelectedRate(rate);
+    setIsModalOpen(true);
+  };
+
+  // Ferme le modal
+  const handleCloseModal = () => {
+    setSelectedRate(null);
+    setIsModalOpen(false);
+  };
+
 
   return (
     <div className="mb-8 mt-24 flex h-auto w-full flex-col items-start gap-8 px-2 sm:w-full md:mt-8 md:flex-row md:items-start md:justify-around xl:my-32">
@@ -295,9 +313,19 @@ const ListRate = () => {
             category={rate.category}
             price={rate.price}
             image={rate.image}
+            onCardClick={() => handleOpenModal(rate)} // Passe la fonction pour ouvrir le modal
           />
         ))}
       </div>
+      {/* Modal */}
+      {isModalOpen && selectedRate && (
+        <ModalRate
+          rate={selectedRate}
+          image={selectedRate.image}
+          title={selectedRate.title}
+          onClose={handleCloseModal} // Passe la fonction pour fermer le modal
+        />
+      )}
     </div>
   );
 };

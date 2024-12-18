@@ -2,7 +2,7 @@ import Image from "next/image";
 import PropTypes from "prop-types";
 import { FaTimes } from "react-icons/fa"; // Importation de l'icône croix
 import { HiChevronDoubleLeft } from "react-icons/hi";
-import FakeScrollBar from "../features/FakeScrollBar";
+import FakeScrollBar from "@/components/features/FakeScrollBar";
 
 const ModalRate = ({ rate, image, title, onClose }) => {
   if (!rate) return null;
@@ -13,7 +13,7 @@ const ModalRate = ({ rate, image, title, onClose }) => {
       className="fixed inset-0 mt-16 flex justify-center md:items-center md:bg-black md:bg-opacity-50"
       onClick={onClose} // Ferme la modal lorsque l'utilisateur clique à l'extérieur
     >
-      <div className="max-h-screen w-screen max-w-4xl overflow-hidden md:relative md:mx-6 md:mt-0 md:flex md:h-full md:max-h-[700px] md:justify-center md:p-7">
+      <div className="max-h-screen gap-auto w-screen max-w-4xl overflow-hidden md:relative md:mx-6 md:mt-0 md:flex md:h-full md:max-h-[700px] md:justify-center md:p-7">
         <div className="absolute right-4 top-4 z-50 hidden rounded-full border-4 border-white p-1 text-center hover:bg-red-600 hover:text-black md:right-0 md:top-0 md:flex">
           <button
             onClick={onClose} // Ferme la modal lorsqu'on clique sur la croix
@@ -40,12 +40,14 @@ const ModalRate = ({ rate, image, title, onClose }) => {
 
           <section className="flex justify-center md:flex-1">
             <Image
-              src={images[image]}
+              src={image}
               alt={title}
+              width={300}
+              height={200}
               className="h-auto w-3/4 border object-cover px-3 py-6 md:w-full md:px-6 md:py-20"
             />
           </section>
-          <section className="md:gap-auto flex flex-col items-start justify-between gap-6 px-6 py-1 sm:w-3/4 md:h-full md:w-1/2 md:px-2">
+          <section className="md:gap-auto flex flex-col items-start justify-between gap-3 px-6 py-1 sm:w-3/4 md:h-full md:w-1/2 md:px-2">
             <h3 className="w-full text-center text-2xl font-bold md:text-left lg:text-center">
               {rate.title}
             </h3>
@@ -53,7 +55,7 @@ const ModalRate = ({ rate, image, title, onClose }) => {
             <p className="text-sm text-gray-500 md:text-base">
               catégorie: {rate.category}
             </p>
-            <p className="w-full rounded-3xl border-2 text-2xl font-bold md:py-2">
+            <p className="w-full lg:w-20 text-center rounded-3xl border-2 text-2xl font-bold md:py-2">
               {rate.price}€
             </p>
             <p className="text-gray-600 md:mt-4 md:text-lg">
