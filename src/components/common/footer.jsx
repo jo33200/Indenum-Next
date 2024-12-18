@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className="flex h-auto w-full flex-col items-start justify-start gap-10 bg-gradient-to-r from-[#7A6F6F] to-[#583C3C] px-2 pb-16 pt-5 text-white sm:items-center">
       <div className="container w-36 text-left">
         <Image
-          src="/img/Indenum.png"
+          src="/img/Indenum.webp"
           width={200}
           height={50}
           className="bg-contain"
