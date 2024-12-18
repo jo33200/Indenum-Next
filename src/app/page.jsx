@@ -8,7 +8,6 @@ import CardHome from "@/components/pages/CardHome";
 import Carousel from "@/components/features/CarouselHome";
 import CarouselAd from "@/components/features/CarouselAd";
 import CityModal from "@/components/ui/ModalCity";
-import adData from "@/data/ad.json";
 
 const HomePage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -146,7 +145,7 @@ const HomePage = () => {
           </p>
         </article>
         <article className="flex w-full flex-col items-center gap-10">
-          <CarouselAd ads={adData} />
+          <CarouselAd  />
           <Link
             href="/under-construction"
             className="rounded-lg bg-name-orange px-5 py-4 text-lg font-bold text-white hover:bg-blue-700"
