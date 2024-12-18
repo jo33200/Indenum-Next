@@ -2,27 +2,20 @@
 
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
-import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
 // Charger les composants React-Leaflet dynamiquement
 const MapContainer = dynamic(
   () => import("react-leaflet").then((mod) => mod.MapContainer),
-  {
-    ssr: false,
-  },
+  { ssr: false },
 );
 const Marker = dynamic(
   () => import("react-leaflet").then((mod) => mod.Marker),
-  {
-    ssr: false,
-  },
+  { ssr: false },
 );
 const TileLayer = dynamic(
   () => import("react-leaflet").then((mod) => mod.TileLayer),
-  {
-    ssr: false,
-  },
+  { ssr: false },
 );
 const Popup = dynamic(() => import("react-leaflet").then((mod) => mod.Popup), {
   ssr: false,
@@ -33,18 +26,23 @@ const ContactMap = () => {
   const [customIcon, setCustomIcon] = useState(null);
 
   useEffect(() => {
-    // Définir une icône personnalisée avec Leaflet
-    const icon = L.divIcon({
-      className: "custom-icon",
-      html: `<span class="text-red-500 text-4xl" style="font-weight: bold;">
-               <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 24 24" fill="currentColor">
-                 <path d="M12 2C8.134 2 5 5.134 5 9c0 3.833 7 11 7 11s7-7.167 7-11c0-3.866-3.134-7-7-7zm0 15c-3.314 0-6-2.686-6-6s2.686-6 6-6 6 2.686 6 6-2.686 6-6 6z" fill="white" stroke="red" stroke-width="4"/>
-               </svg>
-             </span>`,
-      iconSize: [40, 40],
-      iconAnchor: [20, 40],
-    });
-    setCustomIcon(icon);
+    if (typeof window !== "undefined") {
+      // Charger Leaflet uniquement côté client
+      const L = require("leaflet");
+
+      // Définir une icône personnalisée avec Leaflet
+      const icon = L.divIcon({
+        className: "custom-icon",
+        html: `<span class="text-red-500 text-4xl" style="font-weight: bold;">
+                 <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 24 24" fill="currentColor">
+                   <path d="M12 2C8.134 2 5 5.134 5 9c0 3.833 7 11 7 11s7-7.167 7-11c0-3.866-3.134-7-7-7zm0 15c-3.314 0-6-2.686-6-6s2.686-6 6-6 6 2.686 6 6-2.686 6-6 6z" fill="white" stroke="red" stroke-width="4"/>
+                 </svg>
+               </span>`,
+        iconSize: [40, 40],
+        iconAnchor: [20, 40],
+      });
+      setCustomIcon(icon);
+    }
   }, []);
 
   if (!customIcon) {
