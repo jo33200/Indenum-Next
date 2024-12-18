@@ -3,8 +3,10 @@ import PropTypes from "prop-types";
 import React, { useEffect, useState, useCallback } from "react";
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from "react-icons/hi";
 import CardAd from "@/components/pages/CardAd";
+import { supabase } from "@/utils/supabaseClient";
 
-const CarouselAd = ({ ads }) => {
+const CarouselAd = () => {
+  const [ads, setAds] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [cardsToShow, setCardsToShow] = useState(1);
 
@@ -18,6 +20,25 @@ const CarouselAd = ({ ads }) => {
     } else {
       setCardsToShow(1); // Mobile
     }
+  }, []);
+
+  const fetchAds = async () => {
+    try {
+      const { data, error } = await supabase
+        .from("ads")
+        .select("*")
+        .order("created_at", { ascending: false }) // Trier par les plus récentes
+        .limit(10); // Limiter à 10 annonces
+      if (error) throw error;
+      setAds(data);
+    } catch (error) {
+      console.error("Error fetching ads:", error.message);
+    }
+  };
+  
+
+  useEffect(() => {
+    fetchAds();
   }, []);
 
   useEffect(() => {
