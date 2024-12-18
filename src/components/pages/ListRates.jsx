@@ -14,22 +14,30 @@ const ListRate = () => {
   const [openCategories, setOpenCategories] = useState({});
   const [showAllFilters, setShowAllFilters] = useState(false);
 
-  // Récupération des données depuis Supabase
   useEffect(() => {
     const fetchRates = async () => {
       try {
+        // Récupère les données depuis Supabase
         const { data, error } = await supabase.from("rates").select("*");
-        if (error) throw new Error("Failed to fetch rates");
-        
-        setRates(data); // Met à jour les données de l'état
-        setFilteredRates(data); // Initialise les cartes filtrées
+        if (error) throw new Error("Erreur lors de la récupération des données Supabase");
+  
+        // Génère l'URL complète pour chaque image
+        const ratesWithImageUrls = data.map((rate) => ({
+          ...rate,
+          image: `https://gedvcdylaaygslrbfupf.supabase.co/storage/v1/object/public/rates-images/${rate.image}`, // URL publique basée sur le nom de l'image
+        }));
+  
+        // Met à jour les états
+        setRates(ratesWithImageUrls);
+        setFilteredRates(ratesWithImageUrls); // Initialise les cartes filtrées
       } catch (error) {
-        console.error("Error fetching rates:", error);
+        console.error("Erreur lors de la récupération des données :", error);
       }
     };
-
+  
     fetchRates();
   }, []);
+  
 
   // Mettre à jour les cartes filtrées en fonction des filtres
   useEffect(() => {

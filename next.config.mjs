@@ -6,6 +6,7 @@ const nextConfig = {
     NEXT_PUBLIC_SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
   },
   images: {
+    domains: ['gedvcdylaaygslrbfupf.supabase.co'],
     remotePatterns: [
       {
         protocol: "https",

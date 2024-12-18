@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import Image from "next/image";
 
 const CardRate = ({ title, description, category, price, image, onClick }) => {
-  const imagePath = `/img/${image}.jpg`;
 
   return (
     <div
@@ -11,7 +10,7 @@ const CardRate = ({ title, description, category, price, image, onClick }) => {
     >
       <div className="flex h-32 w-full items-center justify-center">
         <Image
-          src={imagePath} // Charge l'image depuis public/img/
+          src={image} 
           alt={title}
           width={300}
           height={200}
