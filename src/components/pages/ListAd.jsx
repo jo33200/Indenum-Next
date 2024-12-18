@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import CardAd from "./CardAd";
 import Link from "next/link";
+import { supabase } from "@/utils/supabaseClient";
 
 const ListAd = () => {
   const [ads, setAds] = useState([]);
@@ -17,15 +18,12 @@ const ListAd = () => {
   useEffect(() => {
     const fetchAds = async () => {
       try {
-        const response = await fetch("/api/ads");
-        if (!response.ok) {
-          throw new Error("Failed to fetch ads");
-        }
-        const data = await response.json();
+        const { data, error } = await supabase.from("ads").select("*");
+        if (error) throw error;
         setAds(data);
-        setFilteredAds(data); // Initialement, toutes les annonces sont affichées
+        setFilteredAds(data); // Afficher toutes les annonces initialement
       } catch (error) {
-        console.error("Error fetching ads:", error);
+        console.error("Error fetching ads:", error.message);
       }
     };
 
