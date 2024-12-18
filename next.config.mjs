@@ -6,13 +6,18 @@ const nextConfig = {
     NEXT_PUBLIC_SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
   },
   images: {
-    domains: ['gedvcdylaaygslrbfupf.supabase.co'],
     remotePatterns: [
       {
         protocol: "https",
         hostname: "img.leboncoin.fr",
         port: "",
         pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "gedvcdylaaygslrbfupf.supabase.co",
+        port: "",
+        pathname: "/storage/v1/object/public/rates-images/**", // Chemin pour les images Supabase
       },
     ],
   },
