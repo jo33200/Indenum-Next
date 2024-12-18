@@ -138,7 +138,7 @@ const Header = () => {
               </Link>
             </li>
             <li className="py-2">
-              <Link href="/rates" onClick={toggleMenu}>
+              <Link href="/rate" onClick={toggleMenu}>
                 Tarifs
               </Link>
             </li>
