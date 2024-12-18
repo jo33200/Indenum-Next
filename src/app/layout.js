@@ -2,8 +2,10 @@ import "@/app/globals.css";
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/footer";
 import Script from 'next/script';
+import { globalMetadata } from "@/utils/metadata";
 
 export const metadata = {
+  ...globalMetadata,
   title: "Indenum",
   description:
     "Indénum : Réparations de smartphones, tablettes et consoles, rachat et vente de matériel électronique. Service de proximité avec prêt de matériel pendant la réparation à Bordeaux et La CUB.",

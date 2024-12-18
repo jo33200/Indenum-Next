@@ -1,10 +1,12 @@
+const siteUrl = "http://localhost:3000"; // Base URL pour local ou production (à remplacer pour la production)
+
 export const globalMetadata = {
-  metadataBase: new URL('http://localhost:3000'),
+  metadataBase: new URL(siteUrl),
   title: "Indenum - Réparations électroniques à Bordeaux",
   description:
     "Indenum : Réparations de téléphones, tablettes, consoles, le rachat de matériel électronique et la vente de pièces détachées à Le Bouscat, près de Bordeaux.",
   alternates: {
-    canonical: "http://localhost:3000",
+    canonical: siteUrl,
   },
   icons: {
     icon: "/favicon.ico",
@@ -16,14 +18,14 @@ export const globalMetadata = {
     position: "44.8679729,-0.609065",
   },
   openGraph: {
-    title: "Indénum | Réparations & Rachat Électronique à Le Bouscat",
+    title: "Indenum | Réparations & Rachat Électronique à Le Bouscat",
     description:
-      "Indénum propose des réparations professionnelles pour téléphones, tablettes, consoles, ainsi que le rachat et la vente de matériel électronique à Le Bouscat.",
-    url: "http://localhost:3000",
+      "Indenum propose des réparations professionnelles pour téléphones, tablettes, consoles, ainsi que le rachat et la vente de matériel électronique à Le Bouscat.",
+    url: siteUrl,
     siteName: "Indenum",
     images: [
       {
-        url: "/Indenum.png",
+        url: `${siteUrl}/Indenum.png`,
         width: 1200,
         height: 630,
         alt: "Indenum - Réparations électroniques",
@@ -37,93 +39,103 @@ export const globalMetadata = {
     title: "Indenum",
     description:
       "Réparation, Vente et Rachat de votre matériel électronique à Bordeaux.",
-    images: ["/Indenum.png"],
+    images: [`${siteUrl}/Indenum.png`],
   },
 };
 
 export const pageMetadata = {
   ad: {
-    title: 'Annonces - Indenum',
-    description: 'Découvrez nos annonces en ligne de vente de matériel électronique à Bordeaux.',
+    title: "Annonces - Indenum",
+    description:
+      "Découvrez nos annonces en ligne de vente de matériel électronique à Bordeaux.",
     alternates: {
-      canonical: 'http://localhost:3000/ad',
+      canonical: `${siteUrl}/ad`,
     },
     openGraph: {
-      title: 'Annonces - Indenum',
-      description: 'Découvrez nos annonces en ligne de vente de matériel électronique à Bordeaux.',
-      url: 'http://localhost:3000/ad',
+      title: "Annonces - Indenum",
+      description:
+        "Découvrez nos annonces en ligne de vente de matériel électronique à Bordeaux.",
+      url: `${siteUrl}/ad`,
       images: [
         {
-          url: '/img/manette.jpg',
+          url: `${siteUrl}/img/manette.jpg`,
           width: 1200,
           height: 630,
-          alt: 'Annonces - Indenum',
+          alt: "Annonces - Indenum",
         },
       ],
     },
   },
   rate: {
-    title: 'Tarifs - Indenum',
-    description: 'Découvrez nos tarifs compétitifs pour la réparation de smartphones, tablettes, et consoles. Services de qualité à Bordeaux et Le Bouscat.',
+    title: "Tarifs - Indenum",
+    description:
+      "Découvrez nos tarifs compétitifs pour la réparation de smartphones, tablettes, et consoles. Services de qualité à Bordeaux et Le Bouscat.",
     alternates: {
-      canonical: 'http://localhost:3000/rate',
+      canonical: `${siteUrl}/rate`,
     },
     openGraph: {
-      title: 'Tarifs - Indenum',
-      description: 'Découvrez les tarifs de nos services à Bordeaux.',
-      url: 'http://localhost:3000/rate',
+      title: "Tarifs - Indenum",
+      description: "Découvrez les tarifs de nos services à Bordeaux.",
+      url: `${siteUrl}/rate`,
       images: [
         {
-          url: '/contact.jpg',
+          url: `${siteUrl}/contact.jpg`,
           width: 1200,
           height: 630,
-          alt: 'Tarifs - Indenum',
+          alt: "Tarifs - Indenum",
         },
       ],
     },
   },
   quote: {
-    title: 'Devis - Indenum',
-    description: 'Obtenez un devis rapide pour la réparation de vos appareils électroniques à Bordeaux et Le Bouscat. Répondez à vos besoins en quelques clics.',
+    title: "Devis - Indenum",
+    description:
+      "Obtenez un devis rapide pour la réparation de vos appareils électroniques à Bordeaux et Le Bouscat. Répondez à vos besoins en quelques clics.",
     alternates: {
-      canonical: 'http://localhost:3000/quote',
+      canonical: `${siteUrl}/quote`,
     },
     openGraph: {
-      title: 'Devis - Indenum',
-      description: 'Obtenez un devis rapide pour la réparation de vos appareils électroniques à Bordeaux et Le Bouscat. Répondez à vos besoins en quelques clics.',
-      url: 'http://localhost:3000/quote',
+      title: "Devis - Indenum",
+      description:
+        "Obtenez un devis rapide pour la réparation de vos appareils électroniques à Bordeaux et Le Bouscat. Répondez à vos besoins en quelques clics.",
+      url: `${siteUrl}/quote`,
       images: [
         {
-          url: '/contact.jpg',
+          url: `${siteUrl}/contact.jpg`,
           width: 1200,
           height: 630,
-          alt: 'Devis - Indenum',
+          alt: "Devis - Indenum",
         },
       ],
     },
   },
   contact: {
-    title: 'Contactez Indenum à Bordeaux et Le Bouscat',
-    description: 'Prenez contact avec Indenum pour vos réparations électroniques. Situé à Le Bouscat, près de Bordeaux, nous sommes disponibles du lundi au samedi pour répondre à vos besoins.',
+    title: "Contactez Indenum à Bordeaux et Le Bouscat",
+    description:
+      "Prenez contact avec Indenum pour vos réparations électroniques. Situé à Le Bouscat, près de Bordeaux, nous sommes disponibles du lundi au samedi pour répondre à vos besoins.",
+    alternates: {
+      canonical: `${siteUrl}/contact`,
+    },
     openGraph: {
-      title: 'Contactez Indenum - Réparations électroniques à Bordeaux',
-      description: 'Contactez-nous pour vos réparations électroniques. Proximité, disponibilité et expertise à Bordeaux et Le Bouscat.',
-      url: 'http://localhost:3000/contact',
+      title: "Contactez Indenum - Réparations électroniques à Bordeaux",
+      description:
+        "Contactez-nous pour vos réparations électroniques. Proximité, disponibilité et expertise à Bordeaux et Le Bouscat.",
+      url: `${siteUrl}/contact`,
       images: [
         {
-          url: '/contact.jpg',
+          url: `${siteUrl}/contact.jpg`,
           width: 1200,
           height: 630,
-          alt: 'Contactez Indenum pour réparations électroniques',
+          alt: "Contactez Indenum pour réparations électroniques",
         },
       ],
     },
     twitter: {
-      card: 'summary_large_image',
-      title: 'Contactez-nous - Indenum',
-      description: 'Contactez notre équipe pour vos réparations électroniques à Bordeaux.',
-      images: ['/contact.jpg'],
+      card: "summary_large_image",
+      title: "Contactez-nous - Indenum",
+      description:
+        "Contactez notre équipe pour vos réparations électroniques à Bordeaux.",
+      images: [`${siteUrl}/contact.jpg`],
     },
-  }
+  },
 };
-
