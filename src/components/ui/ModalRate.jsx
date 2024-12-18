@@ -74,31 +74,31 @@ const ModalRate = ({ rate, image, title, onClose }) => {
               <div className="flex w-full items-center justify-between">
                 <Image src="/img/visa.svg" alt="Visa" width={48} height={48} />
                 <Image
-                  src="/img/mastercard.svg"
+                  src="/img/mastercard.webp"
                   alt="Mastercard"
                   width={48}
                   height={48}
                 />
                 <Image
-                  src="/img/paylib.svg"
+                  src="/img/paylib.webp"
                   alt="Paylib"
                   width={48}
                   height={48}
                 />
                 <Image
-                  src="/img/applePay.svg"
+                  src="/img/applePay.webp"
                   alt="ApplePay"
                   width={48}
                   height={48}
                 />
                 <Image
-                  src="/img/paypal.svg"
+                  src="/img/paypal.webp"
                   alt="Paypal"
                   width={48}
                   height={48}
                 />
                 <Image
-                  src="/img/googlePay.svg"
+                  src="/img/googlePay.webp"
                   alt="GooglePay"
                   width={48}
                   height={48}
