@@ -41,7 +41,7 @@ const Header = () => {
           <div className="flex items-center justify-center gap-2">
             <Link href="/">
               <Image
-                src="/img/Indenum.png"
+                src="/img/Indenum.webp"
                 alt="Indenum"
                 className="h-auto w-52"
                 width={200}
