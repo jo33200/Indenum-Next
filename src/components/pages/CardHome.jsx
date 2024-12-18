@@ -6,38 +6,38 @@ const CardHome = () => {
   const cardData = [
     {
       title: "Notre Atelier",
-      image: "/img/atelier.jpg", // Chemin dans le dossier public
+      image: "/img/atelier.webp", // Chemin dans le dossier public
       subtitle: "Découvrir",
       link: "#atelier", // Lien interne
     },
     {
       title: "Besoin d'un devis rapide",
-      image: "/img/casse.jpg",
+      image: "/img/casse.webp",
       subtitle: "En savoir plus",
       link: "/quote",
     },
     {
       title: "Service de proximité",
-      image: "/img/proximite.jpg",
+      image: "/img/proximite.webp",
       subtitle: "En savoir plus",
       link: "#proximite", // Lien interne
     },
     {
       title: "Nos Annonces en ligne",
-      image: "/img/manette.jpg",
+      image: "/img/manette.webp",
       subtitle: "Voir catalogue",
       link: "/ad",
     },
     {
       title: "Service pièces détachées",
-      image: "/img/pièces.jpg",
+      image: "/img/pièces.webp",
       subtitle: "Voir catalogue",
       link: "/ad",
       filter: "pièces détachées",
     },
     {
       title: "Nous contacter",
-      image: "/img/contact.jpg",
+      image: "/img/contact.webp",
       subtitle: "En savoir plus",
       link: "/contact",
     },

@@ -32,7 +32,7 @@ const HomePage = () => {
         <h2 className="text-xl font-bold">Notre Atelier</h2>
         <article className="flex max-w-[850px] flex-col-reverse items-center gap-10 sm:flex-row">
           <Image
-            src="/img/atelier.jpg"
+            src="/img/atelier.webp"
             alt="Atelier"
             width={400}
             height={300}
@@ -112,7 +112,7 @@ const HomePage = () => {
             <p>prendre rendez-vous dès aujourd’hui.</p>
           </div>
           <Image
-            src="/img/proximite.jpg"
+            src="/img/proximite.webp"
             alt="image d'un coursier à vélo"
             width={400}
             height={300}
