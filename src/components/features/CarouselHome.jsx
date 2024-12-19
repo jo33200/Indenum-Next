@@ -27,18 +27,17 @@ const Carousel = () => {
 
   return (
     <Suspense fallback={<div>Chargement...</div>}>
-      <div className="flex w-full items-center justify-center">
+      
         {/* Texte avec transition */}
         <div
-          className="text-center font-openSans text-gray-600"
-          style={{ fontSize: "32px", width: "100%", padding: "0 20px" }}
+          className="text-center min-h-20 font-openSans text-gray-600 text-2xl sm:text-3xl py-5 w-full"
           aria-live="polite"
           role="status"
         >
           {slogans.map((slogan, index) => (
             <p
               key={index}
-              className={`absolute w-full transition-opacity duration-1000 ease-in-out ${
+              className={`absolute w-full h-auto min-h-4 transition-opacity duration-1000 ease-in-out ${
                 index === currentIndex ? "opacity-100" : "opacity-0"
               }`}
               aria-hidden={index !== currentIndex}
@@ -47,7 +46,7 @@ const Carousel = () => {
             </p>
           ))}
         </div>
-      </div>
+      
     </Suspense>
   );
 };

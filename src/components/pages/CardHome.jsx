@@ -117,7 +117,7 @@ const CardHome = () => {
   // Retourne la liste des cartes
   return (
     <div className="flex justify-center">
-      <div className="grid max-w-screen-lg grid-cols-1 gap-6  sm:flex sm:flex-row sm:items-center sm:justify-center sm:flex-wrap lg:gap-10 xl:grid xl:grid-cols-4 xl:gap-6 xl:max-w-screen-xl">
+      <div className="grid w-full max-w-screen-lg grid-cols-1 gap-6  sm:flex sm:flex-row sm:items-center sm:justify-center sm:flex-wrap sm:gap-10 xl:grid xl:grid-cols-4 xl:gap-6 xl:max-w-screen-xl">
         {cardData.map((card, index) => (
           <Card
             key={index}

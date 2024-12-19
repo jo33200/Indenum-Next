@@ -15,12 +15,12 @@ const HomePage = () => {
   return (
     <div className="flex h-auto w-full flex-col items-center">
       {/* Carousel Section */}
-      <section className="flex h-auto w-full items-center justify-center pt-36 md:pt-10">
+      <section className="flex h-auto w-full items-center justify-center pt-28 pb-20 sm:pt-36 md:pt-20">
         <Carousel />
       </section>
 
       {/* CardHome Section */}
-      <section className="flex w-full items-center justify-center py-20">
+      <section className="flex w-full items-center justify-center pb-20">
         <CardHome />
       </section>
 
