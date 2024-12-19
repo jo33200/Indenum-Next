@@ -3,13 +3,21 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-
+import { supabase } from "@/utils/supabaseClient";
 import CardHome from "@/components/pages/CardHome";
 import Carousel from "@/components/features/CarouselHome";
 import CarouselAd from "@/components/features/CarouselAd";
 import CityModal from "@/components/ui/ModalCity";
 
+
 const HomePage = () => {
+
+  // Fonction pour générer une URL publique depuis Supabase
+  const getSupabaseImageUrl = (fileName) => {
+    const { data } = supabase.storage.from("home-images").getPublicUrl(fileName);
+    return data.publicUrl;
+  };
+
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
@@ -32,7 +40,7 @@ const HomePage = () => {
         <h2 className="text-xl font-bold">Notre Atelier</h2>
         <article className="flex max-w-[850px] flex-col-reverse items-center gap-10 sm:flex-row">
           <Image
-            src="/img/atelier.webp"
+            src= {getSupabaseImageUrl("atelier.webp")}
             alt="Atelier"
             width={400}
             height={300}
@@ -112,7 +120,7 @@ const HomePage = () => {
             <p>prendre rendez-vous dès aujourd’hui.</p>
           </div>
           <Image
-            src="/img/proximite.webp"
+            src={getSupabaseImageUrl("proximite.webp")}
             alt="image d'un coursier à vélo"
             width={400}
             height={300}

@@ -1,54 +1,61 @@
 import PropTypes from "prop-types";
 import Link from "next/link";
 import Image from "next/image";
+import { supabase } from "@/utils/supabaseClient";
 
 const CardHome = () => {
+  // Fonction pour générer une URL publique depuis Supabase
+  const getSupabaseImageUrl = (fileName) => {
+    const { data } = supabase.storage.from("home-images").getPublicUrl(fileName);
+    return data.publicUrl;
+  };
+
   const cardData = [
     {
       title: "Notre Atelier",
-      image: "/img/atelier.webp", // Chemin dans le dossier public
+      image: getSupabaseImageUrl("atelier.webp"), // URL générée pour Supabase
       subtitle: "Découvrir",
       link: "#atelier", // Lien interne
     },
     {
       title: "Besoin d'une réparation",
-      image: "/img/reparation.webp",
+      image: getSupabaseImageUrl("reparation.webp"),
       subtitle: "Voir nos tarifs",
       link: "/rate",
     },
     {
       title: "Ne jetez pas, Vendez",
-      image: "/img/rachat.webp",
+      image: getSupabaseImageUrl("rachat.webp"),
       subtitle: "proposer votre article",
       link: "/rate",
     },
     {
       title: "Besoin d'un devis rapide",
-      image: "/img/casse.webp",
+      image: getSupabaseImageUrl("casse.webp"),
       subtitle: "En savoir plus",
       link: "/quote",
     },
     {
       title: "Service de proximité",
-      image: "/img/proximite.webp",
+      image: getSupabaseImageUrl("proximite.webp"),
       subtitle: "En savoir plus",
-      link: "#proximite", // Lien interne
+      link: "#proximite",
     },
     {
       title: "Nos Annonces en ligne",
-      image: "/img/manette.webp",
+      image: getSupabaseImageUrl("manette.webp"),
       subtitle: "Voir catalogue",
       link: "/ad",
     },
     {
       title: "Service pièces détachées",
-      image: "/img/pièces.webp",
+      image: getSupabaseImageUrl("pieces.webp"),
       subtitle: "Voir catalogue",
       link: "/ad",
     },
     {
       title: "Nous contacter",
-      image: "/img/contact.webp",
+      image: getSupabaseImageUrl("contact.webp"),
       subtitle: "En savoir plus",
       link: "/contact",
     },
