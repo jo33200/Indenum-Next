@@ -51,7 +51,7 @@ const CardHome = () => {
       title: "Service pièces détachées",
       image: getSupabaseImageUrl("pieces.webp"),
       subtitle: "Voir catalogue",
-      link: "/ad",
+      link: "/spareParts",
     },
     {
       title: "Nous contacter",
