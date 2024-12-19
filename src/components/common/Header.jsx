@@ -130,34 +130,35 @@ const Header = () => {
 
       {/* Menu burger pour petits écrans */}
       {isMenuOpen && (
-        <nav className="flex flex-col items-center bg-white py-4 md:hidden">
-          <ul className="w-full text-center">
-            <li className="py-2">
+        <section className="bg-white h-screen md:hidden">
+        <nav className="flex flex-col items-center bg-white pt-24 md:hidden">
+          <ul className="w-full text-center text-3xl">
+            <li className="py-6">
               <Link href="/" onClick={toggleMenu}>
                 Accueil
               </Link>
             </li>
-            <li className="py-2">
+            <li className="py-6">
               <Link href="/rate" onClick={toggleMenu}>
                 Tarifs
               </Link>
             </li>
-            <li className="py-2">
+            <li className="py-6">
               <Link href="/ad" onClick={toggleMenu}>
                 Annonces
               </Link>
             </li>
-            <li className="py-2">
+            <li className="py-6">
               <Link href="/quote" onClick={toggleMenu}>
                 Devis
               </Link>
             </li>
-            <li className="py-2">
+            <li className="py-6">
               <Link href="/contact" onClick={toggleMenu}>
                 Contact
               </Link>
             </li>
-            <li className="py-2">
+            <li className="py-6">
               <a
                 href="mailto:indenum@outlook.com"
                 className="text-gray-500 hover:cursor-pointer"
@@ -166,7 +167,7 @@ const Header = () => {
                 <FontAwesomeIcon icon={faEnvelope} className="" />
               </a>
             </li>
-            <li className="py-2">
+            <li className="py-6">
               <button
                 onClick={handlePhoneClick}
                 className="text-gray-500 focus:outline-none"
@@ -176,6 +177,7 @@ const Header = () => {
             </li>
           </ul>
         </nav>
+      </section>
       )}
 
       <Modal isOpen={isModalOpen} onClose={closeModal} title="Contactez-nous">
