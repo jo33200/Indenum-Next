@@ -3,11 +3,11 @@ import { useState, useEffect, Suspense } from "react";
 
 // Liste des slogans
 const slogans = [
-  { text: "Réparations rapides, résultats durables.", alt: "Slogan 1" },
-  { text: "Réparez aujourd'hui, profitez demain.", alt: "Slogan 2" },
-  { text: "Téléphone en panne ? Nous avons la réponse.", alt: "Slogan 3" },
-  { text: "Plus vite réparé, plus vite connecté.", alt: "Slogan 4" },
-  { text: "Réparez, ne remplacez pas.", alt: "Slogan 5" },
+  { text: "Nos réparations sont garanties 6 mois", alt: "Slogan 1" },
+  { text: "Ne jetez pas vos consoles et vos manettes HS, nous pouvons vous les racheter", alt: "Slogan 2" },
+  { text: "Reprise possible de vos consoles et manettes HS", alt: "Slogan 3" },
+  { text: "Nos produits reconditionnés, d'occasion", alt: "Slogan 4" },
+  { text: "Possibilité de matériel de prêt pendant le temps de réparation, sous réserve de disponibilité", alt: "Slogan 5" },
 ];
 
 // Composant Carousel
