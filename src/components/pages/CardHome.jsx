@@ -11,6 +11,18 @@ const CardHome = () => {
       link: "#atelier", // Lien interne
     },
     {
+      title: "Besoin d'une réparation",
+      image: "/img/reparation.webp",
+      subtitle: "Voir nos tarifs",
+      link: "/rate",
+    },
+    {
+      title: "Ne jetez pas, Vendez",
+      image: "/img/rachat.webp",
+      subtitle: "proposer votre article",
+      link: "/rate",
+    },
+    {
       title: "Besoin d'un devis rapide",
       image: "/img/casse.webp",
       subtitle: "En savoir plus",
@@ -33,7 +45,6 @@ const CardHome = () => {
       image: "/img/pièces.webp",
       subtitle: "Voir catalogue",
       link: "/ad",
-      filter: "pièces détachées",
     },
     {
       title: "Nous contacter",
@@ -56,7 +67,7 @@ const CardHome = () => {
     };
 
     return (
-      <div className="max-w-[280px] border bg-white shadow-lg">
+      <div className="max-w-[280px] sm:w-[280px] border bg-white shadow-lg">
         <div className="flex flex-col items-start gap-4 p-3">
           <h2 className="text-xl font-bold">{title}</h2>
           {link ? (
@@ -106,7 +117,7 @@ const CardHome = () => {
   // Retourne la liste des cartes
   return (
     <div className="flex justify-center">
-      <div className="grid max-w-screen-lg grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10">
+      <div className="grid max-w-screen-lg grid-cols-1 gap-6  sm:flex sm:flex-row sm:items-center sm:justify-center sm:flex-wrap lg:gap-10 xl:grid xl:grid-cols-4 xl:gap-6 xl:max-w-screen-xl">
         {cardData.map((card, index) => (
           <Card
             key={index}
