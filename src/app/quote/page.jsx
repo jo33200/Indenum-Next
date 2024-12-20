@@ -6,10 +6,9 @@ export const metadata = pageMetadata.quote;
 const Quote = () => {
   return (
     <div className="mx-5 max-w-[850px] pt-24">
+      <h1 className="sr-only">Demande de devis</h1>
 
-<h1 className="sr-only">Demande de devis</h1>
-
-      <section 
+      <section
         className="w-full"
         role="region"
         aria-labelledby="form-quote-title"
@@ -17,7 +16,7 @@ const Quote = () => {
         <FormQuote />
       </section>
 
-      <section 
+      <section
         className="space-y-4 py-10 text-gray-700"
         role="region"
         aria-labelledby="quote-info-title"

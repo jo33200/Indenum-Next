@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "set NODE_OPTIONS=--trace-deprecation && next dev",
     "build": "next build",
+    "export": "next export",
+    "deploy": "npm run build && npm run export && gh-pages -d out",
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write .",
