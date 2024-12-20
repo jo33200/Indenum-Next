@@ -6,11 +6,25 @@ export const metadata = pageMetadata.quote;
 const Quote = () => {
   return (
     <div className="mx-5 max-w-[850px] pt-24">
-      <div className="w-full">
-        <FormQuote />
-      </div>
 
-      <div className="space-y-4 py-10 text-gray-700">
+<h1 className="sr-only">Demande de devis</h1>
+
+      <section 
+        className="w-full"
+        role="region"
+        aria-labelledby="form-quote-title"
+      >
+        <FormQuote />
+      </section>
+
+      <section 
+        className="space-y-4 py-10 text-gray-700"
+        role="region"
+        aria-labelledby="quote-info-title"
+      >
+        <h2 id="quote-info-title" className="sr-only">
+          Informations sur le devis gratuit
+        </h2>
         <p>
           Chez <strong>INDENUM</strong>, nous savons &agrave; quel point il est
           essentiel d&rsquo;avoir une information claire avant de
@@ -37,7 +51,7 @@ const Quote = () => {
           gratuit et sans obligation, vous avez ainsi la certitude de faire le
           meilleur choix pour vos appareils.
         </p>
-      </div>
+      </section>
     </div>
   );
 };
