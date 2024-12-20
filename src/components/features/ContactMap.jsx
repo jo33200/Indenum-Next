@@ -42,6 +42,18 @@ const ContactMap = () => {
         iconAnchor: [20, 40],
       });
       setCustomIcon(icon);
+        // Ajouter des attributs ARIA pour l'accessibilité
+        L.Marker.prototype.on("add", function () {
+          const element = this.getElement();
+          if (element) {
+            element.setAttribute("role", "button");
+            element.setAttribute(
+              "aria-label",
+              "Marqueur indiquant l'emplacement au 350 avenue de la libération, Le Bouscat",
+            );
+            element.setAttribute("tabindex", "0");
+          }
+        });
     }
   }, []);
 
