@@ -100,6 +100,7 @@ const Header = () => {
                 <a
                   href="mailto:indenum@outlook.com"
                   className="text-gray-500 hover:cursor-pointer"
+                  aria-label="Envoyer un e-mail à Indenum"
                 >
                   <FontAwesomeIcon icon={faEnvelope} className="" />
                 </a>
@@ -108,6 +109,7 @@ const Header = () => {
                 <button
                   onClick={handlePhoneClick}
                   className="text-gray-500 focus:outline-none"
+                  aria-label="Appeler le service client Indenum"
                 >
                   <FontAwesomeIcon icon={faPhone} />
                 </button>

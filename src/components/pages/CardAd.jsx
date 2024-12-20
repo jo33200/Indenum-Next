@@ -11,11 +11,12 @@ const CardAD = ({ title, description, price, image, url }) => {
     >
       <div className="h-40 w-full xl:h-52">
         <Image
-          className="h-full w-full rounded-t-lg object-fill"
+          className="h-full w-full rounded-t-lg object-contain"
           src={image}
           alt={`Image de l'annonce : ${title}`}
           width={300}
           height={200}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 300px"
           priority={true}
         />
       </div>

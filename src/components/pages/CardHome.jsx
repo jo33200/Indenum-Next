@@ -96,7 +96,7 @@ const CardHome = () => {
               Lien indisponible pour le moment
             </span>
           )}
-          <h3 className="text-sm font-bold text-gray-400">
+          <h3 className="text-sm font-semibold text-gray-600">
             {filter ? (
               <Link href={`${link}?filter=${encodeURIComponent(filter)}`}>
                 {subtitle}
