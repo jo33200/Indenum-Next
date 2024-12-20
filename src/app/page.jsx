@@ -47,6 +47,7 @@ const HomePage = () => {
             className="w-full rounded-3xl sm:w-1/2"
             style={{ objectFit: "cover" }}
             priority={true}
+            layout="responsive"
           />
           <p className="px-2 text-left text-lg">
             Bienvenue sur votre <strong>espace de confiance</strong> pour la
