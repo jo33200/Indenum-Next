@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="fr">
       <head>
-        <Script
+      <Script
           type="application/ld+json"
           id="local-business-schema"
           dangerouslySetInnerHTML={{
@@ -43,8 +43,8 @@ export default function RootLayout({ children }) {
                 longitude: -0.609065,
               },
               openingHours: "Mo-Sa 09:00-19:00",
-              image: "URL_image_principale.jpg",
-              url: "https://lesite.com",
+              image: "/img/Indenum.webp",
+              url: "localhost:3000",
               areaServed: "Bordeaux, Le Bouscat",
               sameAs: [
                 "https://www.facebook.com/people/Ind%C3%A9num-Service/100092448746131/?locale=fr_FR",
