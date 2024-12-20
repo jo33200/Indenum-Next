@@ -86,7 +86,7 @@ const CardHome = () => {
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="rounded-lg object-cover"
-                  priority={true}
+                  
                 />
               </div>
             </Link>
