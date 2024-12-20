@@ -38,6 +38,7 @@ const Carousel = () => {
         className="min-h-20 w-full py-5 text-center font-openSans text-2xl text-gray-600 sm:text-3xl"
         aria-live="polite"
         role="status"
+        aria-label="Carousel d'informations"
       >
         {slogans.map((slogan, index) => (
           <p

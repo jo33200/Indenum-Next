@@ -5,7 +5,10 @@ export const metadata = pageMetadata.rate;
 
 const RatesPage = () => {
   return (
-    <div className="w-full">
+    <div className="w-full" aria-labelledby="page-title">
+      <h1 id="page-title" className="sr-only">
+        Tarifs de nos réparations
+      </h1>
       <ListRates />
     </div>
   );

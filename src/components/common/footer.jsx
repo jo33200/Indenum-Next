@@ -10,13 +10,16 @@ const Footer = () => {
           width={200}
           height={50}
           className="bg-contain"
-          alt="Indenum"
+          alt="Logo de l'entreprise Indenum"
           style={{ objectFit: "contain" }}
           priority={false}
         />
       </div>
       <section className="flex w-full flex-col gap-10 sm:w-[300px] lg:w-[1024px] lg:flex-row lg:justify-around lg:gap-0">
-        <nav className="h-auto w-[300px]">
+        <nav
+          aria-label="Navigation de pied de page"
+          className="h-auto w-[300px]"
+        >
           <ul className="flex flex-col items-start justify-start gap-1 text-left">
             <li className="font-bold">Services</li>
             <li>Réparation de téléphones toutes marques</li>
@@ -25,7 +28,10 @@ const Footer = () => {
           </ul>
         </nav>
         <ContactInfo isFooter={true} />
-        <nav className="h-auto w-[230px]">
+        <nav
+          aria-label="Navigation de pied de page"
+          className="h-auto w-[230px]"
+        >
           <ul className="flex flex-col items-start justify-start gap-1 text-left">
             <li className="font-bold">Informations</li>
             <li>Mentions légales</li>

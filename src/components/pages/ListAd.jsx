@@ -69,30 +69,51 @@ const ListAd = () => {
   return (
     <div className="mb-8 mt-24 flex h-auto w-full flex-col items-start gap-8 px-2 sm:w-full md:mt-8 md:flex-row md:items-start md:justify-around xl:my-32">
       {/* Filtres pour les petits écrans */}
-      <div className="flex w-full md:w-80 md:flex-col">
+      <div
+        className="flex w-full md:w-80 md:flex-col"
+        aria-labelledby="filters-section-title"
+      >
+        <h2 id="filters-section-title" className="sr-only">
+          Filtres des annonces
+        </h2>
         <div className="flex w-full md:flex-col md:justify-between md:rounded-md md:border-[0.5px] md:border-solid md:border-zinc-200 md:p-4">
           <div className="sm:2/5 w-48 sm:w-[250px] md:hidden">
             <div
               className="flex cursor-pointer items-center justify-between rounded-t border-[1px] border-solid border-zinc-200 p-2"
               onClick={() => setShowAllFilters(!showAllFilters)}
+              aria-expanded={showAllFilters}
             >
               <h3 className="text-lg font-bold">Filtres</h3>
-              <span className="text-2xl font-bold text-gray-700">
+              <span
+                className="text-2xl font-bold text-gray-700"
+                aria-hidden="true"
+              >
                 {showAllFilters ? "-" : "+"}
               </span>
             </div>
 
             {showAllFilters && (
-              <div className="border-[0.5px] border-solid border-zinc-100">
+              <div
+                className="border-[0.5px] border-solid border-zinc-100"
+                role="region"
+                aria-labelledby="filters-list-title"
+              >
+                <h4 id="filters-list-title" className="sr-only">
+                  Liste des filtres par catégorie
+                </h4>
                 {[...new Set(ads.map((ad) => ad.category))].map((category) => (
                   <div key={category}>
                     {/* Catégorie */}
                     <div
                       className="flex cursor-pointer items-center justify-between border-[0.5px] border-solid border-zinc-200 p-2"
                       onClick={() => toggleCategory(category)}
+                      aria-expanded={openCategories[category]}
                     >
                       <h3 className="text-sm font-bold">{category}</h3>
-                      <span className="text-xl text-gray-500">
+                      <span
+                        className="text-xl text-gray-500"
+                        aria-hidden="true"
+                      >
                         {openCategories[category] ? "-" : "+"}
                       </span>
                     </div>
@@ -119,6 +140,7 @@ const ListAd = () => {
                                 onChange={() =>
                                   toggleFilter("subcategory", subcategory)
                                 }
+                                aria-label={`Filtrer par sous-catégorie : ${subcategory}`}
                               />
                               <span>{subcategory}</span>
                             </label>
@@ -151,6 +173,7 @@ const ListAd = () => {
                                             subsubcategory,
                                           )
                                         }
+                                        aria-label={`Filtrer par sous-sous-catégorie : ${subsubcategory}`}
                                       />
                                       <span>{subsubcategory}</span>
                                     </label>
@@ -175,9 +198,10 @@ const ListAd = () => {
                 <div
                   className="flex cursor-pointer items-center justify-between gap-1 rounded bg-white p-2 text-gray-600 hover:bg-zinc-200 hover:text-black md:border-[0.5px] md:border-solid md:border-zinc-200"
                   onClick={() => toggleCategory(category)}
+                  aria-expanded={openCategories[category]}
                 >
                   <h3 className="text-base font-bold">{category}</h3>
-                  <span className="text-base font-semibold">
+                  <span className="text-base font-semibold" aria-hidden="true">
                     {openCategories[category] ? "-" : "+"}
                   </span>
                 </div>
@@ -202,6 +226,7 @@ const ListAd = () => {
                             onChange={() =>
                               toggleFilter("subcategory", subcategory)
                             }
+                            aria-label={`Filtrer par sous-catégorie : ${subcategory}`}
                           />
                           <span className="ml-2 font-semibold">
                             {subcategory}
@@ -235,6 +260,7 @@ const ListAd = () => {
                                         subsubcategory,
                                       )
                                     }
+                                    aria-label={`Filtrer par sous-sous-catégorie : ${subsubcategory}`}
                                   />
                                   <span className="ml-2">{subsubcategory}</span>
                                 </label>
@@ -266,7 +292,13 @@ const ListAd = () => {
       </div>
 
       {/* Annonces */}
-      <div className="item-between grid w-full grid-cols-2 justify-between gap-2 sm:grid-cols-3 sm:justify-between sm:gap-3 lg:grid-cols-4 lg:gap-3 xl:w-auto">
+      <div
+        className="item-between grid w-full grid-cols-2 justify-between gap-2 sm:grid-cols-3 sm:justify-between sm:gap-3 lg:grid-cols-4 lg:gap-3 xl:w-auto"
+        aria-labelledby="ads-list-title"
+      >
+        <h2 id="ads-list-title" className="sr-only">
+          Liste des annonces
+        </h2>
         {filteredAds.map((ad, index) => (
           <CardAd
             key={index}

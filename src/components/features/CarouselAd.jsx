@@ -64,6 +64,7 @@ const CarouselAd = () => {
         <button
           className="rounded-full p-3 shadow-md hover:bg-gray-300 focus:outline-none"
           onClick={prevSlide}
+          aria-label="Annonce précédente"
         >
           <HiOutlineChevronLeft className="text-2xl" />
         </button>
@@ -86,6 +87,7 @@ const CarouselAd = () => {
         <button
           className="rounded-full p-3 shadow-md hover:bg-gray-300 focus:outline-none"
           onClick={nextSlide}
+          aria-label="Annonce suivante"
         >
           <HiOutlineChevronRight className="text-2xl" />
         </button>

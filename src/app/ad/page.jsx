@@ -5,7 +5,10 @@ export const metadata = pageMetadata.ad;
 
 const AdPage = () => {
   return (
-    <div className="w-full">
+    <div className="w-full" aria-labelledby="ad-page-title">
+      <h1 id="ad-page-title" className="sr-only">
+        Nos annonces - Indenum
+      </h1>
       <ListAd />
     </div>
   );

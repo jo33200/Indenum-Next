@@ -38,12 +38,21 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="mx-auto max-w-lg p-8">
-      <h2 className="mb-2 text-center text-2xl font-bold">Service Client</h2>
+    <div className="mx-auto max-w-lg p-8" aria-labelledby="contact-form-title">
+      <h2
+        id="contact-form-title"
+        className="mb-2 text-center text-2xl font-bold"
+      >
+        Service Client
+      </h2>
       <p className="mb-6 text-center text-gray-600">
         Pour toute demande, vous pouvez nous envoyer un message
       </p>
-      <form onSubmit={sendContactEmail}>
+      <form onSubmit={sendContactEmail} aria-describedby="form-description">
+        <p id="form-description" className="sr-only">
+          Formulaire pour nous envoyer un message avec votre nom, prénom, email,
+          numéro de téléphone et message.
+        </p>
         {/* Nom */}
         <div className="mb-4">
           <label
@@ -145,10 +154,17 @@ const ContactForm = () => {
             maxLength="120"
             rows="4"
             required
+            aria-describedby="message-helper"
           />
+          <p id="message-helper" className="mt-1 text-sm text-gray-500">
+            Maximum 120 caractères.
+          </p>
         </div>
 
-        <ButtonValid onClick={sendContactEmail} />
+        <ButtonValid
+          onClick={sendContactEmail}
+          aria-label="Envoyer votre message"
+        />
       </form>
     </div>
   );

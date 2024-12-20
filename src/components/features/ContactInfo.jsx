@@ -38,7 +38,11 @@ const ContactInfo = ({ isFooter = false }) => {
 
       {/* Afficher la carte uniquement si ce n'est pas le footer dans la page contact */}
       {(!isFooter || !isContactPage) && (
-        <div className={`${isFooter ? "" : "flex justify-center"}`}>
+        <div
+          role="region"
+          aria-label="Carte interactive indiquant l'emplacement de l'entreprise"
+          className={`${isFooter ? "" : "flex justify-center"}`}
+        >
           <ContactMap className="md:w-100% max-w-40" />
         </div>
       )}

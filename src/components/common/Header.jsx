@@ -42,7 +42,7 @@ const Header = () => {
             <Link href="/">
               <Image
                 src="/img/Indenum.webp"
-                alt="Indenum"
+                alt="Logo de l'entreprise Indenum"
                 className="h-auto w-52"
                 width={200}
                 height={50}
@@ -54,7 +54,7 @@ const Header = () => {
 
         {/* Menu de navigation */}
         <section className="hidden md:flex">
-          <nav className="mt-2 w-full">
+          <nav aria-label="Navigation principale" className="mt-2 w-full">
             <ul className="flex w-full items-center justify-center text-sm md:w-auto md:gap-5 md:text-base lg:gap-10">
               <li>
                 <Link
@@ -130,7 +130,10 @@ const Header = () => {
       {/* Menu burger pour petits écrans */}
       {isMenuOpen && (
         <section className="h-screen bg-white md:hidden">
-          <nav className="flex flex-col items-center bg-white pt-24 md:hidden">
+          <nav
+            aria-label="Navigation principale"
+            className="flex flex-col items-center bg-white pt-24 md:hidden"
+          >
             <ul className="w-full text-center text-3xl">
               <li className="py-6">
                 <Link href="/" onClick={toggleMenu}>
@@ -162,6 +165,7 @@ const Header = () => {
                   href="mailto:indenum@outlook.com"
                   className="text-gray-500 hover:cursor-pointer"
                   onClick={toggleMenu}
+                  aria-label="Envoyer un mail"
                 >
                   <FontAwesomeIcon icon={faEnvelope} className="" />
                 </a>
@@ -170,6 +174,7 @@ const Header = () => {
                 <button
                   onClick={handlePhoneClick}
                   className="text-gray-500 focus:outline-none"
+                  aria-label="Appeler"
                 >
                   <FontAwesomeIcon icon={faPhone} />
                 </button>
