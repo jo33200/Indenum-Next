@@ -1,7 +1,7 @@
 import "@/app/globals.css";
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/footer";
-import Script from 'next/script';
+import Script from "next/script";
 import { globalMetadata } from "@/utils/metadata";
 
 export const metadata = {
@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="fr">
       <head>
-      <Script
+        <Script
           type="application/ld+json"
           id="local-business-schema"
           dangerouslySetInnerHTML={{

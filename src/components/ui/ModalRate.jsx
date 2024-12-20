@@ -13,7 +13,7 @@ const ModalRate = ({ rate, image, title, onClose }) => {
       className="fixed inset-0 mt-16 flex justify-center md:items-center md:bg-black md:bg-opacity-50"
       onClick={onClose} // Ferme la modal lorsque l'utilisateur clique à l'extérieur
     >
-      <div className="max-h-screen gap-auto w-screen max-w-4xl overflow-hidden md:relative md:mx-6 md:mt-0 md:flex md:h-full md:max-h-[700px] md:justify-center md:p-7">
+      <div className="gap-auto max-h-screen w-screen max-w-4xl overflow-hidden md:relative md:mx-6 md:mt-0 md:flex md:h-full md:max-h-[700px] md:justify-center md:p-7">
         <div className="absolute right-4 top-4 z-50 hidden rounded-full border-4 border-white p-1 text-center hover:bg-red-600 hover:text-black md:right-0 md:top-0 md:flex">
           <button
             onClick={onClose} // Ferme la modal lorsqu'on clique sur la croix
@@ -55,7 +55,7 @@ const ModalRate = ({ rate, image, title, onClose }) => {
             <p className="text-sm text-gray-500 md:text-base">
               catégorie: {rate.category}
             </p>
-            <p className="w-full lg:w-20 text-center rounded-3xl border-2 text-2xl font-bold md:py-2">
+            <p className="w-full rounded-3xl border-2 text-center text-2xl font-bold md:py-2 lg:w-20">
               {rate.price}€
             </p>
             <p className="text-gray-600 md:mt-4 md:text-lg">

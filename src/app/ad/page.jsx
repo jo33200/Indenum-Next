@@ -1,7 +1,5 @@
-
 import ListAd from "@/components/pages/ListAd";
 import { pageMetadata } from "@/utils/metadata";
-
 
 export const metadata = pageMetadata.ad;
 

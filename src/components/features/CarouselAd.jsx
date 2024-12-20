@@ -35,7 +35,6 @@ const CarouselAd = () => {
       console.error("Error fetching ads:", error.message);
     }
   };
-  
 
   useEffect(() => {
     fetchAds();

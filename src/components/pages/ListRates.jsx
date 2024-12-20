@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import React, { useEffect, useState } from "react";
 import CardRate from "./CardRate";
 import ModalRate from "@/components/ui/ModalRate";
@@ -24,14 +24,17 @@ const ListRate = () => {
       try {
         // Récupère les données depuis Supabase
         const { data, error } = await supabase.from("rates").select("*");
-        if (error) throw new Error("Erreur lors de la récupération des données Supabase");
-  
+        if (error)
+          throw new Error(
+            "Erreur lors de la récupération des données Supabase",
+          );
+
         // Génère l'URL complète pour chaque image
         const ratesWithImageUrls = data.map((rate) => ({
           ...rate,
           image: `https://gedvcdylaaygslrbfupf.supabase.co/storage/v1/object/public/rates-images/${rate.image}`, // URL publique basée sur le nom de l'image
         }));
-  
+
         // Met à jour les états
         setRates(ratesWithImageUrls);
         setFilteredRates(ratesWithImageUrls); // Initialise les cartes filtrées
@@ -39,10 +42,9 @@ const ListRate = () => {
         console.error("Erreur lors de la récupération des données :", error);
       }
     };
-  
+
     fetchRates();
   }, []);
-  
 
   // Mettre à jour les cartes filtrées en fonction des filtres
   useEffect(() => {
@@ -80,8 +82,8 @@ const ListRate = () => {
     }));
   };
 
-   // Ouvre le modal
-   const handleOpenModal = (rate) => {
+  // Ouvre le modal
+  const handleOpenModal = (rate) => {
     setSelectedRate(rate);
     setIsModalOpen(true);
   };
@@ -91,7 +93,6 @@ const ListRate = () => {
     setSelectedRate(null);
     setIsModalOpen(false);
   };
-
 
   return (
     <div className="mb-8 mt-24 flex h-auto w-full flex-col items-start gap-8 px-2 sm:w-full md:mt-8 md:flex-row md:items-start md:justify-around xl:my-32">

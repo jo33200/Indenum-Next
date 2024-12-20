@@ -9,12 +9,12 @@ import Carousel from "@/components/features/CarouselHome";
 import CarouselAd from "@/components/features/CarouselAd";
 import CityModal from "@/components/ui/ModalCity";
 
-
 const HomePage = () => {
-
   // Fonction pour générer une URL publique depuis Supabase
   const getSupabaseImageUrl = (fileName) => {
-    const { data } = supabase.storage.from("home-images").getPublicUrl(fileName);
+    const { data } = supabase.storage
+      .from("home-images")
+      .getPublicUrl(fileName);
     return data.publicUrl;
   };
 
@@ -23,7 +23,7 @@ const HomePage = () => {
   return (
     <div className="flex h-auto w-full flex-col items-center">
       {/* Carousel Section */}
-      <section className="flex h-auto w-full items-center justify-center pt-28 pb-20 sm:pt-36 md:pt-20">
+      <section className="flex h-auto w-full items-center justify-center pb-20 pt-28 sm:pt-36 md:pt-20">
         <Carousel />
       </section>
 
@@ -40,7 +40,7 @@ const HomePage = () => {
         <h2 className="text-xl font-bold">Notre Atelier</h2>
         <article className="flex max-w-[850px] flex-col-reverse items-center gap-10 sm:flex-row">
           <Image
-            src= {getSupabaseImageUrl("atelier.webp")}
+            src={getSupabaseImageUrl("atelier.webp")}
             alt="Atelier"
             width={400}
             height={300}
@@ -153,7 +153,7 @@ const HomePage = () => {
           </p>
         </article>
         <article className="flex w-full flex-col items-center gap-10">
-          <CarouselAd  />
+          <CarouselAd />
           <Link
             href="/under-construction"
             className="rounded-lg bg-name-orange px-5 py-4 text-lg font-bold text-white hover:bg-blue-700"

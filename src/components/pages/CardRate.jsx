@@ -1,8 +1,14 @@
 import PropTypes from "prop-types";
 import Image from "next/image";
 
-const CardRate = ({ title, description, category, price, image, onCardClick }) => {
-
+const CardRate = ({
+  title,
+  description,
+  category,
+  price,
+  image,
+  onCardClick,
+}) => {
   return (
     <div
       onClick={onCardClick}
@@ -10,7 +16,7 @@ const CardRate = ({ title, description, category, price, image, onCardClick }) =
     >
       <div className="flex h-32 w-full items-center justify-center">
         <Image
-          src={image} 
+          src={image}
           alt={title}
           width={300}
           height={200}

@@ -6,7 +6,9 @@ import { supabase } from "@/utils/supabaseClient";
 const CardHome = () => {
   // Fonction pour générer une URL publique depuis Supabase
   const getSupabaseImageUrl = (fileName) => {
-    const { data } = supabase.storage.from("home-images").getPublicUrl(fileName);
+    const { data } = supabase.storage
+      .from("home-images")
+      .getPublicUrl(fileName);
     return data.publicUrl;
   };
 
@@ -74,7 +76,7 @@ const CardHome = () => {
     };
 
     return (
-      <div className="max-w-[280px] sm:w-[280px] border bg-white shadow-lg">
+      <div className="max-w-[280px] border bg-white shadow-lg sm:w-[280px]">
         <div className="flex flex-col items-start gap-4 p-3">
           <h2 className="text-xl font-bold">{title}</h2>
           {link ? (
@@ -86,7 +88,6 @@ const CardHome = () => {
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="rounded-lg object-cover"
-                  
                 />
               </div>
             </Link>
@@ -124,7 +125,7 @@ const CardHome = () => {
   // Retourne la liste des cartes
   return (
     <div className="flex justify-center">
-      <div className="grid w-full max-w-screen-lg grid-cols-1 gap-6  sm:flex sm:flex-row sm:items-center sm:justify-center sm:flex-wrap sm:gap-10 xl:grid xl:grid-cols-4 xl:gap-6 xl:max-w-screen-xl">
+      <div className="grid w-full max-w-screen-lg grid-cols-1 gap-6 sm:flex sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-10 xl:grid xl:max-w-screen-xl xl:grid-cols-4 xl:gap-6">
         {cardData.map((card, index) => (
           <Card
             key={index}
