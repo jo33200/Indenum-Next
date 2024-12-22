@@ -82,6 +82,14 @@ const Header = () => {
               </li>
               <li>
                 <Link
+                  href="/buy"
+                  className="font-semibold text-gray-500 hover:scale-110"
+                >
+                  Rachat
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/quote"
                   className="font-semibold text-gray-500 hover:scale-110"
                 >
