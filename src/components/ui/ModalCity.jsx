@@ -127,7 +127,6 @@ const CityModal = ({ isOpen, onClose }) => {
               <li
                 key={index}
                 className="cursor-pointer p-2 text-base hover:bg-gray-100"
-                role="option"
               >
                 {city}
               </li>
