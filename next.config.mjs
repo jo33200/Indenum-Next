@@ -1,9 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: false,
-  output: "export", // Nécessaire pour l'exportation statique
-  basePath: "/Indenum-Next", // Remplacez par le nom de votre dépôt GitHub
-  assetPrefix: "/Indenum-Next",
   env: {
     NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL,
     NEXT_PUBLIC_SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
