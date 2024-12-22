@@ -138,4 +138,26 @@ export const pageMetadata = {
       images: [`${siteUrl}/contact.jpg`],
     },
   },
+  Buy: {
+    title: "Achat de matériel électronique - Indenum",
+    description:
+      "Rachetez votre matériel électronique à Bordeaux et Le Bouscat. Indenum vous propose un prix  juste pour vos appareils en fonction de leur état et de leur valeur.",
+    alternates: {
+      canonical: `${siteUrl}/buy`,
+    },
+    openGraph: {
+      title: "Achat de matériel électronique - Indenum",
+      description:
+        "Rachetez votre matériel électronique à Bordeaux et Le Bouscat. Indenum vous propose un prix  juste pour vos appareils en fonction de leur état et de leur valeur.",
+      url: `${siteUrl}/buy`,
+      images: [
+        {
+          url: `${siteUrl}/buy.jpg`,
+          width: 1200,
+          height: 630,
+          alt: "Achat de matériel électronique - Indenum",
+        },
+      ],
+    },
+  },
 };
