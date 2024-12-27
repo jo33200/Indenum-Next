@@ -1,5 +1,6 @@
 import ContactInfo from "@/components/features/ContactInfo";
 import Image from "next/image";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -22,9 +23,31 @@ const Footer = () => {
         >
           <ul className="flex flex-col items-start justify-start gap-1 text-left">
             <li className="font-bold">Services</li>
-            <li>Réparation de téléphones toutes marques</li>
-            <li>Réparation de tablettes toutes marques</li>
-            <li>Réparation de consoles de jeux</li>
+            <li>
+              <Link href="/rate" className="hover:underline">
+              Réparation de téléphones toutes marques
+              </Link>
+            </li>
+            <li>
+              <Link href="/rate" className="hover:underline">
+              Réparation de tablettes toutes marques
+              </Link>
+            </li>
+            <li>
+              <Link href="/rate" className="hover:underline">
+              Réparation de consoles de jeux
+              </Link>
+            </li>
+            <li>
+              <Link href="/ad" className="hover:underline">
+              Vente de matériel éléctronique reconditionné
+              </Link>
+            </li>
+            <li>
+              <Link href="/buy" className="hover:underline">
+              Rachat de matériel éléctronique
+              </Link>
+            </li>
           </ul>
         </nav>
         <ContactInfo isFooter={true} />
@@ -35,8 +58,13 @@ const Footer = () => {
           <ul className="flex flex-col items-start justify-start gap-1 text-left">
             <li className="font-bold">Informations</li>
             <li>Mentions légales</li>
-            <li>Conditions générales de vente</li>
+            <li>
+              <Link href="/cgv" className="hover:underline">
+              Conditions générales de vente
+              </Link>
+              </li>
             <li>Politique de confidentialité</li>
+            <li>Politique de retour</li>
           </ul>
         </nav>
       </section>
