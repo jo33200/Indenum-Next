@@ -1,10 +1,10 @@
 "use client";
+import FakeScrollBar from "@/components/features/FakeScrollBar";
 import Image from "next/image";
 import PropTypes from "prop-types";
 import { useEffect, useRef } from "react";
 import { FaTimes } from "react-icons/fa";
 import { HiChevronDoubleLeft } from "react-icons/hi";
-import FakeScrollBar from "@/components/features/FakeScrollBar";
 
 const ModalRate = ({ rate, image, title, onClose }) => {
   if (!rate) return null;
@@ -131,7 +131,12 @@ const ModalRate = ({ rate, image, title, onClose }) => {
                 Moyens de paiement sur place :
               </h4>
               <div className="flex w-full items-center justify-between">
-                <Image src="/img/visa.svg" alt="Visa" width={48} height={48} />
+                <Image 
+                  src="/img/visa.webp" 
+                  alt="Visa" 
+                  width={48} 
+                  height={48} 
+                />
                 <Image
                   src="/img/mastercard.webp"
                   alt="Mastercard"
