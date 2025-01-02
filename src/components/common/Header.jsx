@@ -9,12 +9,14 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation"; // Import pour détecter la route active
 import { useState } from "react";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const phoneNumber = "07 66 44 13 37";
+  const pathname = usePathname(); // Récupère la route actuelle
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -22,10 +24,8 @@ const Header = () => {
 
   const handlePhoneClick = () => {
     if (window.innerWidth < 768) {
-      // Mobile : passe directement l'appel
       window.location.href = `tel:${phoneNumber.replace(/\s+/g, "")}`;
     } else {
-      // Ordinateur/Tablet : affiche la modale
       setIsModalOpen(true);
     }
   };
@@ -56,54 +56,31 @@ const Header = () => {
         <section className="hidden md:flex">
           <nav aria-label="Navigation principale" className="mt-2 w-full">
             <ul className="flex w-full items-center justify-center text-sm md:w-auto md:gap-5 md:text-base lg:gap-10">
-              <li>
-                <Link
-                  href="/"
-                  className="font-semibold text-gray-500 hover:scale-110"
-                >
-                  Accueil
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/rate"
-                  className="font-semibold text-gray-500 hover:scale-110"
-                >
-                  Tarifs
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/ad"
-                  className="font-semibold text-gray-500 hover:scale-110"
-                >
-                  Annonces
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/buy"
-                  className="font-semibold text-gray-500 hover:scale-110"
-                >
-                  Rachat
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/quote"
-                  className="font-semibold text-gray-500 hover:scale-110"
-                >
-                  Devis
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/contact"
-                  className="font-semibold text-gray-500 hover:scale-110"
-                >
-                  Contact
-                </Link>
-              </li>
+              {[
+                { href: "/", label: "Accueil" },
+                { href: "/rate", label: "Tarifs" },
+                { href: "/ad", label: "Annonces" },
+                { href: "/buy", label: "Rachat" },
+                { href: "/quote", label: "Devis" },
+                { href: "/contact", label: "Contact" },
+              ].map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className={`font-semibold text-gray-500 ${
+                      pathname === link.href ? "text-name-orange" : ""
+                    }`}
+                  >
+                    <span
+                      className={`inline-block transition-transform ${
+                        pathname === link.href ? "scale-125" : "hover:scale-110"
+                      }`}
+                    >
+                      {link.label}
+                    </span>
+                  </Link>
+                </li>
+              ))}
               <li>
                 <a
                   href="mailto:indenum@outlook.com"
@@ -145,36 +122,26 @@ const Header = () => {
             className="flex flex-col items-center bg-white pt-24 md:hidden"
           >
             <ul className="w-full text-center text-3xl">
-              <li className="py-6">
-                <Link href="/" onClick={toggleMenu}>
-                  Accueil
-                </Link>
-              </li>
-              <li className="py-6">
-                <Link href="/rate" onClick={toggleMenu}>
-                  Tarifs
-                </Link>
-              </li>
-              <li className="py-6">
-                <Link href="/ad" onClick={toggleMenu}>
-                  Annonces
-                </Link>
-              </li>
-              <li className="py-6">
-                <Link href="/buy" onClick={toggleMenu}>
-                  Rachat
-                </Link>
-              </li>
-              <li className="py-6">
-                <Link href="/quote" onClick={toggleMenu}>
-                  Devis
-                </Link>
-              </li>
-              <li className="py-6">
-                <Link href="/contact" onClick={toggleMenu}>
-                  Contact
-                </Link>
-              </li>
+              {[
+                { href: "/", label: "Accueil" },
+                { href: "/rate", label: "Tarifs" },
+                { href: "/ad", label: "Annonces" },
+                { href: "/buy", label: "Rachat" },
+                { href: "/quote", label: "Devis" },
+                { href: "/contact", label: "Contact" },
+              ].map((link) => (
+                <li className="py-6" key={link.href}>
+                  <Link
+                    href={link.href}
+                    onClick={toggleMenu}
+                    className={`${
+                      pathname === link.href ? "text-name-orange" : ""
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
               <li className="py-6">
                 <a
                   href="mailto:indenum@outlook.com"
