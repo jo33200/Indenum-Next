@@ -9,7 +9,7 @@ const Buy = () => {
       <h1 className="sr-only">Rachat de votre matériel</h1>
 
       <section
-        className="flex flex-col items-center gap-4 text-gray-700"
+        className="flex flex-col items-center gap-4 text-gray-700 mx-5"
         role="region"
         aria-labelledby="buy-info-title"
       >
@@ -17,22 +17,22 @@ const Buy = () => {
           Informations sur l'achat de matériel
         </h2>
         <p>
-          Chez <strong>INDENUM</strong>, nous vous proposons de racheter votre
+          Chez <strong>INDENUM</strong>, nous vous proposons de <strong>racheter</strong> votre
           matériel électronique, qu'il s'agisse de consoles de jeux, de
-          téléphones, de tablettes, ou d'accessoires. Nous vous offrons un prix
-          juste pour votre matériel, en fonction de son état et de sa valeur
-          marchande.
+          téléphones, de tablettes, ou d'accessoires. Nous vous offrons <strong>un prix
+          juste</strong> pour votre matériel, en fonction de <strong>son état et de sa valeur
+          marchande</strong>.
         </p>
         <p>
-          Le rachat de matériel est une solution simple et rapide pour vous
+          Le rachat de matériel est <strong>une solution simple et rapide</strong> pour vous
           débarrasser de vos appareils électroniques encombrants ou obsolètes.
           En <strong>revendant votre matériel</strong>, vous pouvez ainsi
-          récupérer de l'argent pour financer l'achat de nouveaux appareils ou
+          <strong> récupérer de l'argent</strong> pour financer l'achat de nouveaux appareils ou
           simplement pour vous faire plaisir.
         </p>
         <p>
-          N'hésitez pas à remplir le Formulaire ci dessous ou vous pouvez nous
-          contacter directement pour obtenir une estimation de rachat
+          N'hésitez pas à <strong>remplir le Formulaire</strong> ci dessous ou vous pouvez nous
+          contacter directement pour obtenir une <strong>estimation de rachat</strong>.
         </p>
       </section>
 
