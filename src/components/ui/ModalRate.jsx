@@ -7,34 +7,31 @@ import { FaTimes } from "react-icons/fa";
 import { HiChevronDoubleLeft } from "react-icons/hi";
 
 const ModalRate = ({ rate, image, title, onClose }) => {
-  if (!rate) return null;
-
-  const modalRef = useRef();
-  const closeButtonRef = useRef();
-
-  const isDesktop = typeof window !== "undefined" && window.innerWidth >= 1024;
+  // Références et initialisation
+  const modalRef = useRef(null);
+  const closeButtonRef = useRef(null);
 
   // Gestion du scroll sur le body
   useEffect(() => {
-    document.body.classList.add("no-scroll"); // Empêche le scroll
+    document.body.classList.add("no-scroll");
 
     return () => {
-      document.body.classList.remove("no-scroll"); // Rétablit le scroll
+      document.body.classList.remove("no-scroll");
     };
   }, []);
 
   // Gestion de la touche Escape et du focus piégé
   useEffect(() => {
-    const focusableElements = modalRef.current?.querySelectorAll(
-      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
-    );
-    const firstElement = focusableElements?.[0];
-    const lastElement = focusableElements?.[focusableElements.length - 1];
-
     const handleKeyDown = (e) => {
       if (e.key === "Escape") {
         onClose();
       }
+
+      const focusableElements = modalRef.current?.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      const firstElement = focusableElements?.[0];
+      const lastElement = focusableElements?.[focusableElements.length - 1];
 
       if (e.key === "Tab" && focusableElements) {
         if (e.shiftKey && document.activeElement === firstElement) {
@@ -47,15 +44,14 @@ const ModalRate = ({ rate, image, title, onClose }) => {
       }
     };
 
-    if (modalRef.current) {
-      closeButtonRef.current.focus();
-      document.addEventListener("keydown", handleKeyDown);
-    }
+    document.addEventListener("keydown", handleKeyDown);
 
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
   }, [onClose]);
+
+  if (!rate) return null;
 
   return (
     <div
@@ -65,11 +61,11 @@ const ModalRate = ({ rate, image, title, onClose }) => {
       aria-describedby="toutes les informations qui concernent la réparation ainsi que les moyens de paiement acceptés"
       aria-modal="true"
       ref={modalRef}
-      onClick={onClose} // Ferme la modal si clic à l'extérieur
+      onClick={onClose}
     >
       <div
         className="gap-auto max-h-screen w-screen max-w-4xl overflow-hidden md:relative md:mx-6 md:mt-0 md:flex md:h-full md:max-h-[700px] md:justify-center md:p-7"
-        onClick={(e) => e.stopPropagation()} // Empêche la fermeture au clic à l'intérieur
+        onClick={(e) => e.stopPropagation()}
       >
         {/* Bouton de fermeture */}
         <div className="absolute right-4 top-4 z-50 hidden rounded-full border-4 border-white p-1 text-center hover:bg-red-600 hover:text-black md:right-0 md:top-0 md:flex">
