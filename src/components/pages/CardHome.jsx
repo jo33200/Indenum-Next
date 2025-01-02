@@ -29,7 +29,7 @@ const CardHome = () => {
       title: "Ne jetez pas, Vendez",
       image: getSupabaseImageUrl("rachat.webp"),
       subtitle: "proposer votre article",
-      link: "/rate",
+      link: "/buy",
     },
     {
       title: "Besoin d'un devis rapide",
