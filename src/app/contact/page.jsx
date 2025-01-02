@@ -1,6 +1,7 @@
 import ContactInfo from "@/components/features/ContactInfo";
 import ContactForm from "@/components/pages/ContactForm";
 import { pageMetadata } from "@/utils/metadata";
+import ContactMap from "@/components/features/ContactMap"
 
 export const metadata = pageMetadata.contact;
 
@@ -10,11 +11,13 @@ const Contact = () => {
       {/* Titre principal invisible pour l'accessibilité */}
       <h1 className="sr-only">Contactez-nous - Indenum</h1>
 
-      <section className="mt-5 w-full" aria-labelledby="contact-info-title">
+      <section className="mt-5 w-full flex flex-col items-center" aria-labelledby="contact-info-title">
         <h2 id="contact-info-title" className="sr-only">
           Informations de contact
         </h2>
         <ContactInfo />
+        <ContactMap />
+
       </section>
       <section className="mt-5 w-full" aria-labelledby="contact-form-title">
         <h2 id="contact-form-title" className="sr-only">

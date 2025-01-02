@@ -2,14 +2,8 @@
 
 import PropTypes from "prop-types";
 import { usePathname } from "next/navigation";
-import ContactMap from "@/components/features/ContactMap";
 
 const ContactInfo = ({ isFooter = false }) => {
-  const pathname = usePathname();
-
-  // Vérifier si nous sommes sur la page contact
-  const isContactPage = pathname === "/contact";
-
   return (
     <div
       className={
@@ -35,17 +29,6 @@ const ContactInfo = ({ isFooter = false }) => {
           <li>indenum@outlook.com</li>
         </ul>
       </nav>
-
-      {/* Afficher la carte uniquement si ce n'est pas le footer dans la page contact */}
-      {(!isFooter || !isContactPage) && (
-        <div
-          role="region"
-          aria-label="Carte interactive indiquant l'emplacement de l'entreprise"
-          className={`${isFooter ? "" : "flex justify-center"}`}
-        >
-          <ContactMap className="md:w-100% max-w-40" />
-        </div>
-      )}
     </div>
   );
 };
@@ -55,3 +38,4 @@ ContactInfo.propTypes = {
 };
 
 export default ContactInfo;
+

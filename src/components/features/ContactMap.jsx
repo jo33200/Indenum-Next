@@ -66,7 +66,7 @@ const ContactMap = () => {
       key={JSON.stringify(position)} // Clé unique basée sur la position
       center={position}
       zoom={15}
-      style={{ height: "200px", width: "100%" }}
+      style={{ height: "200px", width: "200px" }}
       scrollWheelZoom={false}
     >
       <TileLayer

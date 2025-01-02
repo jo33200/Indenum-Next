@@ -1,6 +1,7 @@
 import ContactInfo from "@/components/features/ContactInfo";
 import Image from "next/image";
 import Link from "next/link";
+import ContactMap from "@/components/features/ContactMap";
 
 const Footer = () => {
   return (
@@ -50,7 +51,6 @@ const Footer = () => {
             </li>
           </ul>
         </nav>
-        <ContactInfo isFooter={true} />
         <nav
           aria-label="Navigation de pied de page"
           className="h-auto w-[230px]"
@@ -79,6 +79,8 @@ const Footer = () => {
             </li>
           </ul>
         </nav>
+        <ContactInfo isFooter={true} />
+        <ContactMap className="h-auto w-[230px]"/>
       </section>
     </footer>
   );
