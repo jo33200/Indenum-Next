@@ -130,7 +130,7 @@ const Header = () => {
                 { href: "/quote", label: "Devis" },
                 { href: "/contact", label: "Contact" },
               ].map((link) => (
-                <li className="py-6" key={link.href}>
+                <li className="py-5" key={link.href}>
                   <Link
                     href={link.href}
                     onClick={toggleMenu}
@@ -142,7 +142,7 @@ const Header = () => {
                   </Link>
                 </li>
               ))}
-              <li className="py-6">
+              <li className="py-5">
                 <a
                   href="mailto:indenum@outlook.com"
                   className="text-gray-500 hover:cursor-pointer"
@@ -152,7 +152,7 @@ const Header = () => {
                   <FontAwesomeIcon icon={faEnvelope} className="" />
                 </a>
               </li>
-              <li className="py-6">
+              <li className="py-5">
                 <button
                   onClick={handlePhoneClick}
                   className="text-gray-500 focus:outline-none"
