@@ -161,6 +161,11 @@ const Header = () => {
                 </Link>
               </li>
               <li className="py-6">
+                <Link href="/buy" onClick={toggleMenu}>
+                  Rachat
+                </Link>
+              </li>
+              <li className="py-6">
                 <Link href="/quote" onClick={toggleMenu}>
                   Devis
                 </Link>
