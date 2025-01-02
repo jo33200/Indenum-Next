@@ -25,27 +25,27 @@ const Footer = () => {
             <li className="font-bold">Services</li>
             <li>
               <Link href="/rate" className="hover:underline">
-              Réparation de téléphones toutes marques
+                Réparation de téléphones toutes marques
               </Link>
             </li>
             <li>
               <Link href="/rate" className="hover:underline">
-              Réparation de tablettes toutes marques
+                Réparation de tablettes toutes marques
               </Link>
             </li>
             <li>
               <Link href="/rate" className="hover:underline">
-              Réparation de consoles de jeux
+                Réparation de consoles de jeux
               </Link>
             </li>
             <li>
               <Link href="/ad" className="hover:underline">
-              Vente de matériel éléctronique reconditionné
+                Vente de matériel éléctronique reconditionné
               </Link>
             </li>
             <li>
               <Link href="/buy" className="hover:underline">
-              Rachat de matériel éléctronique
+                Rachat de matériel éléctronique
               </Link>
             </li>
           </ul>
@@ -60,9 +60,9 @@ const Footer = () => {
             <li>Mentions légales</li>
             <li>
               <Link href="/cgv" className="hover:underline">
-              Conditions générales de vente
+                Conditions générales de vente
               </Link>
-              </li>
+            </li>
             <li>Politique de confidentialité</li>
             <li>Politique de retour</li>
           </ul>

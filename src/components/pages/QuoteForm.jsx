@@ -68,7 +68,10 @@ const RequestQuote = () => {
       </p>
       <form className="w-full max-w-lg rounded-lg bg-white p-8 shadow-md">
         <div className="mb-4">
-          <label className="mb-2 block font-semibold text-gray-700" htmlFor="civility">
+          <label
+            className="mb-2 block font-semibold text-gray-700"
+            htmlFor="civility"
+          >
             Civilité
           </label>
           <select
@@ -89,7 +92,10 @@ const RequestQuote = () => {
 
         {/* Nom */}
         <div className="mb-4">
-          <label className="mb-2 block font-semibold text-gray-700" htmlFor="name">
+          <label
+            className="mb-2 block font-semibold text-gray-700"
+            htmlFor="name"
+          >
             Nom
           </label>
           <input
@@ -127,7 +133,10 @@ const RequestQuote = () => {
 
         {/* Email */}
         <div className="mb-4">
-          <label className="mb-2 block font-semibold text-gray-700" htmlFor="email">
+          <label
+            className="mb-2 block font-semibold text-gray-700"
+            htmlFor="email"
+          >
             Email
           </label>
           <input
@@ -145,7 +154,10 @@ const RequestQuote = () => {
 
         {/* Téléphone */}
         <div className="mb-4">
-          <label className="mb-2 block font-semibold text-gray-700" htmlFor="phone">
+          <label
+            className="mb-2 block font-semibold text-gray-700"
+            htmlFor="phone"
+          >
             Numéro de Téléphone
           </label>
           <input
@@ -163,7 +175,10 @@ const RequestQuote = () => {
 
         {/* Catégorie de Service */}
         <div className="mb-4">
-          <label className="mb-2 block font-semibold text-gray-700" htmlFor="deviceType">
+          <label
+            className="mb-2 block font-semibold text-gray-700"
+            htmlFor="deviceType"
+          >
             Catégorie de Service
           </label>
           <select
@@ -233,7 +248,10 @@ const RequestQuote = () => {
 
         {/* Description du Problème */}
         <div className="mb-4">
-          <label className="mb-2 block font-semibold text-gray-700" htmlFor="description">
+          <label
+            className="mb-2 block font-semibold text-gray-700"
+            htmlFor="description"
+          >
             Description du Problème
           </label>
           <textarea

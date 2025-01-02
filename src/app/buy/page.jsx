@@ -5,11 +5,11 @@ export const metadata = pageMetadata.Buy;
 
 const Buy = () => {
   return (
-    <div className="mb-8 mt-24 md:mt-8 xl:my-32 max-w-[850px] flex flex-col items-center justify-center gap-8">
+    <div className="mb-8 mt-24 flex max-w-[850px] flex-col items-center justify-center gap-8 md:mt-8 xl:my-32">
       <h1 className="sr-only">Rachat de votre matériel</h1>
 
       <section
-        className="text-gray-700 flex flex-col items-center gap-4"
+        className="flex flex-col items-center gap-4 text-gray-700"
         role="region"
         aria-labelledby="buy-info-title"
       >
@@ -29,9 +29,10 @@ const Buy = () => {
           En <strong>revendant votre matériel</strong>, vous pouvez ainsi
           récupérer de l'argent pour financer l'achat de nouveaux appareils ou
           simplement pour vous faire plaisir.
-        </p> 
-        <p> 
-          N'hésitez pas à remplir le Formulaire ci dessous ou vous pouvez nous contacter directement pour obtenir une estimation de rachat
+        </p>
+        <p>
+          N'hésitez pas à remplir le Formulaire ci dessous ou vous pouvez nous
+          contacter directement pour obtenir une estimation de rachat
         </p>
       </section>
 
@@ -42,10 +43,8 @@ const Buy = () => {
       >
         <BuyForm />
       </section>
-
     </div>
   );
-}
-
+};
 
 export default Buy;

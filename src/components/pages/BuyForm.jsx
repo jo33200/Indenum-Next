@@ -49,7 +49,9 @@ const BuyForm = () => {
       <form className="w-full max-w-lg rounded-lg bg-white p-8 shadow-md">
         {/* Civilité */}
         <div className="mb-4">
-          <label className="mb-2 block font-semibold text-gray-700">Civilité</label>
+          <label className="mb-2 block font-semibold text-gray-700">
+            Civilité
+          </label>
           <select
             name="civility"
             value={formData.civility}
@@ -78,7 +80,9 @@ const BuyForm = () => {
         </div>
 
         <div className="mb-4">
-          <label className="mb-2 block font-semibold text-gray-700">Prénom</label>
+          <label className="mb-2 block font-semibold text-gray-700">
+            Prénom
+          </label>
           <input
             type="text"
             name="firstname"
@@ -92,7 +96,9 @@ const BuyForm = () => {
 
         {/* Catégorie */}
         <div className="mb-4">
-          <label className="mb-2 block font-semibold text-gray-700">Catégorie</label>
+          <label className="mb-2 block font-semibold text-gray-700">
+            Catégorie
+          </label>
           <select
             name="deviceType"
             value={formData.deviceType}
@@ -110,7 +116,9 @@ const BuyForm = () => {
 
         {/* État esthétique */}
         <div className="mb-4">
-          <label className="mb-2 block font-semibold text-gray-700">État Esthétique</label>
+          <label className="mb-2 block font-semibold text-gray-700">
+            État Esthétique
+          </label>
           <div className="flex flex-wrap gap-4">
             {["Très bon état", "Bon état", "État moyen", "Mauvais état"].map(
               (condition) => (
@@ -125,14 +133,16 @@ const BuyForm = () => {
                   />
                   <span>{condition}</span>
                 </label>
-              )
+              ),
             )}
           </div>
         </div>
 
         {/* Fonctionnalité */}
         <div className="mb-4">
-          <label className="mb-2 block font-semibold text-gray-700">Fonctionnalité</label>
+          <label className="mb-2 block font-semibold text-gray-700">
+            Fonctionnalité
+          </label>
           <div className="flex flex-wrap gap-4">
             {[
               "Fonctionne très bien",
@@ -153,7 +163,7 @@ const BuyForm = () => {
             ))}
           </div>
           {["Fonctionne mal", "Ne fonctionne plus"].includes(
-            formData.functionalCondition
+            formData.functionalCondition,
           ) && (
             <div className="mt-2">
               <textarea
@@ -205,7 +215,9 @@ const BuyForm = () => {
 
         {/* Images */}
         <div className="mb-4">
-          <label className="mb-2 pt-4 block font-semibold text-gray-700 w-full text-center">Joindre des images</label>
+          <label className="mb-2 block w-full pt-4 text-center font-semibold text-gray-700">
+            Joindre des images
+          </label>
           <ImageUploader maxImages={3} onImagesChange={handleImagesChange} />
         </div>
 
@@ -216,4 +228,3 @@ const BuyForm = () => {
 };
 
 export default BuyForm;
-

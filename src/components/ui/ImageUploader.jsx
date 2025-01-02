@@ -30,14 +30,14 @@ const ImageUploader = ({ maxImages = 3, onImagesChange }) => {
 
   return (
     <div className="my-8">
-      <div className="flex flex-wrap gap-4 sm:gap-2 justify-between">
+      <div className="flex flex-wrap justify-between gap-4 sm:gap-2">
         {images.map((image, index) => (
           <div
             key={index}
-            className="relative w-24 sm:w-36 h-24 sm:h-36 border border-gray-300 rounded-md bg-gray-200 flex items-center justify-center"
+            className="relative flex h-24 w-24 items-center justify-center rounded-md border border-gray-300 bg-gray-200 sm:h-36 sm:w-36"
           >
             {image ? (
-              <div className="relative w-full h-full">
+              <div className="relative h-full w-full">
                 <img
                   src={URL.createObjectURL(image)}
                   alt={`Uploaded ${index}`}
@@ -45,7 +45,7 @@ const ImageUploader = ({ maxImages = 3, onImagesChange }) => {
                 />
                 <button
                   type="button"
-                  className="absolute top-1 right-1 bg-red-500 text-white text-sm rounded-full p-1"
+                  className="absolute right-1 top-1 rounded-full bg-red-500 p-1 text-sm text-white"
                   onClick={() => handleRemoveImage(index)}
                 >
                   <FiTrash />
@@ -55,7 +55,7 @@ const ImageUploader = ({ maxImages = 3, onImagesChange }) => {
               <>
                 <label
                   htmlFor={`image-upload-${index}`}
-                  className="flex flex-col items-center justify-center w-full h-full text-gray-500 cursor-pointer"
+                  className="flex h-full w-full cursor-pointer flex-col items-center justify-center text-gray-500"
                 >
                   <FiPlus size={24} />
                   <span className="text-sm">Ajouter</span>
@@ -77,11 +77,7 @@ const ImageUploader = ({ maxImages = 3, onImagesChange }) => {
           </div>
         ))}
       </div>
-      {error && (
-        <p className="mt-2 text-sm text-red-500">
-          {error}
-        </p>
-      )}
+      {error && <p className="mt-2 text-sm text-red-500">{error}</p>}
     </div>
   );
 };
