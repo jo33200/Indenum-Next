@@ -1,5 +1,5 @@
 "use client";
-import FakeScrollBar from "@/components/features/FakeScrollBar";
+
 import Image from "next/image";
 import PropTypes from "prop-types";
 import { useEffect, useRef } from "react";
@@ -13,6 +13,15 @@ const ModalRate = ({ rate, image, title, onClose }) => {
   const closeButtonRef = useRef();
 
   const isDesktop = typeof window !== "undefined" && window.innerWidth >= 1024;
+
+  // Gestion du scroll sur le body
+  useEffect(() => {
+    document.body.classList.add("no-scroll"); // Empêche le scroll
+
+    return () => {
+      document.body.classList.remove("no-scroll"); // Rétablit le scroll
+    };
+  }, []);
 
   // Gestion de la touche Escape et du focus piégé
   useEffect(() => {
@@ -131,11 +140,11 @@ const ModalRate = ({ rate, image, title, onClose }) => {
                 Moyens de paiement sur place :
               </h4>
               <div className="flex w-full items-center justify-between">
-                <Image 
-                  src="/img/visa.webp" 
-                  alt="Visa" 
-                  width={48} 
-                  height={48} 
+                <Image
+                  src="/img/visa.webp"
+                  alt="Visa"
+                  width={48}
+                  height={48}
                 />
                 <Image
                   src="/img/mastercard.webp"
@@ -175,7 +184,6 @@ const ModalRate = ({ rate, image, title, onClose }) => {
           </section>
         </div>
       </div>
-      <FakeScrollBar visible={isDesktop} />
     </div>
   );
 };
