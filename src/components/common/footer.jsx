@@ -57,14 +57,26 @@ const Footer = () => {
         >
           <ul className="flex flex-col items-start justify-start gap-1 text-left">
             <li className="font-bold">Informations</li>
-            <li>Mentions légales</li>
+            <li>
+              <Link href="/details" className="hover:underline">
+                Mentions légales
+              </Link>
+            </li>
             <li>
               <Link href="/cgv" className="hover:underline">
                 Conditions générales de vente
               </Link>
             </li>
-            <li>Politique de confidentialité</li>
-            <li>Politique de retour</li>
+            <li>
+              <Link href="/privacy" className="hover:underline">
+                Politique de confidentialité
+              </Link>
+            </li>
+            <li>
+              <Link href="/return" className="hover:underline">
+                Politique de retour
+              </Link>
+            </li>
           </ul>
         </nav>
       </section>
