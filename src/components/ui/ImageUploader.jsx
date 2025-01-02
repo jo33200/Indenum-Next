@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FiPlus, FiTrash, FiCamera } from "react-icons/fi";
+import Image from 'next/image';
 
 const ImageUploader = ({ maxImages = 3, onImagesChange }) => {
   const [images, setImages] = useState(Array(maxImages).fill(null));
@@ -38,9 +39,11 @@ const ImageUploader = ({ maxImages = 3, onImagesChange }) => {
           >
             {image ? (
               <div className="relative h-full w-full">
-                <img
+                <Image
                   src={URL.createObjectURL(image)}
                   alt={`Uploaded ${index}`}
+                  width={150}
+                  height={150}
                   className="h-full w-full rounded-md object-cover"
                 />
                 <button
