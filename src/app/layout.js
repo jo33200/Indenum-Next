@@ -3,6 +3,7 @@ import Header from "@/components/common/Header";
 import Footer from "@/components/common/footer";
 import Script from "next/script";
 import { globalMetadata } from "@/utils/metadata";
+import ScrollToTopButton from "@/components/common/ScrollToTopButton";
 
 export const metadata = {
   ...globalMetadata,
@@ -58,6 +59,7 @@ export default function RootLayout({ children }) {
           <Header />
         </header>
         <main className="flex w-full items-center justify-center">
+          <ScrollToTopButton />
           {children}
         </main>
         <footer>
