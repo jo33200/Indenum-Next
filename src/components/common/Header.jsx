@@ -119,7 +119,7 @@ const Header = () => {
         <section className="h-screen bg-white md:hidden">
           <nav
             aria-label="Navigation principale"
-            className="flex flex-col items-center bg-white pt-24 md:hidden"
+            className="flex flex-col items-center bg-white pt-8 md:hidden"
           >
             <ul className="w-full text-center text-3xl">
               {[
