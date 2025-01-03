@@ -59,7 +59,7 @@ const CardHome = () => {
       title: "Besoin d'un prêt ?",
       image: getSupabaseImageUrl("ManetteDePret.webp"),
       subtitle: "En savoir plus",
-      link: "/contact",
+      link: "#loan",
     },
   ];
 
