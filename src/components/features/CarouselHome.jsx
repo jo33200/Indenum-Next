@@ -64,7 +64,7 @@ const Carousel = () => {
             aria-hidden={index !== currentIndex}
           >
              {slogan.before}{" "}
-      <strong className="text-orange-600 font-bold">{slogan.strong}</strong>{" "}
+      <strong className="text-name-orange font-bold">{slogan.strong}</strong>{" "}
       {slogan.after}
     </p>
         ))}
