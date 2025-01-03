@@ -231,10 +231,9 @@ const HomePage = () => {
               appareil peut être contraignante.
             </p>
             <p>
-              C’est pourquoi,{" "}
-              <strong>sous réserve de disponibilité</strong>, nous mettons à
-              votre disposition un article similaire en prêt pendant la durée de
-              la réparation.
+              C’est pourquoi, <strong>sous réserve de disponibilité</strong>,
+              nous mettons à votre disposition un article similaire en prêt
+              pendant la durée de la réparation.
               <br /> Cette <strong>solution</strong> vise à vous offrir une{" "}
               <strong>continuité d’usage</strong> et à rendre cette période
               aussi <strong>simple et pratique</strong> que possible, tout en
@@ -243,8 +242,8 @@ const HomePage = () => {
             </p>
 
             <p>
-              Pour connaitre les disponibilitées, <strong>n'hésitez pas à nous
-              contacter</strong>!
+              Pour connaitre les disponibilitées,{" "}
+              <strong>n'hésitez pas à nous contacter</strong>!
             </p>
           </div>
         </article>
@@ -258,7 +257,7 @@ const HomePage = () => {
         <h2 id="engagements-title" className="text-xl font-bold">
           Nos engagements
         </h2>
-        <article className="flex max-w-[850px] flex-col items-center gap-6 px-4 text-lg text-center">
+        <article className="flex max-w-[850px] flex-col items-center gap-6 px-4 text-center text-lg">
           <p>
             En tant que <strong>professionnels</strong> dans la réparation de
             matériel électronique, nous nous engageons à vous fournir un{" "}
