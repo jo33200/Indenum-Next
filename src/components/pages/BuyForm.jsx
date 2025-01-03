@@ -114,6 +114,37 @@ const BuyForm = () => {
           </select>
         </div>
 
+        {/* Marque et Modèle */}
+        {formData.deviceType && (
+          <>
+            <div className="mb-4">
+              <label className="mb-2 block font-semibold text-gray-700">Marque</label>
+              <input
+                type="text"
+                name="brand"
+                value={formData.brand}
+                onChange={handleInputChange}
+                className="w-full rounded-md border border-gray-300 p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Entrez la marque"
+                required
+              />
+            </div>
+
+            <div className="mb-4">
+              <label className="mb-2 block font-semibold text-gray-700">Modèle</label>
+              <input
+                type="text"
+                name="model"
+                value={formData.model}
+                onChange={handleInputChange}
+                className="w-full rounded-md border border-gray-300 p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Entrez le modèle"
+                required
+              />
+            </div>
+          </>
+        )}
+
         {/* État esthétique */}
         <div className="mb-4">
           <label className="mb-2 block font-semibold text-gray-700">
@@ -181,7 +212,7 @@ const BuyForm = () => {
         {/* Intervention technique */}
         <div className="mb-4">
           <label className="mb-2 block font-semibold text-gray-700">
-            Intervention Technique
+            Intervention technique déjà réalisée?
           </label>
           <div className="flex gap-4">
             {["oui", "non"].map((choice) => (
