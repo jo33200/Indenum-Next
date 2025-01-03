@@ -53,7 +53,7 @@ const HomePage = () => {
         className="flex w-full flex-col items-center gap-10 bg-gray-100 px-2 py-20"
         aria-labelledby="atelier-title"
       >
-        <h2 id="atelier-title" className="text-xl font-bold">
+        <h2 id="atelier-title" className="text-2xl font-bold text-name-orange">
           Notre Atelier
         </h2>
         <article
@@ -114,9 +114,9 @@ const HomePage = () => {
       >
         <h2
           id="proximite-title"
-          className="text-center text-xl font-bold sm:text-left"
+          className="text-center text-2xl text-name-orange font-bold sm:text-left"
         >
-          Service de proximité : Prise en charge et livraison à domicile
+          Prise en charge et livraison à domicile
         </h2>
         <article
           className="flex max-w-[850px] flex-col items-center gap-10 text-left sm:flex-row"
@@ -181,7 +181,7 @@ const HomePage = () => {
         className="flex w-full flex-col items-center gap-10 py-20"
         aria-labelledby="ads-title"
       >
-        <h2 id="ads-title" className="text-xl font-bold">
+        <h2 id="ads-title" className="text-2xl font-bold text-name-orange">
           Nos dernières annonces
         </h2>
         <article className="w-full max-w-[850px] gap-10 px-2 text-center text-lg">
@@ -209,7 +209,7 @@ const HomePage = () => {
         className="flex w-full flex-col items-center gap-10 bg-gray-100 px-2 py-20"
         aria-labelledby="loan-title"
       >
-        <h2 id="atelier-title" className="text-xl font-bold">
+        <h2 id="atelier-title" className="text-2xl font-bold text-name-orange">
           Un prêt le temps de la réparation?
         </h2>
         <article
@@ -254,10 +254,10 @@ const HomePage = () => {
         className="flex w-full flex-col items-center gap-10 py-20"
         aria-labelledby="engagements-title"
       >
-        <h2 id="engagements-title" className="text-xl font-bold">
+        <h2 id="engagements-title" className="text-2xl font-bold text-name-orange">
           Nos engagements
         </h2>
-        <article className="flex max-w-[850px] flex-col items-center gap-6 px-4 text-center text-lg">
+        <article className="flex max-w-[850px] flex-col items-center gap-6 px-4 text-left sm:text-center text-lg">
           <p>
             En tant que <strong>professionnels</strong> dans la réparation de
             matériel électronique, nous nous engageons à vous fournir un{" "}
@@ -267,7 +267,7 @@ const HomePage = () => {
             détachées de qualité pour{" "}
             <strong>garantir des réparations durables</strong>.
           </p>
-          <div className="my-4 h-[1px] w-4/5 bg-gradient-to-r from-orange-100 via-orange-600 to-orange-100"></div>
+          <div className="my-4 h-[1px] w-4/5 bg-gradient-to-r from-orange-100 via-name-orange to-orange-100"></div>
           <p>
             Nous garantissons également des{" "}
             <strong>tarifs compétitifs et transparents</strong>, sans frais
@@ -283,7 +283,7 @@ const HomePage = () => {
               devis personnalisé
             </Link>
           </p>
-          <div className="my-4 h-[1px] w-4/5 bg-gradient-to-r from-orange-100 via-orange-600 to-orange-100"></div>
+          <div className="my-4 h-[1px] w-4/5 bg-gradient-to-r from-orange-100 via-name-orange to-orange-100"></div>
           <p>
             Enfin, nous mettons un point d’honneur à vous offrir un{" "}
             <strong>service de proximité</strong> : notre équipe{" "}
