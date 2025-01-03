@@ -1,13 +1,13 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { supabase } from "@/utils/supabaseClient";
-import CardHome from "@/components/pages/CardHome";
-import Carousel from "@/components/features/CarouselHome";
 import CarouselAd from "@/components/features/CarouselAd";
+import Carousel from "@/components/features/CarouselHome";
+import CardHome from "@/components/pages/CardHome";
 import CityModal from "@/components/ui/ModalCity";
+import { supabase } from "@/utils/supabaseClient";
+import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
 
 const HomePage = () => {
   // Fonction pour générer une URL publique depuis Supabase
@@ -202,44 +202,97 @@ const HomePage = () => {
         </article>
       </section>
 
+      {/* Equipment loan section */}
+
+      <section
+        id="loan"
+        className="flex w-full flex-col items-center gap-10 bg-gray-100 px-2 py-20"
+        aria-labelledby="loan-title"
+      >
+        <h2 id="atelier-title" className="text-xl font-bold">
+          Un prêt le temps de la réparation?
+        </h2>
+        <article
+          className="flex max-w-[850px] flex-col items-center gap-10 text-left sm:flex-row"
+          aria-labelledby="loan-description"
+        >
+          <Image
+            src={getSupabaseImageUrl("ManetteDePret.webp")}
+            alt="image d'une manette de prêt"
+            width={400}
+            height={300}
+            className="w-full rounded-3xl sm:w-1/2"
+            style={{ objectFit: "cover" }}
+            priority={false}
+          />
+          <div className="flex flex-col gap-10 px-2 text-lg sm:w-1/2">
+            <p id="loan-description">
+              Chez Indenum, nous comprenons à quel point l'absence de votre
+              appareil peut être contraignante.
+            </p>
+            <p>
+              C’est pourquoi,{" "}
+              <strong>sous réserve de disponibilité</strong>, nous mettons à
+              votre disposition un article similaire en prêt pendant la durée de
+              la réparation.
+              <br /> Cette <strong>solution</strong> vise à vous offrir une{" "}
+              <strong>continuité d’usage</strong> et à rendre cette période
+              aussi <strong>simple et pratique</strong> que possible, tout en
+              témoignant de notre engagement à vous offrir un{" "}
+              <strong>service de qualité</strong>.
+            </p>
+
+            <p>
+              Pour connaitre les disponibilitées, <strong>n'hésitez pas à nous
+              contacter</strong>!
+            </p>
+          </div>
+        </article>
+      </section>
+
       {/* Engagements Section */}
       <section
-        className="flex w-full flex-col items-center gap-10 bg-gray-100 py-20"
+        className="flex w-full flex-col items-center gap-10 py-20"
         aria-labelledby="engagements-title"
       >
         <h2 id="engagements-title" className="text-xl font-bold">
           Nos engagements
         </h2>
-        <article className="flex max-w-[850px] flex-col items-center gap-6 px-4 text-left sm:flex-row">
+        <article className="flex max-w-[850px] flex-col items-center gap-6 px-4 text-lg text-center">
           <p>
-            En tant que <strong>professionnels</strong> dans la réparation de matériel électronique, nous nous engageons à
-            vous fournir un <strong>service de qualité, rapide et transparent</strong>. Nos
+            En tant que <strong>professionnels</strong> dans la réparation de
+            matériel électronique, nous nous engageons à vous fournir un{" "}
+            <strong>service de qualité, rapide et transparent</strong>. Nos
             techniciens sont formés pour intervenir sur tous les modèles de
             smartphones, tablettes et consoles de jeux, et utilisent des pièces
-            détachées de qualité pour <strong>garantir des réparations durables</strong>.
+            détachées de qualité pour{" "}
+            <strong>garantir des réparations durables</strong>.
           </p>
-          <div className="my-4 h-[0.7px] w-3/4 bg-gradient-to-r from-gray-300 via-gray-600 to-gray-300 sm:h-[220px] sm:w-1 sm:bg-gradient-to-b sm:from-gray-300 sm:via-gray-600 sm:to-gray-300"></div>
+          <div className="my-4 h-[1px] w-4/5 bg-gradient-to-r from-orange-100 via-orange-600 to-orange-100"></div>
           <p>
-            Nous garantissons également des <strong>tarifs compétitifs et
-            transparents</strong>, sans frais cachés. Vous pouvez consulter nos tarifs en
-            ligne ou obtenir en quelques clics un<br />
-            <Link 
-            href="/quote" 
-            alt="obtenir un devis" 
-            aria-label="demander un devis personnalisé"
-            className="text-blue-500 underline"
+            Nous garantissons également des{" "}
+            <strong>tarifs compétitifs et transparents</strong>, sans frais
+            cachés. Vous pouvez consulter nos tarifs en ligne ou obtenir en
+            quelques clics un
+            <br />
+            <Link
+              href="/quote"
+              alt="obtenir un devis"
+              aria-label="demander un devis personnalisé"
+              className="text-blue-500 underline"
             >
               devis personnalisé
-            </Link> 
-            
+            </Link>
           </p>
-          <div className="my-4 h-[0.7px] w-3/4 bg-gradient-to-r from-gray-300 via-gray-600 to-gray-300 sm:h-[220px] sm:w-1 sm:bg-gradient-to-b sm:from-gray-300 sm:via-gray-600 sm:to-gray-300"></div>
+          <div className="my-4 h-[1px] w-4/5 bg-gradient-to-r from-orange-100 via-orange-600 to-orange-100"></div>
           <p>
-            Enfin, nous mettons un point d’honneur à vous offrir un <strong>service de
-            proximité</strong> : notre équipe <strong>se déplace</strong> directement à 
-            <strong>votre domicile</strong> pour récupérer et livrer votre appareil, afin de vous simplifier la
-            vie. Nous couvrons un large périmètre pour vous offrir un 
-            service <strong>simple et rapide</strong>.
+            Enfin, nous mettons un point d’honneur à vous offrir un{" "}
+            <strong>service de proximité</strong> : notre équipe{" "}
+            <strong>se déplace</strong> directement à
+            <strong>votre domicile</strong> pour récupérer et livrer votre
+            appareil, afin de vous simplifier la vie. Nous couvrons un large
+            périmètre pour vous offrir un service{" "}
+            <strong>simple et rapide</strong>.
           </p>
         </article>
       </section>
