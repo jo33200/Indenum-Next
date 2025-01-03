@@ -73,7 +73,7 @@ const HomePage = () => {
             className="px-2 text-left text-lg sm:w-1/2"
             id="atelier-description"
           >
-            Bienvenue sur votre <strong>espace de confiance</strong> pour la
+            Bienvenue dans votre <strong>atelier de confiance</strong> pour la
             réparation de <strong>smartphones</strong>,{" "}
             <strong>tablettes</strong>, <strong>consoles de jeux</strong> et{" "}
             <strong>accessoires</strong> !
@@ -153,7 +153,7 @@ const HomePage = () => {
             alt="Coursier à vélo livrant des appareils réparés"
             width={400}
             height={300}
-            className="w-full rounded-t-full sm:w-1/2"
+            className="w-full rounded-3xl sm:w-1/2"
             style={{ objectFit: "cover" }}
           />
         </article>
@@ -212,25 +212,34 @@ const HomePage = () => {
         </h2>
         <article className="flex max-w-[850px] flex-col items-center gap-6 px-4 text-left sm:flex-row">
           <p>
-            En tant que professionnels de la réparation, nous nous engageons à
-            vous fournir un service de qualité, rapide et transparent. Nos
+            En tant que <strong>professionnels</strong> dans la réparation de matériel électronique, nous nous engageons à
+            vous fournir un <strong>service de qualité, rapide et transparent</strong>. Nos
             techniciens sont formés pour intervenir sur tous les modèles de
             smartphones, tablettes et consoles de jeux, et utilisent des pièces
-            détachées de qualité pour garantir des réparations durables.
+            détachées de qualité pour <strong>garantir des réparations durables</strong>.
           </p>
           <div className="my-4 h-[0.7px] w-3/4 bg-gradient-to-r from-gray-300 via-gray-600 to-gray-300 sm:h-[220px] sm:w-1 sm:bg-gradient-to-b sm:from-gray-300 sm:via-gray-600 sm:to-gray-300"></div>
           <p>
-            Nous vous garantissons également des tarifs compétitifs et
-            transparents, sans frais cachés. Vous pouvez consulter nos tarifs en
-            ligne et obtenir un devis personnalisé en quelques clics.
+            Nous garantissons également des <strong>tarifs compétitifs et
+            transparents</strong>, sans frais cachés. Vous pouvez consulter nos tarifs en
+            ligne ou obtenir en quelques clics un<br />
+            <Link 
+            href="/quote" 
+            alt="obtenir un devis" 
+            aria-label="demander un devis personnalisé"
+            className="text-blue-500 underline"
+            >
+              devis personnalisé
+            </Link> 
+            
           </p>
           <div className="my-4 h-[0.7px] w-3/4 bg-gradient-to-r from-gray-300 via-gray-600 to-gray-300 sm:h-[220px] sm:w-1 sm:bg-gradient-to-b sm:from-gray-300 sm:via-gray-600 sm:to-gray-300"></div>
           <p>
-            Enfin, nous mettons un point d’honneur à vous offrir un service de
-            proximité : notre équipe se déplace directement à votre domicile
-            pour récupérer et livrer votre appareil, afin de vous simplifier la
-            vie. Nous couvrons un large périmètre pour vous offrir un service
-            simple et rapide.
+            Enfin, nous mettons un point d’honneur à vous offrir un <strong>service de
+            proximité</strong> : notre équipe <strong>se déplace</strong> directement à 
+            <strong>votre domicile</strong> pour récupérer et livrer votre appareil, afin de vous simplifier la
+            vie. Nous couvrons un large périmètre pour vous offrir un 
+            service <strong>simple et rapide</strong>.
           </p>
         </article>
       </section>
