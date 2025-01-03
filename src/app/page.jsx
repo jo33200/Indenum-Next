@@ -53,7 +53,7 @@ const HomePage = () => {
         className="flex w-full flex-col items-center gap-10 bg-gray-100 px-2 py-20"
         aria-labelledby="atelier-title"
       >
-        <h2 id="atelier-title" className="text-2xl font-bold text-name-orange">
+        <h2 id="atelier-title" className="text-2xl font-bold">
           Notre Atelier
         </h2>
         <article
@@ -114,7 +114,7 @@ const HomePage = () => {
       >
         <h2
           id="proximite-title"
-          className="text-center text-2xl text-name-orange font-bold sm:text-left"
+          className="text-center text-2xl font-bold sm:text-left"
         >
           Prise en charge et livraison à domicile
         </h2>
@@ -181,7 +181,7 @@ const HomePage = () => {
         className="flex w-full flex-col items-center gap-10 py-20"
         aria-labelledby="ads-title"
       >
-        <h2 id="ads-title" className="text-2xl font-bold text-name-orange">
+        <h2 id="ads-title" className="text-2xl font-bold">
           Nos dernières annonces
         </h2>
         <article className="w-full max-w-[850px] gap-10 px-2 text-center text-lg">
@@ -209,7 +209,7 @@ const HomePage = () => {
         className="flex w-full flex-col items-center gap-10 bg-gray-100 px-2 py-20"
         aria-labelledby="loan-title"
       >
-        <h2 id="atelier-title" className="text-2xl font-bold text-name-orange">
+        <h2 id="atelier-title" className="text-2xl font-bold">
           Un prêt le temps de la réparation?
         </h2>
         <article
@@ -254,7 +254,7 @@ const HomePage = () => {
         className="flex w-full flex-col items-center gap-10 py-20"
         aria-labelledby="engagements-title"
       >
-        <h2 id="engagements-title" className="text-2xl font-bold text-name-orange">
+        <h2 id="engagements-title" className="text-2xl font-bold">
           Nos engagements
         </h2>
         <article className="flex max-w-[850px] flex-col items-center gap-6 px-4 text-left sm:text-center text-lg">
