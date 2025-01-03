@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import CardAd from "./CardAd";
-import Link from "next/link";
 import { supabase } from "@/utils/supabaseClient";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import CardAd from "./CardAd";
 
 const ListAd = () => {
   const [ads, setAds] = useState([]);
@@ -283,7 +283,9 @@ const ListAd = () => {
             annonces.
           </p>
           <Link
-            href="/quote"
+            href="https://www.facebook.com/p/Ind%C3%A9num-100064299902024/?_rdr"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-block text-center text-xs font-semibold text-blue-500 transition-colors duration-200 hover:cursor-pointer hover:text-blue-700 sm:text-sm md:mt-1 md:w-full md:text-base"
           >
             Facebook
