@@ -27,7 +27,7 @@ const Carousel = () => {
 
   // Défilement automatique
   useEffect(() => {
-    const interval = setInterval(nextSlide, 3000); // Change le slogan toutes les 3 secondes
+    const interval = setInterval(nextSlide, 6000); // Change le slogan toutes les 6 secondes
     return () => clearInterval(interval); // Nettoie l'intervalle lors du démontage
   }, []);
 
