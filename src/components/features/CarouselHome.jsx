@@ -5,13 +5,13 @@ import { useState, useEffect, Suspense } from "react";
 const slogans = [
   { text: "Nos réparations sont garanties 6 mois", alt: "Slogan 1" },
   {
-    text: "Ne jetez pas vos consoles et vos manettes HS, nous pouvons vous les racheter",
+    text: "Ne jetez pas vos consoles et vos manettes usagées. Revendez les!",
     alt: "Slogan 2",
   },
-  { text: "Reprise possible de vos consoles et manettes HS", alt: "Slogan 3" },
+  { text: "Votre devis gratuit en quelques clics", alt: "Slogan 3" },
   { text: "Nos produits reconditionnés, d'occasion", alt: "Slogan 4" },
   {
-    text: "Possibilité de matériel de prêt pendant le temps de réparation, sous réserve de disponibilité",
+    text: "Possibilité de matériel de prêt pendant le temps de réparation",
     alt: "Slogan 5",
   },
 ];
