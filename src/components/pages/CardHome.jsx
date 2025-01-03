@@ -20,19 +20,19 @@ const CardHome = () => {
       link: "#atelier", // Lien interne
     },
     {
-      title: "Besoin d'une réparation",
+      title: "Faites réparer",
       image: getSupabaseImageUrl("reparation.webp"),
       subtitle: "Voir nos tarifs",
       link: "/rate",
     },
     {
-      title: "Ne jetez pas, Vendez",
+      title: "Ne jetez pas, Vendez !",
       image: getSupabaseImageUrl("rachat.webp"),
       subtitle: "proposer votre article",
       link: "/buy",
     },
     {
-      title: "Besoin d'un devis rapide",
+      title: "Devis personnalisé",
       image: getSupabaseImageUrl("casse.webp"),
       subtitle: "En savoir plus",
       link: "/quote",
@@ -56,8 +56,8 @@ const CardHome = () => {
       link: "/spareParts",
     },
     {
-      title: "Nous contacter",
-      image: getSupabaseImageUrl("contact.webp"),
+      title: "Besoin d'un prêt ?",
+      image: getSupabaseImageUrl("ManetteDePret.webp"),
       subtitle: "En savoir plus",
       link: "/contact",
     },
