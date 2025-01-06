@@ -1,8 +1,8 @@
 "use client";
 
+import ButtonValid from "@/components/common/ButtonValid";
 import emailjs from "@emailjs/browser";
 import { useState } from "react";
-import ButtonValid from "@/components/common/ButtonValid";
 
 const RequestQuote = () => {
   const [contactData, setContactData] = useState({
@@ -15,7 +15,11 @@ const RequestQuote = () => {
     brand: "",
     model: "",
     description: "",
+    previousIntervention: "",
+    technicianDetails: "",
   });
+
+  const [errors, setErrors] = useState({});
 
   const brandsByDeviceType = {
     smartphone: ["Apple", "Samsung", "Huawei", "Google", "Autres"],
@@ -30,13 +34,65 @@ const RequestQuote = () => {
     const { name, value } = e.target;
     setContactData({ ...contactData, [name]: value });
 
-    // Réinitialiser la marque et le modèle si la catégorie de service change
     if (name === "deviceType") {
       setContactData((prev) => ({ ...prev, brand: "", model: "" }));
     }
   };
 
-  const sendContactEmail = () => {
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setContactData((prev) => ({ ...prev, [name]: value }));
+    if (name === "previousIntervention" && value === "oui") {
+      setContactData((prev) => ({ ...prev, technicianDetails: "" }));
+    }
+  };
+
+  const validateForm = () => {
+    const newErrors = {};
+    const requiredFields = [
+      "civility",
+      "name",
+      "firstname",
+      "email",
+      "phone",
+      "deviceType",
+      "description",
+    ];
+
+    requiredFields.forEach((field) => {
+      if (!contactData[field].trim()) {
+        newErrors[field] = "Ce champ est requis.";
+      }
+    });
+
+    if (contactData.deviceType && contactData.deviceType !== "autres") {
+      if (!contactData.brand.trim()) {
+        newErrors.brand = "La marque est requise.";
+      }
+      if (contactData.brand !== "Autres" && !contactData.model.trim()) {
+        newErrors.model = "Le modèle est requis.";
+      }
+    }
+
+    if (
+      contactData.previousIntervention === "oui" &&
+      !contactData.technicianDetails.trim()
+    ) {
+      newErrors.technicianDetails = "Veuillez indiquer par qui";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const sendContactEmail = (e) => {
+    e.preventDefault();
+
+    if (!validateForm()) {
+      alert("Veuillez remplir tous les champs obligatoires.");
+      return;
+    }
+
     const serviceID = "service_85dzjsi";
     const templateID = "template_ysa7hnr";
     const userID = "Q-hXLrRhbwsCWFw1D";
@@ -44,7 +100,7 @@ const RequestQuote = () => {
     emailjs
       .send(serviceID, templateID, contactData, userID)
       .then(() => {
-        alert("Votre message a bien été envoyé !");
+        alert("Votre message a bien été envoyé! Nous vous contacterons rapidement.");
         setContactData({
           civility: "",
           name: "",
@@ -55,7 +111,10 @@ const RequestQuote = () => {
           brand: "",
           model: "",
           description: "",
+          previousIntervention: "",
+          technicianDetails: "",
         });
+        setErrors({});
       })
       .catch((err) => console.error("Erreur d'envoi du message : ", err));
   };
@@ -66,7 +125,11 @@ const RequestQuote = () => {
       <p className="mb-8 text-center text-gray-600">
         Remplissez le formulaire ci-dessous pour obtenir un devis rapide.
       </p>
-      <form className="w-full max-w-lg rounded-lg bg-white p-8 shadow-md">
+      <form
+        className="w-full max-w-lg rounded-lg bg-white p-8 shadow-md"
+        onSubmit={sendContactEmail}
+      >
+        {/* Civilité */}
         <div className="mb-4">
           <label
             className="mb-2 block font-semibold text-gray-700"
@@ -88,6 +151,9 @@ const RequestQuote = () => {
             <option value="Madame">Madame</option>
             <option value="Autres">Autres</option>
           </select>
+          {errors.civility && (
+            <p className="text-sm text-red-500">{errors.civility}</p>
+          )}
         </div>
 
         {/* Nom */}
@@ -109,6 +175,7 @@ const RequestQuote = () => {
             required
             autoComplete="family-name"
           />
+          {errors.name && <p className="text-sm text-red-500">{errors.name}</p>}
         </div>
 
         <div className="mb-4">
@@ -129,6 +196,9 @@ const RequestQuote = () => {
             required
             autoComplete="given-name"
           />
+          {errors.firstname && (
+            <p className="text-sm text-red-500">{errors.firstname}</p>
+          )}
         </div>
 
         {/* Email */}
@@ -150,6 +220,9 @@ const RequestQuote = () => {
             required
             autoComplete="email"
           />
+          {errors.email && (
+            <p className="text-sm text-red-500">{errors.email}</p>
+          )}
         </div>
 
         {/* Téléphone */}
@@ -171,6 +244,9 @@ const RequestQuote = () => {
             required
             autoComplete="tel"
           />
+          {errors.phone && (
+            <p className="text-sm text-red-500">{errors.phone}</p>
+          )}
         </div>
 
         {/* Catégorie de Service */}
@@ -186,8 +262,9 @@ const RequestQuote = () => {
             name="deviceType"
             value={contactData.deviceType}
             onChange={handleChange}
-            className="w-full rounded-md border border-gray-300 p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            required
+            className={`w-full rounded-md border ${
+              errors.deviceType ? "border-red-500" : "border-gray-300"
+            } p-3 focus:outline-none focus:ring-2 focus:ring-blue-500`}
           >
             <option value="">Sélectionnez une catégorie de service</option>
             {Object.keys(brandsByDeviceType).map((type) => (
@@ -197,6 +274,9 @@ const RequestQuote = () => {
             ))}
             <option value="autres">Autres</option>
           </select>
+          {errors.deviceType && (
+            <p className="text-sm text-red-500">{errors.deviceType}</p>
+          )}
         </div>
 
         {/* Marque */}
@@ -210,8 +290,9 @@ const RequestQuote = () => {
               name="brand"
               value={contactData.brand}
               onChange={handleChange}
-              className="w-full rounded-md border border-gray-300 p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required
+              className={`w-full rounded-md border ${
+                errors.brand ? "border-red-500" : "border-gray-300"
+              } p-3 focus:outline-none focus:ring-2 focus:ring-blue-500`}
             >
               <option value="">Sélectionnez une marque</option>
               {brandsByDeviceType[contactData.deviceType].map((brand) => (
@@ -221,6 +302,9 @@ const RequestQuote = () => {
               ))}
               <option value="autres">Autres</option>
             </select>
+            {errors.brand && (
+              <p className="text-sm text-red-500">{errors.brand}</p>
+            )}
           </div>
         )}
 
@@ -238,13 +322,79 @@ const RequestQuote = () => {
                 name="model"
                 value={contactData.model}
                 onChange={handleChange}
-                className="w-full rounded-md border border-gray-300 p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className={`w-full rounded-md border ${
+                  errors.model ? "border-red-500" : "border-gray-300"
+                } p-3 focus:outline-none focus:ring-2 focus:ring-blue-500`}
                 placeholder="Entrez le modèle de votre appareil"
-                required
-                autoComplete="text"
               />
+              {errors.model && (
+                <p className="text-sm text-red-500">{errors.model}</p>
+              )}
             </div>
           )}
+
+        {/* Intervention technique */}
+        <div className="mb-4">
+          <label className="mb-2 block font-semibold text-gray-700">
+            Intervention technique déjà réalisée?
+          </label>
+          <div className="flex gap-4">
+            {["oui", "non"].map((choice) => (
+              <label key={choice} className="flex items-center space-x-2">
+                <input
+                  type="radio"
+                  name="previousIntervention"
+                  value={choice}
+                  checked={contactData.previousIntervention === choice}
+                  onChange={(e) =>
+                    setContactData((prev) => ({
+                      ...prev,
+                      previousIntervention: e.target.value,
+                      technicianDetails:
+                        e.target.value === "non" ? "" : prev.technicianDetails, // Réinitialise si "non"
+                    }))
+                  }
+                  className={`h-4 w-4 text-blue-500 focus:ring-blue-400 ${
+                    errors.previousIntervention ? "border-red-500" : ""
+                  }`}
+                />
+                <span>{choice === "oui" ? "Oui" : "Non"}</span>
+              </label>
+            ))}
+          </div>
+          {errors.previousIntervention && (
+            <p className="mt-1 text-sm text-red-500">
+              {errors.previousIntervention}
+            </p>
+          )}
+
+          {contactData.previousIntervention === "oui" && (
+            <div className="mt-2">
+              <input
+                type="text"
+                name="technicianDetails"
+                value={contactData.technicianDetails}
+                onChange={(e) =>
+                  setContactData((prev) => ({
+                    ...prev,
+                    technicianDetails: e.target.value,
+                  }))
+                }
+                placeholder="Par qui ?"
+                className={`w-full rounded-md border ${
+                  errors.technicianDetails
+                    ? "border-red-500"
+                    : "border-gray-300"
+                } p-3 focus:outline-none focus:ring-2 focus:ring-blue-500`}
+              />
+              {errors.technicianDetails && (
+                <p className="mt-1 text-sm text-red-500">
+                  {errors.technicianDetails}
+                </p>
+              )}
+            </div>
+          )}
+        </div>
 
         {/* Description du Problème */}
         <div className="mb-4">
@@ -264,6 +414,9 @@ const RequestQuote = () => {
             placeholder="décrivez votre problème ici"
             required
           ></textarea>
+          {errors.description && (
+            <p className="text-sm text-red-500">{errors.description}</p>
+          )}
         </div>
 
         <ButtonValid onClick={sendContactEmail} />
