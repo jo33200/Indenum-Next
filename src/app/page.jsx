@@ -150,31 +150,31 @@ const HomePage = () => {
             <p>Contactez nous et prenez rendez-vous dès aujourd’hui.</p>
           </div>
           <div className="relative w-full sm:w-1/2">
-          <Image
-            src={getSupabaseImageUrl("proximite.webp")}
-            alt="Carte avec la zone de déplacement"
-            width={400}
-            height={300}
-            className="w-full rounded-3xl cursor-pointer"
-            style={{ objectFit: "cover" }}
-            onClick={() => setIsImageOpen(true)}
-          />
-          {isImageOpen && (
-            <div
-              className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50"
-              onClick={() => setIsImageOpen(false)}
-            >
-              <Image
-                src={getSupabaseImageUrl("proximite.webp")}
-                alt="Carte avec la zone de déplacement"
-                width={800}
-                height={600}
-                className="rounded-3xl"
-                style={{ objectFit: "cover" }}
-              />
-            </div>
-          )}
-        </div>
+            <Image
+              src={getSupabaseImageUrl("proximite.webp")}
+              alt="Carte avec la zone de déplacement"
+              width={400}
+              height={300}
+              className="w-full cursor-pointer rounded-3xl"
+              style={{ objectFit: "cover" }}
+              onClick={() => setIsImageOpen(true)}
+            />
+            {isImageOpen && (
+              <div
+                className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70"
+                onClick={() => setIsImageOpen(false)}
+              >
+                <Image
+                  src={getSupabaseImageUrl("proximite.webp")}
+                  alt="Carte avec la zone de déplacement"
+                  width={800}
+                  height={600}
+                  className="rounded-3xl"
+                  style={{ objectFit: "cover" }}
+                />
+              </div>
+            )}
+          </div>
         </article>
       </section>
 
@@ -276,7 +276,7 @@ const HomePage = () => {
         <h2 id="engagements-title" className="text-2xl font-bold">
           Nos engagements
         </h2>
-        <article className="flex max-w-[850px] flex-col items-center gap-6 px-4 text-left sm:text-center text-lg">
+        <article className="flex max-w-[850px] flex-col items-center gap-6 px-4 text-left text-lg sm:text-center">
           <p>
             En tant que <strong>professionnels</strong> dans la réparation de
             matériel électronique, nous nous engageons à vous fournir un{" "}

@@ -80,7 +80,7 @@ const Footer = () => {
           </ul>
         </nav>
         <ContactInfo isFooter={true} />
-        <ContactMap className="h-auto w-[230px]"/>
+        <ContactMap className="h-auto w-[230px]" />
       </section>
     </footer>
   );

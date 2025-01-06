@@ -118,7 +118,9 @@ const BuyForm = () => {
         {formData.deviceType && (
           <>
             <div className="mb-4">
-              <label className="mb-2 block font-semibold text-gray-700">Marque</label>
+              <label className="mb-2 block font-semibold text-gray-700">
+                Marque
+              </label>
               <input
                 type="text"
                 name="brand"
@@ -131,7 +133,9 @@ const BuyForm = () => {
             </div>
 
             <div className="mb-4">
-              <label className="mb-2 block font-semibold text-gray-700">Modèle</label>
+              <label className="mb-2 block font-semibold text-gray-700">
+                Modèle
+              </label>
               <input
                 type="text"
                 name="model"

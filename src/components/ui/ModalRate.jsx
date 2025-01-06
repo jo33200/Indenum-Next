@@ -28,7 +28,7 @@ const ModalRate = ({ rate, image, title, onClose }) => {
       }
 
       const focusableElements = modalRef.current?.querySelectorAll(
-        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
       );
       const firstElement = focusableElements?.[0];
       const lastElement = focusableElements?.[focusableElements.length - 1];
@@ -136,12 +136,7 @@ const ModalRate = ({ rate, image, title, onClose }) => {
                 Moyens de paiement sur place :
               </h4>
               <div className="flex w-full items-center justify-between">
-                <Image
-                  src="/img/visa.webp"
-                  alt="Visa"
-                  width={48}
-                  height={48}
-                />
+                <Image src="/img/visa.webp" alt="Visa" width={48} height={48} />
                 <Image
                   src="/img/mastercard.webp"
                   alt="Mastercard"

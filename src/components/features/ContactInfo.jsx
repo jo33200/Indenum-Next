@@ -38,4 +38,3 @@ ContactInfo.propTypes = {
 };
 
 export default ContactInfo;
-

@@ -3,7 +3,12 @@ import { useState, useEffect, Suspense } from "react";
 
 // Liste des slogans
 const slogans = [
-  { before: "Nos réparations sont", strong: "garanties 6 mois", after: "", alt: "Slogan 1" },
+  {
+    before: "Nos réparations sont",
+    strong: "garanties 6 mois",
+    after: "",
+    alt: "Slogan 1",
+  },
   {
     before: "Ne jetez pas vos consoles et vos manettes usagées.",
     strong: "Revendez les",
@@ -29,7 +34,6 @@ const slogans = [
     alt: "Slogan 5",
   },
 ];
-
 
 // Composant Carousel
 const Carousel = () => {
@@ -63,10 +67,12 @@ const Carousel = () => {
             }`}
             aria-hidden={index !== currentIndex}
           >
-             {slogan.before}{" "}
-      <strong className="text-name-orange font-bold">{slogan.strong}</strong>{" "}
-      {slogan.after}
-    </p>
+            {slogan.before}{" "}
+            <strong className="font-bold text-name-orange">
+              {slogan.strong}
+            </strong>{" "}
+            {slogan.after}
+          </p>
         ))}
       </div>
     </Suspense>

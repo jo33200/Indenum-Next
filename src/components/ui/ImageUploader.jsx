@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FiPlus, FiTrash, FiCamera } from "react-icons/fi";
-import Image from 'next/image';
+import Image from "next/image";
 
 const ImageUploader = ({ maxImages = 3, onImagesChange }) => {
   const [images, setImages] = useState(Array(maxImages).fill(null));

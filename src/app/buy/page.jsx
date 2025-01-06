@@ -9,7 +9,7 @@ const Buy = () => {
       <h1 className="sr-only">Rachat de votre matériel</h1>
 
       <section
-        className="flex flex-col items-center gap-4 text-gray-700 mx-5"
+        className="mx-5 flex flex-col items-center gap-4 text-gray-700"
         role="region"
         aria-labelledby="buy-info-title"
       >
@@ -17,22 +17,24 @@ const Buy = () => {
           Informations sur l'achat de matériel
         </h2>
         <p>
-          Chez <strong>INDENUM</strong>, nous vous proposons de <strong>racheter</strong> votre
-          matériel électronique, qu'il s'agisse de consoles de jeux, de
-          téléphones, de tablettes, ou d'accessoires. Nous vous offrons <strong>un prix
-          juste</strong> pour votre matériel, en fonction de <strong>son état et de sa valeur
-          marchande</strong>.
+          Chez <strong>INDENUM</strong>, nous vous proposons de{" "}
+          <strong>racheter</strong> votre matériel électronique, qu'il s'agisse
+          de consoles de jeux, de téléphones, de tablettes, ou d'accessoires.
+          Nous vous offrons <strong>un prix juste</strong> pour votre matériel,
+          en fonction de <strong>son état et de sa valeur marchande</strong>.
         </p>
         <p>
-          Le rachat de matériel est <strong>une solution simple et rapide</strong> pour vous
-          débarrasser de vos appareils électroniques encombrants ou obsolètes.
-          En <strong>revendant votre matériel</strong>, vous pouvez ainsi
-          <strong> récupérer de l'argent</strong> pour financer l'achat de nouveaux appareils ou
-          simplement pour vous faire plaisir.
+          Le rachat de matériel est{" "}
+          <strong>une solution simple et rapide</strong> pour vous débarrasser
+          de vos appareils électroniques encombrants ou obsolètes. En{" "}
+          <strong>revendant votre matériel</strong>, vous pouvez ainsi
+          <strong> récupérer de l'argent</strong> pour financer l'achat de
+          nouveaux appareils ou simplement pour vous faire plaisir.
         </p>
         <p>
-          N'hésitez pas à <strong>remplir le Formulaire</strong> ci dessous ou vous pouvez nous
-          contacter directement pour obtenir une <strong>estimation de rachat</strong>.
+          N'hésitez pas à <strong>remplir le Formulaire</strong> ci dessous ou
+          vous pouvez nous contacter directement pour obtenir une{" "}
+          <strong>estimation de rachat</strong>.
         </p>
       </section>
 
