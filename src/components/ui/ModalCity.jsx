@@ -8,24 +8,19 @@ const CityModal = ({ isOpen, onClose }) => {
 
   // Liste des villes
   const cities = [
-    "Paris",
-    "Lyon",
-    "Marseille",
-    "Toulouse",
-    "Nice",
-    "Nantes",
-    "Bordeaux",
-    "Strasbourg",
-    "Lille",
-    "Montpellier",
-    "Rennes",
-    "Le Havre",
-    "Reims",
-    "Saint-Étienne",
-    "Le Mans",
-    "Aix-en-Provence",
-    "Clermont-Ferrand",
-    "Antibes",
+    "Bordeaux (Caudéran)",
+    "Bordeaux (Chartrons)",
+    "Bordeaux (Saint Seurin)",
+    "Bruges (Toute la ville)",
+    "Eysines (Le Bourg)",
+    "Eysines (Le Derby)",
+    "Eysines (Le Grand Louis)",
+    "Eysines (Le Pinsan)",
+    "Eysines (Le Vigean)",
+    "Eysines (Migron)",
+    "Le Bouscat (toute la ville)",
+    "Mérignac (Capeyron)",
+    "Mérignac (Mondésir)",
   ];
 
   // Filtrer la liste des villes en fonction du terme de recherche
