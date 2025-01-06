@@ -32,7 +32,7 @@ const CardRate = ({
         </p>
         <span className="text-sm text-gray-500">{category}</span>
         <p className="text-sm font-semibold md:text-base lg:text-lg">
-          {price}€
+          {price}
         </p>
       </div>
     </div>
