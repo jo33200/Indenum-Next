@@ -7,7 +7,7 @@ import CityModal from "@/components/ui/ModalCity";
 import { supabase } from "@/utils/supabaseClient";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const HomePage = () => {
   // Fonction pour générer une URL publique depuis Supabase
@@ -20,6 +20,17 @@ const HomePage = () => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isImageOpen, setIsImageOpen] = useState(false);
+  const [isSmScreen, setIsSmScreen] = useState(false);
+
+  // Vérifie la taille de l'écran
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmScreen(window.innerWidth >= 640); // 640px correspond à la taille `sm` en Tailwind
+    };
+    handleResize(); // Vérifie initialement
+    window.addEventListener("resize", handleResize); // Écoute les changements de taille
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <div className="flex h-auto w-full flex-col items-center">
@@ -157,7 +168,9 @@ const HomePage = () => {
               height={300}
               className="w-full cursor-pointer rounded-3xl"
               style={{ objectFit: "cover" }}
-              onClick={() => setIsImageOpen(true)}
+              onClick={() => {
+                if (isSmScreen) setIsImageOpen(true); // Ouvre seulement sur les écrans `sm` ou plus
+              }}
             />
             {isImageOpen && (
               <div
@@ -169,7 +182,7 @@ const HomePage = () => {
                   alt="Carte avec la zone de déplacement"
                   width={800}
                   height={600}
-                  className="rounded-3xl"
+                  className="rounded-2xl"
                   style={{ objectFit: "cover" }}
                 />
               </div>
