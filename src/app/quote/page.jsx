@@ -50,6 +50,11 @@ const Quote = () => {
           gratuit et sans obligation, vous avez ainsi la certitude de faire le
           meilleur choix pour vos appareils.
         </p>
+        <p>
+          Dans tous les cas, un diagnostic sera réalisé avant chaque réparation.
+          Nous nous réservons le droit de ne pas intervenir sur un produit où il
+          y aurait eu une tentative d'intervention.
+        </p>
       </section>
     </div>
   );
