@@ -4,6 +4,8 @@ import { supabase } from "@/utils/supabaseClient";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import CardAd from "./CardAd";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 
 const ListAd = () => {
   const [ads, setAds] = useState([]);
@@ -282,13 +284,14 @@ const ListAd = () => {
             nous suivre sur nos réseaux sociaux pour être informé des dernières
             annonces.
           </p>
+
           <Link
             href="https://www.facebook.com/profile.php?id=100092448746131"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block text-center text-xs font-semibold text-blue-500 transition-colors duration-200 hover:cursor-pointer hover:text-blue-700 sm:text-sm md:mt-1 md:w-full md:text-base"
           >
-            Facebook
+            <FontAwesomeIcon icon={faFacebook} size="2x" color="#4267B2" />
           </Link>
         </div>
       </div>

@@ -31,9 +31,7 @@ const CardRate = ({
           {description}
         </p>
         <span className="text-sm text-gray-500">{category}</span>
-        <p className="text-sm font-semibold md:text-base lg:text-lg">
-          {price}
-        </p>
+        <p className="text-sm font-semibold md:text-base lg:text-lg">{price}</p>
       </div>
     </div>
   );

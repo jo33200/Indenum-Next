@@ -100,7 +100,9 @@ const RequestQuote = () => {
     emailjs
       .send(serviceID, templateID, contactData, userID)
       .then(() => {
-        alert("Votre message a bien été envoyé! Nous vous contacterons rapidement.");
+        alert(
+          "Votre message a bien été envoyé! Nous vous contacterons rapidement.",
+        );
         setContactData({
           civility: "",
           name: "",
