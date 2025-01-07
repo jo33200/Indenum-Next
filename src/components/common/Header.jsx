@@ -174,9 +174,9 @@ const Header = () => {
         </p>
         <p className="text-gray-700">{phoneNumber}</p>
         <p className="mt-5 text-gray-700">
-          Nous sommes joignables du lundi au samedi
+          Nous sommes joignables: 
         </p>
-        <p className="mb-9 text-gray-700">de 9h à 19h.</p>
+        <p className="mb-9 text-gray-700">Lundi au Vendredi de 9h à 18h<br />Samedi de 9h à 16h</p>
       </Modal>
     </header>
   );
