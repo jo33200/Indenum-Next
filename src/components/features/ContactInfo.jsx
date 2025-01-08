@@ -1,10 +1,9 @@
 "use client";
 
-import PropTypes from "prop-types";
-import { usePathname } from "next/navigation";
-import Link from "next/link";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Link from "next/link";
+import PropTypes from "prop-types";
 
 const ContactInfo = ({ isFooter = false }) => {
   return (
@@ -30,17 +29,20 @@ const ContactInfo = ({ isFooter = false }) => {
           </li>
           <li>07 66 44 13 37</li>
           <li>indenum@outlook.com</li>
-          <Link
-            href="https://www.facebook.com/profile.php?id=100092448746131"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block w-auto text-left text-blue-500 transition-colors duration-200 hover:cursor-pointer hover:text-blue-700 md:mt-1"
-          >
-            <FontAwesomeIcon
-              icon={faFacebook}
-              className="rounded-full bg-white text-2xl"
-            />
-          </Link>
+          <li>
+            <Link
+              href="https://www.facebook.com/profile.php?id=100092448746131"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visitez notre page Facebook"
+              className="inline-block w-auto text-left text-blue-700 transition-colors duration-200 hover:cursor-pointer hover:text-blue-500 md:mt-1"
+            >
+              <FontAwesomeIcon
+                icon={faFacebook}
+                className="rounded-full bg-white text-2xl"
+              />
+            </Link>
+          </li>
         </ul>
       </nav>
     </div>
