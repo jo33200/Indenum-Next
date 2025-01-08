@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FiPlus, FiTrash, FiCamera } from "react-icons/fi";
 import Image from "next/image";
 
-const ImageUploader = ({ id = "imageUploader", maxImages = 3, onImagesChange }) => {
+const ImageUploader = ({ maxImages = 3, onImagesChange }) => {
   const [images, setImages] = useState(Array(maxImages).fill(null));
   const [error, setError] = useState("");
 
@@ -22,13 +22,16 @@ const ImageUploader = ({ id = "imageUploader", maxImages = 3, onImagesChange }) 
     if (onImagesChange) onImagesChange(newImages);
   };
 
-  return (
-    <div className="my-8">
-      {/* Label principal associé au premier champ */}
-      <label htmlFor={`${id}-0`} className="mb-2 block font-semibold text-gray-700">
-        Joindre des images
-      </label>
+  const handleAddImageClick = () => {
+    const nextIndex = images.findIndex((image) => image === null);
+    if (nextIndex === -1) {
+      setError(`Vous ne pouvez ajouter que ${maxImages} images.`);
+    }
+  };
 
+  return (
+    <div className="my-2">
+      <h2 className="mb-2 block font-semibold text-gray-700">Ajouter des images</h2>
       <div className="flex flex-wrap justify-between gap-4 sm:gap-2">
         {images.map((image, index) => (
           <div
@@ -52,17 +55,17 @@ const ImageUploader = ({ id = "imageUploader", maxImages = 3, onImagesChange }) 
                   <FiTrash />
                 </button>
               </div>
-            ) : (
+            ) : index === images.findIndex((img) => img === null) ? (
               <>
                 <label
-                  htmlFor={`${id}-${index}`}
-                  className="flex h-full w-full cursor-pointer flex-col items-center justify-center text-gray-500"
+                  htmlFor={`image-upload-${index}`}
+                  className="flex h-full w-full cursor-pointer flex-col items-center justify-center text-gray-700"
                 >
                   <FiPlus size={24} />
                   <span className="text-sm">Ajouter</span>
                 </label>
                 <input
-                  id={`${id}-${index}`}
+                  id={`image-upload-${index}`}
                   type="file"
                   accept="image/*"
                   className="hidden"
@@ -72,14 +75,16 @@ const ImageUploader = ({ id = "imageUploader", maxImages = 3, onImagesChange }) 
                   }
                 />
               </>
+            ) : (
+              <FiCamera size={24} className="text-gray-700" />
             )}
           </div>
         ))}
       </div>
-
       {error && <p className="mt-2 text-sm text-red-500">{error}</p>}
     </div>
   );
 };
 
 export default ImageUploader;
+
