@@ -10,7 +10,6 @@ const Buy = () => {
 
       <section
         className="mx-5 flex flex-col items-center gap-4 text-gray-700"
-        role="region"
         aria-labelledby="buy-info-title"
       >
         <h2 id="buy-info-title" className="sr-only">
@@ -38,11 +37,10 @@ const Buy = () => {
         </p>
       </section>
 
-      <section
-        className="w-full"
-        role="region"
-        aria-labelledby="form-buy-title"
-      >
+      <section className="w-full" aria-labelledby="form-buy-title">
+        <h2 id="form-buy-title" className="sr-only">
+          Formulaire de rachat
+        </h2>
         <BuyForm />
       </section>
     </div>
