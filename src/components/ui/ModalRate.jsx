@@ -120,7 +120,7 @@ const ModalRate = ({ rate, image, title, onClose }) => {
               Catégorie : {rate.category}
             </p>
             <p className="w-full rounded-3xl border-2 text-center text-2xl font-bold md:py-2 lg:w-20">
-              {rate.price}€
+              {rate.price}
             </p>
             <p className="text-gray-600 md:mt-4 md:text-lg">
               <strong>
