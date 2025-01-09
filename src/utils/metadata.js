@@ -1,4 +1,4 @@
-const siteUrl = "http://localhost:3000"; // Base URL pour local ou production (à remplacer pour la production)
+const siteUrl = "https://indenum-next.vercel.app/"; // Base URL pour local ou production (à remplacer pour la production)
 
 export const globalMetadata = {
   metadataBase: new URL(siteUrl),
@@ -25,7 +25,7 @@ export const globalMetadata = {
     siteName: "Indenum",
     images: [
       {
-        url: `${siteUrl}/Indenum.png`,
+        url: `${siteUrl}/img/atelier.webp`,
         width: 1200,
         height: 630,
         alt: "Indenum - Réparations électroniques",
@@ -39,7 +39,7 @@ export const globalMetadata = {
     title: "Indenum",
     description:
       "Réparation, Vente et Rachat de votre matériel électronique à Bordeaux.",
-    images: [`${siteUrl}/Indenum.png`],
+    images: [`${siteUrl}/img/atelier.webp`],
   },
 };
 
@@ -58,7 +58,7 @@ export const pageMetadata = {
       url: `${siteUrl}/ad`,
       images: [
         {
-          url: `${siteUrl}/img/manette.jpg`,
+          url: `${siteUrl}/img/atelier.webp`,
           width: 1200,
           height: 630,
           alt: "Annonces - Indenum",
@@ -79,7 +79,7 @@ export const pageMetadata = {
       url: `${siteUrl}/rate`,
       images: [
         {
-          url: `${siteUrl}/contact.jpg`,
+          url: `${siteUrl}/img/atelier.webp`,
           width: 1200,
           height: 630,
           alt: "Tarifs - Indenum",
@@ -101,7 +101,7 @@ export const pageMetadata = {
       url: `${siteUrl}/quote`,
       images: [
         {
-          url: `${siteUrl}/contact.jpg`,
+          url: `${siteUrl}/img/atelier.webp`,
           width: 1200,
           height: 630,
           alt: "Devis - Indenum",
@@ -123,7 +123,7 @@ export const pageMetadata = {
       url: `${siteUrl}/contact`,
       images: [
         {
-          url: `${siteUrl}/contact.jpg`,
+          url: `${siteUrl}/img/atelier.webp`,
           width: 1200,
           height: 630,
           alt: "Contactez Indenum pour réparations électroniques",
@@ -135,7 +135,7 @@ export const pageMetadata = {
       title: "Contactez-nous - Indenum",
       description:
         "Contactez notre équipe pour vos réparations électroniques à Bordeaux.",
-      images: [`${siteUrl}/contact.jpg`],
+      images: [`${siteUrl}/img/atelier.webp`],
     },
   },
   Buy: {
@@ -152,7 +152,7 @@ export const pageMetadata = {
       url: `${siteUrl}/buy`,
       images: [
         {
-          url: `${siteUrl}/buy.jpg`,
+          url: `${siteUrl}/img/atelier.webp`,
           width: 1200,
           height: 630,
           alt: "Achat de matériel électronique - Indenum",
