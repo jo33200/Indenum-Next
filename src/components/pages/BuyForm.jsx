@@ -44,6 +44,8 @@ const BuyForm = () => {
 
   const validateForm = () => {
     const newErrors = {};
+
+    // Champs obligatoires
     const requiredFields = [
       "civility",
       "name",
@@ -51,20 +53,25 @@ const BuyForm = () => {
       "email",
       "phone",
       "deviceType",
-      "aestheticCondition",
-      "functionalCondition",
-      "issueDescription",
-      "previousIntervention",
-      "technicianDetails",
-
     ];
-
     requiredFields.forEach((field) => {
       if (!formData[field]?.trim()) {
         newErrors[field] = "Ce champ est requis.";
       }
     });
 
+    // Validation de "fonctionnalité"
+    if (!formData.functionalCondition) {
+      newErrors.functionalCondition =
+        "Veuillez sélectionner une fonctionnalité.";
+    }
+
+    // Validation de "intervention technique"
+    if (!formData.previousIntervention) {
+      newErrors.previousIntervention = "Veuillez sélectionner une option.";
+    }
+
+    // Validation conditionnelle : Marque et Modèle
     if (formData.deviceType && formData.deviceType !== "autres") {
       if (!formData.brand.trim()) {
         newErrors.brand = "La marque est requise.";
@@ -74,6 +81,7 @@ const BuyForm = () => {
       }
     }
 
+    // Validation conditionnelle : Intervention technique
     if (
       formData.previousIntervention === "oui" &&
       !formData.technicianDetails.trim()
@@ -81,6 +89,7 @@ const BuyForm = () => {
       newErrors.technicianDetails = "Veuillez indiquer par qui.";
     }
 
+    // Validation conditionnelle : Fonctionnalité
     if (
       ["Fonctionne mal", "Ne fonctionne plus"].includes(
         formData.functionalCondition,
@@ -91,9 +100,9 @@ const BuyForm = () => {
     }
 
     // Validation des images
-  if (formData.images.every((image) => image === null)) {
-    newErrors.images = "Veuillez ajouter au moins une image.";
-  }
+    if (!formData.images.some((image) => image !== null)) {
+      newErrors.images = "Veuillez ajouter au moins une image.";
+    }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -382,8 +391,8 @@ const BuyForm = () => {
             })}
           </div>
           {errors.aestheticCondition && (
-    <p className="text-sm text-red-500">{errors.aestheticCondition}</p>
-  )}
+            <p className="text-sm text-red-500">{errors.aestheticCondition}</p>
+          )}
         </div>
 
         {/* Fonctionnalité */}
@@ -407,6 +416,9 @@ const BuyForm = () => {
               </label>
             ))}
           </div>
+          {errors.functionalCondition && (
+            <p className="text-sm text-red-500">{errors.functionalCondition}</p>
+          )}
           {["Fonctionne mal", "Ne fonctionne plus"].includes(
             formData.functionalCondition,
           ) && (
@@ -462,6 +474,11 @@ const BuyForm = () => {
               );
             })}
           </div>
+          {errors.previousIntervention && (
+            <p className="text-sm text-red-500">
+              {errors.previousIntervention}
+            </p>
+          )}
           {formData.previousIntervention === "oui" && (
             <div className="mt-2">
               <label htmlFor="technicianDetails" className="text-gray-700">
@@ -496,6 +513,9 @@ const BuyForm = () => {
             maxImages={3}
             onImagesChange={handleImagesChange}
           />
+          {errors.images && (
+            <p className="text-sm text-red-500">{errors.images}</p>
+          )}
         </div>
 
         {/* Bouton d'envoi */}
