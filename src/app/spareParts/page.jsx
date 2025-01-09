@@ -38,7 +38,7 @@ const spareParts = () => {
         id="hero"
         className="flex w-full flex-col items-center gap-10 px-2 py-20"
       >
-        <h2 className="text-center text-xl font-bold sm:text-left">
+        <h2 className="text-center text-2xl font-bold sm:text-left">
           Vente de pièces détachées pour votre appareil électronique
         </h2>
         <article className="flex max-w-[850px] flex-col items-center gap-10 text-left lg:flex-row">
