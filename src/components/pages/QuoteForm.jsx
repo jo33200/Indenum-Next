@@ -74,6 +74,10 @@ const RequestQuote = () => {
       }
     }
 
+    if (!contactData.previousIntervention) {
+      newErrors.previousIntervention = "Veuillez sélectionner une option.";
+    }
+
     if (
       contactData.previousIntervention === "oui" &&
       !contactData.technicianDetails.trim()
@@ -365,7 +369,7 @@ const RequestQuote = () => {
             ))}
           </div>
           {errors.previousIntervention && (
-            <p className="mt-1 text-sm text-red-500">
+            <p className="text-sm text-red-500">
               {errors.previousIntervention}
             </p>
           )}
