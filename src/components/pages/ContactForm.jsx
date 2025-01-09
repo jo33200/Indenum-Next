@@ -5,19 +5,61 @@ import { useState } from "react";
 
 const ContactForm = () => {
   const [contactData, setContactData] = useState({
+    civility: "",
     name: "",
+    firstname: "",
     email: "",
     phone: "",
     message: "",
   });
+
+  const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setContactData({ ...contactData, [name]: value });
   };
 
+  const validateForm = () => {
+    const newErrors = {};
+
+    // Champs obligatoires
+    const requiredFields = [
+      "civility",
+      "name",
+      "firstname",
+      "email",
+      "phone",
+      "message",
+    ];
+    requiredFields.forEach((field) => {
+      if (!contactData[field]?.trim()) {
+        newErrors[field] = "Ce champ est requis.";
+      }
+    });
+
+    // Validation spécifique : email
+    if (contactData.email && !/\S+@\S+\.\S+/.test(contactData.email)) {
+      newErrors.email = "Veuillez entrer une adresse email valide.";
+    }
+
+    // Validation spécifique : numéro de téléphone
+    if (contactData.phone && !/^\d{10}$/.test(contactData.phone)) {
+      newErrors.phone = "Veuillez entrer un numéro de téléphone valide.";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const sendContactEmail = (e) => {
     e.preventDefault();
+
+    if (!validateForm()) {
+      alert("Veuillez corriger les erreurs dans le formulaire.");
+      return;
+    }
+
     const serviceID = "service_85dzjsi";
     const templateID = "template_ysa7hnr";
     const userID = "Q-hXLrRhbwsCWFw1D";
@@ -28,11 +70,14 @@ const ContactForm = () => {
         alert("Votre message a bien été envoyé !");
         // Réinitialiser les champs du formulaire
         setContactData({
+          civility: "",
           name: "",
+          firstname: "",
           email: "",
           phone: "",
           message: "",
         });
+        setErrors({});
       })
       .catch((err) => console.error("Erreur d'envoi du message : ", err));
   };
@@ -53,6 +98,31 @@ const ContactForm = () => {
           Formulaire pour nous envoyer un message avec votre nom, prénom, email,
           numéro de téléphone et message.
         </p>
+
+        {/* Civilité */}
+        <div className="mb-4">
+          <label
+            className="mb-1 block font-semibold text-gray-700"
+            htmlFor="civility"
+          >
+            Civilité
+          </label>
+          <select
+            id="civility"
+            name="civility"
+            value={contactData.civility}
+            onChange={handleChange}
+            className={`w-full rounded-md border px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500`}
+          >
+            <option value="">Sélectionnez</option>
+            <option value="Monsieur">Monsieur</option>
+            <option value="Madame">Madame</option>
+          </select>
+          {errors.civility && (
+            <p className="text-sm text-red-500">{errors.civility}</p>
+          )}
+        </div>
+
         {/* Nom */}
         <div className="mb-4">
           <label
@@ -72,6 +142,7 @@ const ContactForm = () => {
             required
             autoComplete="family-name"
           />
+          {errors.name && <p className="text-sm text-red-500">{errors.name}</p>}
         </div>
 
         <div className="mb-4">
@@ -92,6 +163,9 @@ const ContactForm = () => {
             required
             autoComplete="given-name"
           />
+          {errors.firstname && (
+            <p className="text-sm text-red-500">{errors.firstname}</p>
+          )}
         </div>
 
         {/* Email */}
@@ -113,6 +187,9 @@ const ContactForm = () => {
             required
             autoComplete="email"
           />
+          {errors.email && (
+            <p className="text-sm text-red-500">{errors.email}</p>
+          )}
         </div>
 
         {/* Téléphone */}
@@ -134,6 +211,9 @@ const ContactForm = () => {
             required
             autoComplete="tel"
           />
+          {errors.phone && (
+            <p className="text-sm text-red-500">{errors.phone}</p>
+          )}
         </div>
 
         {/* Message */}
@@ -159,6 +239,9 @@ const ContactForm = () => {
           <p id="message-helper" className="mt-1 text-sm text-gray-500">
             Maximum 120 caractères.
           </p>
+          {errors.message && (
+            <p className="text-sm text-red-500">{errors.message}</p>
+          )}
         </div>
 
         <ButtonValid
