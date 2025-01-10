@@ -28,7 +28,7 @@ const CardHome = () => {
     {
       title: "Ne jetez pas, Vendez !",
       image: getSupabaseImageUrl("rachat.webp"),
-      subtitle: "proposer votre article",
+      subtitle: "Proposer votre article",
       link: "/buy",
     },
     {
