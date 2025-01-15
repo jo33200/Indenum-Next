@@ -17,15 +17,18 @@ const ListAd = () => {
   const [openCategories, setOpenCategories] = useState({});
   const [showAllFilters, setShowAllFilters] = useState(false);
 
+  // Récupérer les annonces via la route API
   useEffect(() => {
     const fetchAds = async () => {
       try {
-        const { data, error } = await supabase.from("ads").select("*");
-        if (error) throw error;
+        const response = await fetch("/api/ads"); // Appel à la route API
+        if (!response.ok) throw new Error("Erreur lors de la récupération des annonces.");
+
+        const data = await response.json();
         setAds(data);
-        setFilteredAds(data); // Afficher toutes les annonces initialement
+        setFilteredAds(data); // Initialisation des annonces filtrées
       } catch (error) {
-        console.error("Error fetching ads:", error.message);
+        console.error("Erreur :", error.message);
       }
     };
 
