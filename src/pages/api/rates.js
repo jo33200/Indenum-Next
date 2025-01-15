@@ -11,7 +11,9 @@ export default async function handler(req, res) {
       // Récupérer les données de la table "rates"
       const { data: ratesData, error: ratesError } = await supabase
         .from("rates")
-        .select("*");
+        .select("*")
+        .order("category", { ascending: true })
+        .order("subcategory", { ascending: true });
       if (ratesError) {
         console.error(
           "Erreur lors de la récupération des données de rates:",
