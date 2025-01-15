@@ -2,7 +2,7 @@ import { createClient } from "@supabase/supabase-js";
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_KEY // Clé privée
+  process.env.SUPABASE_SERVICE_KEY, // Clé privée
 );
 
 export default async function handler(req, res) {
@@ -17,9 +17,11 @@ export default async function handler(req, res) {
       if (ratesError) {
         console.error(
           "Erreur lors de la récupération des données de rates:",
-          ratesError.message
+          ratesError.message,
         );
-        return res.status(500).json({ error: "Erreur lors de la récupération des données." });
+        return res
+          .status(500)
+          .json({ error: "Erreur lors de la récupération des données." });
       }
 
       // Fusionner les données avec des URLs simplifiées
@@ -32,8 +34,13 @@ export default async function handler(req, res) {
 
       return res.status(200).json(combinedData);
     } catch (error) {
-      console.error("Erreur lors de la récupération des données :", error.message);
-      return res.status(500).json({ error: "Erreur lors de la récupération des données." });
+      console.error(
+        "Erreur lors de la récupération des données :",
+        error.message,
+      );
+      return res
+        .status(500)
+        .json({ error: "Erreur lors de la récupération des données." });
     }
   }
 

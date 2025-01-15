@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import Image from "next/image";
 
-
 const CardRate = ({
   title,
   description,
@@ -10,7 +9,6 @@ const CardRate = ({
   image,
   onCardClick,
 }) => {
-
   return (
     <div
       onClick={onCardClick}

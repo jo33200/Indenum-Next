@@ -2,7 +2,7 @@ import { createClient } from "@supabase/supabase-js";
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_KEY
+  process.env.SUPABASE_SERVICE_KEY,
 );
 
 export default async function handler(req, res) {
@@ -26,7 +26,10 @@ export default async function handler(req, res) {
       res.setHeader("Cache-Control", "public, max-age=3600");
       return res.status(200).send(Buffer.from(buffer));
     } catch (error) {
-      console.error("Erreur lors de la récupération de l'image :", error.message);
+      console.error(
+        "Erreur lors de la récupération de l'image :",
+        error.message,
+      );
       return res.status(500).json({ error: "Erreur interne du serveur." });
     }
   }

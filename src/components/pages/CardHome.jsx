@@ -9,7 +9,7 @@ const CardHome = () => {
   const cardData = [
     {
       title: "Notre Atelier",
-      image: getImageUrl("atelier.webp"), // URL générée pour 
+      image: getImageUrl("atelier.webp"), // URL générée pour
       subtitle: "Découvrir",
       link: "#atelier", // Lien interne
     },

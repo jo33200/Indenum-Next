@@ -24,7 +24,8 @@ const ListRate = () => {
       try {
         // Appel à la nouvelle API route `/api/rates`
         const response = await fetch("/api/rates");
-        if (!response.ok) throw new Error("Erreur lors de la récupération des données.");
+        if (!response.ok)
+          throw new Error("Erreur lors de la récupération des données.");
 
         const data = await response.json(); // Récupère les données combinées
         setRates(data); // Initialise les tarifs

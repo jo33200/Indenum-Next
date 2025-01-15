@@ -22,7 +22,8 @@ const ListAd = () => {
     const fetchAds = async () => {
       try {
         const response = await fetch("/api/ads"); // Appel à la route API
-        if (!response.ok) throw new Error("Erreur lors de la récupération des annonces.");
+        if (!response.ok)
+          throw new Error("Erreur lors de la récupération des annonces.");
 
         const data = await response.json();
         setAds(data);

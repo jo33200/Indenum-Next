@@ -31,7 +31,9 @@ const ImageUploader = ({ maxImages = 3, onImagesChange }) => {
 
   return (
     <div className="my-2">
-      <h2 className="mb-2 block font-semibold text-gray-700">Ajouter des images</h2>
+      <h2 className="mb-2 block font-semibold text-gray-700">
+        Ajouter des images
+      </h2>
       <div className="flex flex-wrap justify-between gap-4 sm:gap-2">
         {images.map((image, index) => (
           <div
@@ -87,4 +89,3 @@ const ImageUploader = ({ maxImages = 3, onImagesChange }) => {
 };
 
 export default ImageUploader;
-
