@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import CardRate from "./CardRate";
 import ModalRate from "@/components/ui/ModalRate";
 import Link from "next/link";
-import { supabase } from "@/utils/supabaseClient";
 
 const ListRate = () => {
   const [rates, setRates] = useState([]);
@@ -19,25 +18,17 @@ const ListRate = () => {
   const [selectedRate, setSelectedRate] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  // Récupération des données
   useEffect(() => {
     const fetchRates = async () => {
       try {
-        // Récupère les données depuis Supabase
-        const { data, error } = await supabase.from("rates").select("*");
-        if (error)
-          throw new Error(
-            "Erreur lors de la récupération des données Supabase",
-          );
+        // Appel à la nouvelle API route `/api/rates`
+        const response = await fetch("/api/rates");
+        if (!response.ok) throw new Error("Erreur lors de la récupération des données.");
 
-        // Génère l'URL complète pour chaque image
-        const ratesWithImageUrls = data.map((rate) => ({
-          ...rate,
-          image: `https://gedvcdylaaygslrbfupf.supabase.co/storage/v1/object/public/rates-images/${rate.image}`, // URL publique basée sur le nom de l'image
-        }));
-
-        // Met à jour les états
-        setRates(ratesWithImageUrls);
-        setFilteredRates(ratesWithImageUrls); // Initialise les cartes filtrées
+        const data = await response.json(); // Récupère les données combinées
+        setRates(data); // Initialise les tarifs
+        setFilteredRates(data); // Initialise les cartes filtrées
       } catch (error) {
         console.error("Erreur lors de la récupération des données :", error);
       }
