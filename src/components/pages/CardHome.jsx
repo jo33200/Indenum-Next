@@ -1,63 +1,57 @@
 import PropTypes from "prop-types";
 import Link from "next/link";
 import Image from "next/image";
-import { supabase } from "@/utils/supabaseClient";
 
 const CardHome = () => {
   // Fonction pour générer une URL publique depuis Supabase
-  const getSupabaseImageUrl = (fileName) => {
-    const { data } = supabase.storage
-      .from("home-images")
-      .getPublicUrl(fileName);
-    return data.publicUrl;
-  };
+  const getImageUrl = (fileName) => `/api/home-images/${fileName}`;
 
   const cardData = [
     {
       title: "Notre Atelier",
-      image: getSupabaseImageUrl("atelier.webp"), // URL générée pour Supabase
+      image: getImageUrl("atelier.webp"), // URL générée pour 
       subtitle: "Découvrir",
       link: "#atelier", // Lien interne
     },
     {
       title: "Faites réparer",
-      image: getSupabaseImageUrl("reparation.webp"),
+      image: getImageUrl("reparation.webp"),
       subtitle: "Voir nos tarifs",
       link: "/rate",
     },
     {
       title: "Ne jetez pas, Vendez !",
-      image: getSupabaseImageUrl("rachat.webp"),
+      image: getImageUrl("rachat.webp"),
       subtitle: "Proposer votre article",
       link: "/buy",
     },
     {
       title: "Devis personnalisé",
-      image: getSupabaseImageUrl("casse.webp"),
+      image: getImageUrl("casse.webp"),
       subtitle: "En savoir plus",
       link: "/quote",
     },
     {
       title: "Service de proximité",
-      image: getSupabaseImageUrl("proximite.webp"),
+      image: getImageUrl("proximite.webp"),
       subtitle: "En savoir plus",
       link: "#proximite",
     },
     {
       title: "Nos Annonces en ligne",
-      image: getSupabaseImageUrl("manette.webp"),
+      image: getImageUrl("manette.webp"),
       subtitle: "Voir catalogue",
       link: "/ad",
     },
     {
       title: "Service pièces détachées",
-      image: getSupabaseImageUrl("pieces.webp"),
+      image: getImageUrl("pieces.webp"),
       subtitle: "Voir catalogue",
       link: "/spareParts",
     },
     {
       title: "Besoin d'un prêt ?",
-      image: getSupabaseImageUrl("ManetteDePret.webp"),
+      image: getImageUrl("ManetteDePret.webp"),
       subtitle: "En savoir plus",
       link: "#loan",
     },
