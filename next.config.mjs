@@ -15,13 +15,13 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "gedvcdylaaygslrbfupf.supabase.co",
+        hostname: "kjbkxbsdpqocnhnxngfl.supabase.co",
         port: "",
         pathname: "/storage/v1/object/public/rates-images/**", // Chemin pour les images Supabase
       },
       {
         protocol: "https",
-        hostname: "gedvcdylaaygslrbfupf.supabase.co",
+        hostname: "kjbkxbsdpqocnhnxngfl.supabase.co",
         port: "",
         pathname: "/storage/v1/object/public/home-images/**", // Ajusté pour "home-images"
       },
