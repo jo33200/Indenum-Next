@@ -54,21 +54,21 @@ const ContactForm = () => {
 
   const sendContactEmail = (e) => {
     e.preventDefault();
-
+  
     if (!validateForm()) {
       alert("Veuillez corriger les erreurs dans le formulaire.");
       return;
     }
-
-    const serviceID = "service_85dzjsi";
-    const templateID = "template_ysa7hnr";
-    const userID = "Q-hXLrRhbwsCWFw1D";
-
-    emailjs
-      .send(serviceID, templateID, contactData, userID)
+  
+    const serviceID = "service_8u3on86";
+    const templateID = "template_contact_form"; // Nouveau template dédié
+    const userID = "jsje2aK89ggqzD2hl";
+  
+    emailjs.send(serviceID, templateID, contactData, userID)
       .then(() => {
         alert("Votre message a bien été envoyé !");
-        // Réinitialiser les champs du formulaire
+        
+        // Réinitialisation des champs
         setContactData({
           civility: "",
           name: "",
@@ -81,6 +81,7 @@ const ContactForm = () => {
       })
       .catch((err) => console.error("Erreur d'envoi du message : ", err));
   };
+  
 
   return (
     <div className="mx-auto max-w-lg p-8" aria-labelledby="contact-form-title">

@@ -110,22 +110,27 @@ const BuyForm = () => {
 
   const sendEmail = (e) => {
     e.preventDefault();
-
+  
     if (!validateForm()) {
       alert("Veuillez remplir tous les champs obligatoires.");
       return;
     }
-
-    const serviceID = "service_85dzjsi";
-    const templateID = "template_ysa7hnr";
-    const userID = "Q-hXLrRhbwsCWFw1D";
-
-    emailjs
-      .send(serviceID, templateID, formData, userID)
+  
+    const serviceID = "service_8u3on86";
+    const templateID = "template_service_form"; // Template unique pour achat & devis
+    const userID = "jsje2aK89ggqzD2hl";
+  
+    // Ajout du formType pour identifier la demande
+    const emailData = {
+      ...formData,
+      formType: "Achat",
+    };
+  
+    emailjs.send(serviceID, templateID, emailData, userID)
       .then(() => {
-        alert(
-          "Votre message a bien été envoyé ! Nous vous contacterons rapidement.",
-        );
+        alert("Votre message a bien été envoyé ! Nous vous contacterons rapidement.");
+        
+        // Réinitialisation des champs
         setFormData({
           civility: "",
           name: "",
@@ -146,6 +151,7 @@ const BuyForm = () => {
       })
       .catch((err) => console.error("Erreur d'envoi du message : ", err));
   };
+  
 
   return (
     <div className="flex flex-col items-center justify-center p-6">
