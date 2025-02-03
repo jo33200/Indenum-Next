@@ -156,12 +156,6 @@ const ModalRate = ({ rate, image, title, onClose }) => {
                   height={48}
                 />
                 <Image
-                  src="/img/paypal.webp"
-                  alt="Paypal"
-                  width={48}
-                  height={48}
-                />
-                <Image
                   src="/img/googlePay.webp"
                   alt="GooglePay"
                   width={48}
