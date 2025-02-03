@@ -89,7 +89,7 @@ const RequestQuote = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const sendEmail = (e) => {
+  const sendContactEmail = (e) => {
     e.preventDefault();
   
     if (!validateForm()) {
