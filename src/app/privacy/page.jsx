@@ -81,22 +81,14 @@ const Privacy = () => {
 
       <article className="mb-8">
         <header>
-          <h2 className="mb-2 text-xl font-semibold">ARTICLE 4 – GOOGLE</h2>
+          <h2 className="mb-2 text-xl font-semibold">ARTICLE 4 – VERCEL</h2>
         </header>
         <p>
-          Notre boutique est hébergée sur Google Inc. Ils nous fournissent la
+          Notre boutique est hébergée sur Vercel. Ils nous fournissent la
           plate-forme web en ligne qui nous permet de vous vendre nos services
           et produits. Vos données sont stockées dans le système de stockage de
-          données et les bases de données de Google, et dans l’application
-          générale de Google. Vos données sont conservées sur un serveur
+          données et les bases de données de Vercel. Vos données sont conservées sur un serveur
           sécurisé protégé par un pare-feu.
-        </p>
-        <p>
-          <strong>Paiement :</strong> Si vous réalisez votre achat par le biais
-          de notre formulaire de commande, vos renseignements personnels seront
-          traités par le biais de Google Sheet. Pour plus d’informations,
-          veuillez consulter les conditions d’utilisation de Google ici ou leur
-          Politique de Confidentialité ici.
         </p>
       </article>
 
