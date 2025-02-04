@@ -1,7 +1,6 @@
 "use client";
 
 import ButtonValid from "@/components/common/ButtonValid";
-import emailjs from "@emailjs/browser";
 import { useState } from "react";
 
 const RequestQuote = () => {
@@ -36,14 +35,6 @@ const RequestQuote = () => {
 
     if (name === "deviceType") {
       setContactData((prev) => ({ ...prev, brand: "", model: "" }));
-    }
-  };
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setContactData((prev) => ({ ...prev, [name]: value }));
-    if (name === "previousIntervention" && value === "oui") {
-      setContactData((prev) => ({ ...prev, technicianDetails: "" }));
     }
   };
 
@@ -89,7 +80,7 @@ const RequestQuote = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const sendContactEmail = (e) => {
+  const sendContactEmail = async (e) => {
     e.preventDefault();
   
     if (!validateForm()) {
@@ -97,22 +88,21 @@ const RequestQuote = () => {
       return;
     }
   
-    const serviceID = "service_8u3on86";
-    const templateID = "template_service_form"; // Même template que pour BuyForm
-    const userID = "jsje2aK89ggqzD2hl";
-  
-    // Ajout du formType pour identifier la demande
     const emailData = {
-      ...formData,
-      formType: "Devis",
+      formType: "QuoteForm",
+      formData: contactData,
     };
   
-    emailjs.send(serviceID, templateID, emailData, userID)
-      .then(() => {
-        alert("Votre message a bien été envoyé ! Nous vous contacterons rapidement.");
-        
-        // Réinitialisation des champs
-        setFormData({
+    try {
+      const response = await fetch("/api/sendEmail", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(emailData),
+      });
+  
+      if (response.ok) {
+        alert("Votre message a bien été envoyé !");
+        setContactData({
           civility: "",
           name: "",
           firstname: "",
@@ -126,9 +116,15 @@ const RequestQuote = () => {
           technicianDetails: "",
         });
         setErrors({});
-      })
-      .catch((err) => console.error("Erreur d'envoi du message : ", err));
+      } else {
+        alert("Erreur lors de l'envoi du message.");
+      }
+    } catch (error) {
+      console.error("Erreur :", error);
+      alert("Erreur lors de l'envoi du message.");
+    }
   };
+  
   
 
   return (

@@ -7,6 +7,10 @@ const REFRESH_TOKEN = process.env.GMAIL_REFRESH_TOKEN;
 const REDIRECT_URI = "https://developers.google.com/oauthplayground";
 
 const convertImagesToBase64 = (images) => {
+  if (!Array.isArray(images)) {
+    return []; // Retourne un tableau vide si `images` n'existe pas
+  }
+
   return images
     .filter(image => image !== null && image.data) // Filtrer les images valides
     .map(image => ({
@@ -66,7 +70,10 @@ export default async function handler(req, res) {
         <p><strong>Catégorie :</strong> ${formData.deviceType}</p>
         <p><strong>Marque :</strong> ${formData.brand || "Non spécifié"}</p>
         <p><strong>Modèle :</strong> ${formData.model || "Non spécifié"}</p>
-        <p><strong>Description :</strong> ${formData.issueDescription || "Non spécifié"}</p>
+        <p><strong>Etat esthétique :</strong> ${formData.aesteticCondition || "Non spécifié"}</p>
+        <p><strong>Etat fonctionnel :</strong> ${formData.functionalCondition || "Non spécifié"}</p>
+        <p><strong>Intervention :</strong> ${formData.previousIntervention || "Non spécifié"}</p>
+        <p><strong>Par qui :</strong> ${formData.technicianDetails || "Non spécifié"}</p>
       `;
     } else if (formType === "ContactForm") {
       subject = `Nouveau message de contact - ${formData.name}`;
@@ -89,6 +96,10 @@ export default async function handler(req, res) {
         <p><strong>Email :</strong> ${formData.email}</p>
         <p><strong>Téléphone :</strong> ${formData.phone}</p>
         <p><strong>Catégorie :</strong> ${formData.deviceType}</p>
+        <p><strong>Marque :</strong> ${formData.brand || "Non spécifié"}</p>
+        <p><strong>Modèle :</strong> ${formData.model || "Non spécifié"}</p>
+        <p><strong>Intervention :</strong> ${formData.previousIntervention || "Non spécifié"}</p>
+        <p><strong>Par qui :</strong> ${formData.technicianDetails || "Non spécifié"}</p>
         <p><strong>Description :</strong> ${formData.description}</p>
       `;
     } else {

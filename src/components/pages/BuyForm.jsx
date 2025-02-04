@@ -2,7 +2,6 @@
 
 import ButtonValid from "@/components/common/ButtonValid";
 import ImageUploader from "@/components/ui/ImageUploader";
-import emailjs from "@emailjs/browser";
 import { useState } from "react";
 
 const BuyForm = () => {
@@ -38,13 +37,36 @@ const BuyForm = () => {
     }
   };
 
-  const handleImagesChange = (images) => {
-    setFormData((prev) => ({ ...prev, images }));
+  const handleImagesChange = (files) => {
+    const imageFiles = Array.from(files).filter(file => file instanceof Blob); // Filtrer les fichiers valides
+  
+    if (imageFiles.length === 0) {
+      console.error("❌ Aucun fichier valide sélectionné.");
+      return;
+    }
+  
+    Promise.all(
+      imageFiles.map((file) => {
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.readAsDataURL(file);
+          reader.onload = () =>
+            resolve({ filename: file.name, data: reader.result });
+          reader.onerror = reject;
+        });
+      })
+    )
+      .then((images) => {
+        setFormData((prev) => ({ ...prev, images }));
+      })
+      .catch((error) => console.error("❌ Erreur conversion Base64:", error));
   };
+  
+  
 
   const validateForm = () => {
     const newErrors = {};
-
+  
     // Champs obligatoires
     const requiredFields = [
       "civility",
@@ -59,18 +81,29 @@ const BuyForm = () => {
         newErrors[field] = "Ce champ est requis.";
       }
     });
-
+  
+    // ✅ Validation de l'email (Format correct)
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(formData.email)) {
+      newErrors.email = "Veuillez entrer une adresse email valide.";
+    }
+  
+    // ✅ Validation du numéro de téléphone (Doit contenir exactement 10 chiffres)
+    const phonePattern = /^[0-9]{10}$/;
+    if (!phonePattern.test(formData.phone)) {
+      newErrors.phone = "Veuillez entrer un numéro de téléphone valide à 10 chiffres.";
+    }
+  
     // Validation de "fonctionnalité"
     if (!formData.functionalCondition) {
-      newErrors.functionalCondition =
-        "Veuillez sélectionner une fonctionnalité.";
+      newErrors.functionalCondition = "Veuillez sélectionner une fonctionnalité.";
     }
-
+  
     // Validation de "intervention technique"
     if (!formData.previousIntervention) {
       newErrors.previousIntervention = "Veuillez sélectionner une option.";
     }
-
+  
     // Validation conditionnelle : Marque et Modèle
     if (formData.deviceType && formData.deviceType !== "autres") {
       if (!formData.brand.trim()) {
@@ -80,7 +113,7 @@ const BuyForm = () => {
         newErrors.model = "Le modèle est requis.";
       }
     }
-
+  
     // Validation conditionnelle : Intervention technique
     if (
       formData.previousIntervention === "oui" &&
@@ -88,27 +121,28 @@ const BuyForm = () => {
     ) {
       newErrors.technicianDetails = "Veuillez indiquer par qui.";
     }
-
+  
     // Validation conditionnelle : Fonctionnalité
     if (
       ["Fonctionne mal", "Ne fonctionne plus"].includes(
-        formData.functionalCondition,
+        formData.functionalCondition
       ) &&
       !formData.issueDescription.trim()
     ) {
       newErrors.issueDescription = "Veuillez décrire le problème.";
     }
-
-    // Validation des images
-    if (!formData.images.some((image) => image !== null)) {
+  
+    // ✅ Vérification que AU MOINS UNE IMAGE est présente
+    if (formData.images.length === 0) {
       newErrors.images = "Veuillez ajouter au moins une image.";
     }
-
+  
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
+  
 
-  const sendEmail = (e) => {
+  const sendEmail = async (e) => {
     e.preventDefault();
   
     if (!validateForm()) {
@@ -116,21 +150,23 @@ const BuyForm = () => {
       return;
     }
   
-    const serviceID = "service_8u3on86";
-    const templateID = "template_service_form"; // Template unique pour achat & devis
-    const userID = "jsje2aK89ggqzD2hl";
-  
-    // Ajout du formType pour identifier la demande
     const emailData = {
-      ...formData,
-      formType: "Achat",
+      formType: "BuyForm",
+      formData, // Toutes les données du formulaire
     };
   
-    emailjs.send(serviceID, templateID, emailData, userID)
-      .then(() => {
-        alert("Votre message a bien été envoyé ! Nous vous contacterons rapidement.");
-        
-        // Réinitialisation des champs
+    try {
+      const response = await fetch("/api/sendEmail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(emailData),
+      });
+  
+      if (response.ok) {
+        alert("Votre message a bien été envoyé !");
+        // Réinitialisation du formulaire
         setFormData({
           civility: "",
           name: "",
@@ -143,14 +179,20 @@ const BuyForm = () => {
           aestheticCondition: "",
           functionalCondition: "",
           issueDescription: "",
-          previousIntervention: "",
-          technicianDetails: "",
           images: [],
+
         });
         setErrors({});
-      })
-      .catch((err) => console.error("Erreur d'envoi du message : ", err));
+      } else {
+        alert("Erreur lors de l'envoi du message.");
+      }
+    } catch (error) {
+      console.error("Erreur :", error);
+      alert("Erreur lors de l'envoi du message.");
+    }
   };
+  
+  
   
 
   return (
@@ -180,6 +222,7 @@ const BuyForm = () => {
             <option value="">Sélectionnez</option>
             <option value="Monsieur">Monsieur</option>
             <option value="Madame">Madame</option>
+            <option value="Autre">Autre</option>
           </select>
           {errors.civility && (
             <p className="text-sm text-red-500">{errors.civility}</p>

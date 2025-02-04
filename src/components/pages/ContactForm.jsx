@@ -1,6 +1,5 @@
 "use client";
 import ButtonValid from "@/components/common/ButtonValid";
-import emailjs from "@emailjs/browser";
 import { useState } from "react";
 
 const ContactForm = () => {
@@ -23,52 +22,51 @@ const ContactForm = () => {
   const validateForm = () => {
     const newErrors = {};
 
-    // Champs obligatoires
-    const requiredFields = [
-      "civility",
-      "name",
-      "firstname",
-      "email",
-      "phone",
-      "message",
-    ];
+    const requiredFields = ["civility", "name", "firstname", "email", "phone", "message"];
     requiredFields.forEach((field) => {
       if (!contactData[field]?.trim()) {
         newErrors[field] = "Ce champ est requis.";
       }
     });
 
-    // Validation spécifique : email
-    if (contactData.email && !/\S+@\S+\.\S+/.test(contactData.email)) {
+    // ✅ Validation de l'email
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(contactData.email)) {
       newErrors.email = "Veuillez entrer une adresse email valide.";
     }
 
-    // Validation spécifique : numéro de téléphone
-    if (contactData.phone && !/^\d{10}$/.test(contactData.phone)) {
-      newErrors.phone = "Veuillez entrer un numéro de téléphone valide.";
+    // ✅ Validation du téléphone (10 chiffres)
+    const phonePattern = /^[0-9]{10}$/;
+    if (!phonePattern.test(contactData.phone)) {
+      newErrors.phone = "Veuillez entrer un numéro de téléphone valide à 10 chiffres.";
     }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-  const sendContactEmail = (e) => {
+  const sendContactEmail = async (e) => {
     e.preventDefault();
-  
+
     if (!validateForm()) {
-      alert("Veuillez corriger les erreurs dans le formulaire.");
+      alert("Veuillez corriger les erreurs.");
       return;
     }
-  
-    const serviceID = "service_8u3on86";
-    const templateID = "template_contact_form"; // Nouveau template dédié
-    const userID = "jsje2aK89ggqzD2hl";
-  
-    emailjs.send(serviceID, templateID, contactData, userID)
-      .then(() => {
+
+    const emailData = {
+      formType: "ContactForm",
+      formData: contactData,
+    };
+
+    try {
+      const response = await fetch("/api/sendEmail", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(emailData),
+      });
+
+      if (response.ok) {
         alert("Votre message a bien été envoyé !");
-        
-        // Réinitialisation des champs
         setContactData({
           civility: "",
           name: "",
@@ -78,8 +76,13 @@ const ContactForm = () => {
           message: "",
         });
         setErrors({});
-      })
-      .catch((err) => console.error("Erreur d'envoi du message : ", err));
+      } else {
+        alert("Erreur lors de l'envoi du message.");
+      }
+    } catch (error) {
+      console.error("Erreur :", error);
+      alert("Erreur lors de l'envoi du message.");
+    }
   };
   
 
@@ -118,6 +121,7 @@ const ContactForm = () => {
             <option value="">Sélectionnez</option>
             <option value="Monsieur">Monsieur</option>
             <option value="Madame">Madame</option>
+            <option value="Autre">Autre</option>
           </select>
           {errors.civility && (
             <p className="text-sm text-red-500">{errors.civility}</p>
