@@ -38,13 +38,13 @@ const BuyForm = () => {
   };
 
   const handleImagesChange = (files) => {
-    const imageFiles = Array.from(files).filter(file => file instanceof Blob); // Filtrer les fichiers valides
-  
+    const imageFiles = Array.from(files).filter((file) => file instanceof Blob); // Filtrer les fichiers valides
+
     if (imageFiles.length === 0) {
       console.error("❌ Aucun fichier valide sélectionné.");
       return;
     }
-  
+
     Promise.all(
       imageFiles.map((file) => {
         return new Promise((resolve, reject) => {
@@ -54,19 +54,17 @@ const BuyForm = () => {
             resolve({ filename: file.name, data: reader.result });
           reader.onerror = reject;
         });
-      })
+      }),
     )
       .then((images) => {
         setFormData((prev) => ({ ...prev, images }));
       })
       .catch((error) => console.error("❌ Erreur conversion Base64:", error));
   };
-  
-  
 
   const validateForm = () => {
     const newErrors = {};
-  
+
     // Champs obligatoires
     const requiredFields = [
       "civility",
@@ -81,29 +79,31 @@ const BuyForm = () => {
         newErrors[field] = "Ce champ est requis.";
       }
     });
-  
+
     // ✅ Validation de l'email (Format correct)
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailPattern.test(formData.email)) {
       newErrors.email = "Veuillez entrer une adresse email valide.";
     }
-  
+
     // ✅ Validation du numéro de téléphone (Doit contenir exactement 10 chiffres)
     const phonePattern = /^[0-9]{10}$/;
     if (!phonePattern.test(formData.phone)) {
-      newErrors.phone = "Veuillez entrer un numéro de téléphone valide à 10 chiffres.";
+      newErrors.phone =
+        "Veuillez entrer un numéro de téléphone valide à 10 chiffres.";
     }
-  
+
     // Validation de "fonctionnalité"
     if (!formData.functionalCondition) {
-      newErrors.functionalCondition = "Veuillez sélectionner une fonctionnalité.";
+      newErrors.functionalCondition =
+        "Veuillez sélectionner une fonctionnalité.";
     }
-  
+
     // Validation de "intervention technique"
     if (!formData.previousIntervention) {
       newErrors.previousIntervention = "Veuillez sélectionner une option.";
     }
-  
+
     // Validation conditionnelle : Marque et Modèle
     if (formData.deviceType && formData.deviceType !== "autres") {
       if (!formData.brand.trim()) {
@@ -113,7 +113,7 @@ const BuyForm = () => {
         newErrors.model = "Le modèle est requis.";
       }
     }
-  
+
     // Validation conditionnelle : Intervention technique
     if (
       formData.previousIntervention === "oui" &&
@@ -121,40 +121,39 @@ const BuyForm = () => {
     ) {
       newErrors.technicianDetails = "Veuillez indiquer par qui.";
     }
-  
+
     // Validation conditionnelle : Fonctionnalité
     if (
       ["Fonctionne mal", "Ne fonctionne plus"].includes(
-        formData.functionalCondition
+        formData.functionalCondition,
       ) &&
       !formData.issueDescription.trim()
     ) {
       newErrors.issueDescription = "Veuillez décrire le problème.";
     }
-  
+
     // ✅ Vérification que AU MOINS UNE IMAGE est présente
     if (formData.images.length === 0) {
       newErrors.images = "Veuillez ajouter au moins une image.";
     }
-  
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
-  
 
   const sendEmail = async (e) => {
     e.preventDefault();
-  
+
     if (!validateForm()) {
       alert("Veuillez remplir tous les champs obligatoires.");
       return;
     }
-  
+
     const emailData = {
       formType: "BuyForm",
       formData, // Toutes les données du formulaire
     };
-  
+
     try {
       const response = await fetch("/api/sendEmail", {
         method: "POST",
@@ -163,7 +162,7 @@ const BuyForm = () => {
         },
         body: JSON.stringify(emailData),
       });
-  
+
       if (response.ok) {
         alert("Votre message a bien été envoyé !");
         // Réinitialisation du formulaire
@@ -180,7 +179,6 @@ const BuyForm = () => {
           functionalCondition: "",
           issueDescription: "",
           images: [],
-
         });
         setErrors({});
       } else {
@@ -191,9 +189,6 @@ const BuyForm = () => {
       alert("Erreur lors de l'envoi du message.");
     }
   };
-  
-  
-  
 
   return (
     <div className="flex flex-col items-center justify-center p-6">

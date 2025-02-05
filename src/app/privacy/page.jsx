@@ -87,8 +87,8 @@ const Privacy = () => {
           Notre boutique est hébergée sur Vercel. Ils nous fournissent la
           plate-forme web en ligne qui nous permet de vous vendre nos services
           et produits. Vos données sont stockées dans le système de stockage de
-          données et les bases de données de Vercel. Vos données sont conservées sur un serveur
-          sécurisé protégé par un pare-feu.
+          données et les bases de données de Vercel. Vos données sont conservées
+          sur un serveur sécurisé protégé par un pare-feu.
         </p>
       </article>
 

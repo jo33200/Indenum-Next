@@ -82,24 +82,24 @@ const RequestQuote = () => {
 
   const sendContactEmail = async (e) => {
     e.preventDefault();
-  
+
     if (!validateForm()) {
       alert("Veuillez remplir tous les champs obligatoires.");
       return;
     }
-  
+
     const emailData = {
       formType: "QuoteForm",
       formData: contactData,
     };
-  
+
     try {
       const response = await fetch("/api/sendEmail", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(emailData),
       });
-  
+
       if (response.ok) {
         alert("Votre message a bien été envoyé !");
         setContactData({
@@ -124,8 +124,6 @@ const RequestQuote = () => {
       alert("Erreur lors de l'envoi du message.");
     }
   };
-  
-  
 
   return (
     <div className="flex flex-col items-center justify-center p-6">

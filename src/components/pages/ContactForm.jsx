@@ -22,7 +22,14 @@ const ContactForm = () => {
   const validateForm = () => {
     const newErrors = {};
 
-    const requiredFields = ["civility", "name", "firstname", "email", "phone", "message"];
+    const requiredFields = [
+      "civility",
+      "name",
+      "firstname",
+      "email",
+      "phone",
+      "message",
+    ];
     requiredFields.forEach((field) => {
       if (!contactData[field]?.trim()) {
         newErrors[field] = "Ce champ est requis.";
@@ -38,7 +45,8 @@ const ContactForm = () => {
     // ✅ Validation du téléphone (10 chiffres)
     const phonePattern = /^[0-9]{10}$/;
     if (!phonePattern.test(contactData.phone)) {
-      newErrors.phone = "Veuillez entrer un numéro de téléphone valide à 10 chiffres.";
+      newErrors.phone =
+        "Veuillez entrer un numéro de téléphone valide à 10 chiffres.";
     }
 
     setErrors(newErrors);
@@ -84,7 +92,6 @@ const ContactForm = () => {
       alert("Erreur lors de l'envoi du message.");
     }
   };
-  
 
   return (
     <div className="mx-auto max-w-lg p-8" aria-labelledby="contact-form-title">
